@@ -1,0 +1,45 @@
+CREATE OR REPLACE FUNCTION FCTCREATEafcgeo(CSVFILE text) RETURNS integer
+AS $$
+DECLARE afcgeoexists BOOLEAN;
+BEGIN
+        SELECT EXISTS into afcgeoexists (
+           SELECT FROM information_schema.tables
+           WHERE  table_schema = 'public'
+           AND    table_name   = 'afcgeo'
+        );
+
+        if afcgeoexists then
+           drop table afcgeo;
+        end if;
+        
+        CREATE TABLE public.afcgeo
+            (
+            cgeo_clef text,
+            cgeo_marqueur text,
+            cgeo_code text,
+            cgeo_libelle text,
+            cgeo_select text,
+            updated_at text,
+            CONSTRAINT afcgeo_pkey PRIMARY KEY (cgeo_clef)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+            TABLESPACE pg_default;
+
+        execute 'COPY afcgeo(
+            cgeo_clef,
+cgeo_marqueur,
+cgeo_code,
+cgeo_libelle,
+cgeo_select,
+updated_at
+        )
+            from ''' || $1 || '''
+            DELIMITER '';''
+            CSV HEADER';
+
+            return 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

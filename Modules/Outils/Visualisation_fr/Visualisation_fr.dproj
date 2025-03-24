@@ -1,0 +1,239 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{7ADB1551-FE18-437F-9AB0-9F2F0057BB9B}</ProjectGuid>
+			<MainSource>Visualisation_fr.dpk</MainSource>
+			<Config Condition="'$(Config)'==''">Débogage</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+			<ProjectVersion>12.0</ProjectVersion>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Débogage' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_DebugDCUs>true</DCC_DebugDCUs>
+			<RuntimeOnlyPackage>true</RuntimeOnlyPackage>
+			<DCC_DependencyCheckOutputName>..\..\..\Bin\Modules\Outils\Visualisation_fr.bpl</DCC_DependencyCheckOutputName>
+			<DCC_BplOutput>..\..\..\Bin\Modules\Outils</DCC_BplOutput>
+			<DCC_RangeChecking>true</DCC_RangeChecking>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_Description>Visualisation des données de la base locale</DCC_Description>
+			<DesignOnlyPackage>false</DesignOnlyPackage>
+			<DCC_DcpOutput>..\..\..\Lib</DCC_DcpOutput>
+			<GenDll>true</GenDll>
+			<GenPackage>true</GenPackage>
+			<DCC_DcuOutput>..\..\..\Lib</DCC_DcuOutput>
+			<DCC_IntegerOverflowCheck>true</DCC_IntegerOverflowCheck>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_Platform>x86</DCC_Platform>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="Visualisation_fr.dpk">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="JvPageComps.dcp"/>
+			<DCCReference Include="vcl.dcp"/>
+			<DCCReference Include="rtl.dcp"/>
+			<DCCReference Include="xmlrtl.dcp"/>
+			<DCCReference Include="PIExtended.dcp"/>
+			<DCCReference Include="vcldb.dcp"/>
+			<DCCReference Include="vclimg.dcp"/>
+			<DCCReference Include="tee.dcp"/>
+			<DCCReference Include="teedb.dcp"/>
+			<DCCReference Include="PIClasses.dcp"/>
+			<DCCReference Include="vclx.dcp"/>
+			<DCCReference Include="PIStandard.dcp"/>
+			<DCCReference Include="JvWizards.dcp"/>
+			<DCCReference Include="Jcl.dcp"/>
+			<DCCReference Include="JvCore.dcp"/>
+			<DCCReference Include="JclVcl.dcp"/>
+			<DCCReference Include="JvDB.dcp"/>
+			<DCCReference Include="JvControls.dcp"/>
+			<DCCReference Include="JvSystem.dcp"/>
+			<DCCReference Include="JvStdCtrls.dcp"/>
+			<DCCReference Include="JvDlgs.dcp"/>
+			<DCCReference Include="JvCustom.dcp"/>
+			<DCCReference Include="FB_IB_DataSets.dcp"/>
+			<DCCReference Include="vclactnband.dcp"/>
+			<DCCReference Include="SynEdit_R2009.dcp"/>
+			<DCCReference Include="UIBD14Win32R.dcp"/>
+			<DCCReference Include="JvXPCtrls.dcp"/>
+			<DCCReference Include="PIDB.dcp"/>
+			<DCCReference Include="Projet.dcp"/>
+			<DCCReference Include="ModuleImport.dcp"/>
+			<DCCReference Include="dbrtl.dcp"/>
+			<DCCReference Include="dsnap.dcp"/>
+			<DCCReference Include="mdlAdresse_fr.pas">
+				<Form>frAdresse</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlFenetreVisualisation_fr.pas">
+				<Form>frmFenetreVisualisation</Form>
+			</DCCReference>
+			<DCCReference Include="mdlFrameVisualisation_fr.pas">
+				<Form>frFrameVisualisation</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlOrganismes_fr.pas">
+				<Form>frOrganismes</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlPraticiens_fr.pas">
+				<Form>frPraticiens</Form>
+			</DCCReference>
+			<DCCReference Include="mdlFichiersOrig_fr.pas">
+				<Form>frmFichiersOrig</Form>
+			</DCCReference>
+			<DCCReference Include="mdlProduits_fr.pas">
+				<Form>frProduits</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlFournisseurs_fr.pas">
+				<Form>frFournisseurs</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlStock_fr.pas">
+				<Form>frStock</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlCodifications_fr.pas">
+				<Form>frCodifications</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlHistoDelivrances_fr.pas">
+				<Form>frHistoDelivrances</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlCredits_fr.pas">
+				<Form>frCredit</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlVignettesAvancees_fr.pas">
+				<Form>frVignettesAvancees</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlDetails_fr.pas">
+				<Form>frmDetails</Form>
+			</DCCReference>
+			<DCCReference Include="mdlProfilProduit_fr.pas">
+				<Form>frProfilProduit</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlHistoAchats_fr.pas">
+				<Form>frHistoAchat</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlProduitsDus_fr.pas"/>
+			<DCCReference Include="mdlFacturesAttentes_fr.pas">
+				<Form>frFacturesAttentes</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlCommandesEnCours_fr.pas">
+				<Form>frCommandesEnCours</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlVisualisation_fr.pas">
+				<Form>dmVisualisation_fr</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlVisualisationPHA_fr.pas"/>
+			<DCCReference Include="mdlPromotions_fr.pas">
+				<Form>frPromotions</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlClients_fr.pas">
+				<Form>frClients</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Débogage">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<PropertyGroup>
+			<PostBuildEvent><![CDATA[powershell -noprofile -command $(SVN)\post-build.ps1 -target cp_rss_modules -rep_dest $(OUTPUTDIR) -type_mod Outils -module $(OUTPUTNAME)]]></PostBuildEvent>
+		</PropertyGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType>Package</Borland.ProjectType>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">Visualisation_fr.dpk</Source>
+					</Source>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+						<Parameters Name="HostApplication">..\..\..\Bin\COMMIT.exe</Parameters>
+						<Parameters Name="DebugSourceDirs">C:\dev\composants\pi\PIDB\</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">True</VersionInfo>
+						<VersionInfo Name="MajorVer">4</VersionInfo>
+						<VersionInfo Name="MinorVer">7</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">10</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1036</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName">Pharmagest Inter@ctive</VersionInfoKeys>
+						<VersionInfoKeys Name="FileDescription">Module de visualisation des données de la base locale</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">4.7.0.10</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName">VISUALISATION_FR.BPL</VersionInfoKeys>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName">COMMIT</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductVersion">4.7</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+						<VersionInfoKeys Name="Pays">FR</VersionInfoKeys>
+					</VersionInfoKeys>
+					<Excluded_Packages>
+						<Excluded_Packages Name="D:\svn\composants\JclBaseExpert140.bpl">JCL Package containing common units for JCL Experts</Excluded_Packages>
+						<Excluded_Packages Name="D:\svn\composants\JclDebugExpert140.bpl">JCL Debug IDE extension</Excluded_Packages>
+						<Excluded_Packages Name="D:\svn\composants\JclFavoriteFoldersExpert140.bpl">JCL Open and Save IDE dialogs with favorite folders</Excluded_Packages>
+						<Excluded_Packages Name="D:\svn\composants\JclProjectAnalysisExpert140.bpl">JCL Project Analyzer</Excluded_Packages>
+						<Excluded_Packages Name="D:\svn\composants\JclSIMDViewExpert140.bpl">JCL Debug Window of XMM registers</Excluded_Packages>
+						<Excluded_Packages Name="D:\svn\composants\JclStackTraceViewerExpert140.bpl">JCL Stack Trace Viewer</Excluded_Packages>
+						<Excluded_Packages Name="D:\svn\composants\JclVersionControlExpert140.bpl">JCL Integration of version control systems in the IDE</Excluded_Packages>
+						<Excluded_Packages Name="D:\svn\composants\JclRepositoryExpert140.bpl">JCL Package containing repository wizards</Excluded_Packages>
+					</Excluded_Packages>
+				</Delphi.Personality>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>

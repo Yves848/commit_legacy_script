@@ -1,0 +1,113 @@
+CREATE OR REPLACE FUNCTION FCTCREATEafzdes(CSVFILE text) RETURNS integer
+AS $$
+DECLARE afzdesexists BOOLEAN;
+BEGIN
+        SELECT EXISTS into afzdesexists (
+           SELECT FROM information_schema.tables
+           WHERE  table_schema = 'public'
+           AND    table_name   = 'afzdes'
+        );
+
+        if afzdesexists then
+           drop table afzdes;
+        end if;
+        
+        CREATE TABLE public.afzdes
+            (
+des_num integer,
+des_mrq text,
+des_zoncle text,
+des_nom text,
+des_adr1 text,
+des_adr2 text,
+des_codpos text,
+des_vil text,
+des_numtel text,
+des_numfax text,
+des_inter1 text,
+des_inter2 text,
+des_com1 text,
+des_com2 text,
+des_com3 text,
+des_doc text,
+des_normaller text,
+des_translot text,
+des_lancauto text,
+des_typemett text,
+des_numemett text,
+des_progemett text,
+des_typdesti text,
+des_numdesti text,
+des_progdesti text,
+des_applica text,
+des_typident text,
+des_nomident text,
+des_posincre text,
+des_lngincre text,
+des_message text,
+des_typattrib text,
+des_derlot text,
+des_normretour text,
+des_typidcompl text,
+des_protoc text,
+des_identif text,
+des_motpass text,
+des_typficenv text,
+des_ficenvoi text,
+des_enposinc text,
+des_enlgrinc text,
+des_ficrecoi text,
+des_compact text,
+des_lngart text,
+des_retsyst text,
+des_gestrep text,
+des_reprisebal text,
+des_vitesse text,
+des_specif text,
+des_appel text,
+des_emulpad text,
+des_adrpad text,
+des_profil1 text,
+des_profil12 text,
+des_porte_iris text,
+des_appelauto text,
+des_nbrtentative text,
+des_nbrlog text,
+des_arret_fin text,
+des_niveau_mes text,
+des_journaux text,
+des_bilanauto text,
+des_cahiercharge text,
+des_gesmesesmtp text,
+des_fourndacces text,
+des_delai text,
+des_numret text,
+des_nummes text,
+des_numitnmodem text,
+des_sesam text,
+des_servdnsp text,
+des_servdnss text,
+des_servsmtp text,
+des_servpop3 text,
+des_emaildes text,
+des_emailps text,
+des_oct text,
+des_nbrmes text,
+des_dreaccepte text,
+des_fichierunique text,
+updated_at date
+            )
+            WITH (
+                OIDS = FALSE
+            )
+            TABLESPACE pg_default;
+
+        execute 'COPY afzdes
+            from ''' || $1 || '''
+            DELIMITER '';''
+            CSV HEADER';
+
+            return 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

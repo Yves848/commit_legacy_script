@@ -1,0 +1,167 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{A3395D8D-2895-42BE-9030-3080553BF994}</ProjectGuid>
+			<MainSource>OutilsPHA_fr.dpk</MainSource>
+			<ProjectVersion>12.0</ProjectVersion>
+			<Config Condition="'$(Config)'==''">Débogage</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Débogage' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_RangeChecking>true</DCC_RangeChecking>
+			<RuntimeOnlyPackage>true</RuntimeOnlyPackage>
+			<DCC_IntegerOverflowCheck>true</DCC_IntegerOverflowCheck>
+			<DCC_Description>Outils de vérification et de statistiques de la base locale</DCC_Description>
+			<DCC_DcuOutput>..\..\..\Lib</DCC_DcuOutput>
+			<DCC_BplOutput>..\..\..\Bin\Modules\Outils</DCC_BplOutput>
+			<DCC_DcpOutput>..\..\..\Lib</DCC_DcpOutput>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_DependencyCheckOutputName>..\..\..\Bin\Modules\Outils\OutilsPHA_fr.bpl</DCC_DependencyCheckOutputName>
+			<GenPackage>true</GenPackage>
+			<DesignOnlyPackage>false</DesignOnlyPackage>
+			<GenDll>true</GenDll>
+			<DCC_UnitSearchPath>..\..\..\Lib;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_Platform>x86</DCC_Platform>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Optimize>false</DCC_Optimize>
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="OutilsPHA_fr.dpk">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="PIStandard.dcp"/>
+			<DCCReference Include="PIClasses.dcp"/>
+			<DCCReference Include="PIDB.dcp"/>
+			<DCCReference Include="PIExtended.dcp"/>
+			<DCCReference Include="Jcl.dcp"/>
+			<DCCReference Include="JclVcl.dcp"/>
+			<DCCReference Include="JvCore.dcp"/>
+			<DCCReference Include="JvXPCtrls.dcp"/>
+			<DCCReference Include="vclactnband.dcp"/>
+			<DCCReference Include="JvDB.dcp"/>
+			<DCCReference Include="JvWizards.dcp"/>
+			<DCCReference Include="UIBD14Win32R.dcp"/>
+			<DCCReference Include="PowerPDFDR.dcp"/>
+			<DCCReference Include="FB_IB_DataSets.dcp"/>
+			<DCCReference Include="Projet.dcp"/>
+			<DCCReference Include="xmlrtl.dcp"/>
+			<DCCReference Include="JvGlobus.dcp"/>
+			<DCCReference Include="mdlPurges.pas">
+				<Form>frmPurges</Form>
+			</DCCReference>
+			<DCCReference Include="mdlRepartiteurDefaut.pas"/>
+			<DCCReference Include="mdlOutilsPHA_fr.pas">
+				<Form>dmOutilsPHA_fr</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlChoixDate.pas">
+				<Form>frmChoixDate</Form>
+			</DCCReference>
+			<DCCReference Include="mdlIncoherence.pas">
+				<Form>frmIncoherence</Form>
+			</DCCReference>
+			<DCCReference Include="mdlAuditHomeo.pas">
+				<Form>frmAuditHomeo</Form>
+			</DCCReference>
+			<DCCReference Include="mdlTeletransmission.pas"/>
+			<DCCReference Include="mdlSantePHARMA.pas">
+				<Form>frmSantePHARMA</Form>
+			</DCCReference>
+			<DCCReference Include="mdlChoixID.pas">
+				<Form>frChoixID</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlForcageDestinataire.pas">
+				<Form>frmForcageDestinataire</Form>
+			</DCCReference>
+			<DCCReference Include="mdlInventaire.pas">
+				<Form>frmInventaire</Form>
+			</DCCReference>
+			<DCCReference Include="mdlOutilsPHAPHA_fr.pas">
+				<Form>dmOutilsPHAPHA_fr</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Débogage">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<PropertyGroup>
+			<PostBuildEvent><![CDATA[powershell -noprofile -command $(SVN)\post-build.ps1 -target cp_rss_modules -rep_dest $(OUTPUTDIR) -type_mod Outils -module $(OUTPUTNAME)]]></PostBuildEvent>
+		</PropertyGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType>Package</Borland.ProjectType>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">OutilsPHA_fr.dpk</Source>
+					</Source>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+						<Parameters Name="HostApplication">..\..\..\Bin\COMMIT.exe</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">True</VersionInfo>
+						<VersionInfo Name="MajorVer">4</VersionInfo>
+						<VersionInfo Name="MinorVer">7</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">9</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1036</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName">Pharmagest Inter@ctive</VersionInfoKeys>
+						<VersionInfoKeys Name="FileDescription">Outils de vérification et de statistiques de la base locale</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">4.7.0.9</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName">OUTILSPHA_FR.BPL</VersionInfoKeys>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName">COMMIT</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductVersion">4.7</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+						<VersionInfoKeys Name="Pays">FR</VersionInfoKeys>
+					</VersionInfoKeys>
+				</Delphi.Personality>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>

@@ -1,0 +1,36 @@
+select
+  a.nom,
+  a.prenom,
+  a.noss,
+  a.cless,
+  a.datenaissance,
+  a.adresse,
+  a.adresse2,
+  a.codepostal,
+  a.ville,
+  a.datevalid_mutuelle,
+  a.noadherent,
+  a.nocetip,
+  a.date_situation,
+  a.codeALD,
+  a.telephone,
+  a.rang,
+  c.regime,
+  a.index_qualite,
+  a.index_centre,
+  a.index_mutuelle,
+  a.fax,
+  a.commentaire,
+  a.noteauto,
+  a.DerniereVisite,
+  a.datedeb_mutuelle,
+  a.portable,
+  a.sexe,
+  a.code_situation,
+  a.index_assure,
+  c.centregestion,
+  a.index_grille_mutuelle
+from 
+  dbo.assure a
+  left join dbo.centres c on (c.index_centre = a.index_centre)
+  left join dbo.mutuelles m on (m.index_mutuelle = a.index_mutuelle)

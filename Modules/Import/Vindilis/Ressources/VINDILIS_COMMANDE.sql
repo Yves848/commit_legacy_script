@@ -1,0 +1,9 @@
+select
+  serial,
+  typecommande,
+  datecommande,
+  datelivraison1,
+  mtcommandeht,
+  serialfougro
+from
+  histocmde

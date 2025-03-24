@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="documentation.xsl" type="text/xsl"?>
+<documentation>
+  <description nom="Winpharma" os="Windows 2000/XP" type="sql"/>
+  <systemes>
+    <systeme>
+      <designation>MySQL 4.? crypté</designation>     
+        <recuperations>
+          <recuperation description="Récupération des données Winpharma chez le client (plus simple mais nécessite l'arret du serveur)">
+            <etape value="Sortir de tous les postes et aller sur le poste serveur"/>
+            <etape value="Clic droit sur le serveur (framboise en barre de taches) et arrêter le serveur, c’est important"/>
+            <etape value="Explorateur -> C:\WPHARMA ( ou autre lettre de lecteur ) clic droit -> Ajouter à l’archive WPHARMA.rar qu'on nommera archive originale"/>
+            <etape value="Puis copier WPHARMA.rar sur clé USB"/>
+            <etape value="Demander le code administrateur du client"/>
+            <etape value="Rebooter la machine ou relancer wpserve.exe et wpharma.exe"/>
+            <etape value="Une image ACRONIS TIB est recommandée."/>
+          </recuperation>
+          <recuperation description="Récupération à chaud des données Winpharma chez un client qui ne peut arreter le serveur">
+            <etape value="Fermer l'application Winpharma wpharma.exe du poste serveur, mais laisser wpserver actif (framboise)"/>
+            <etape value="Descendre dans le dossier -> C:\WPHARMA ( ou autre lettre de lecteur ) CTRL+A pour selectionner tout puis en maintenant le CTRL+clic sur le dossier DB pour l'exclure de la selection -> Ajouter à l’archive WPHARMA.rar "/>
+            <etape value="sous C:\COPIE_DB trouver l'archive zip la plus recente au format wps_******.zip     exemple : wps_R0403_21h47.zip "/>     
+            <etape value="Puis copier WPHARMA.rar et l'archive de sauvegarde sur clé USB"/>
+            <etape value="Relancer l'application winpharma wpharma.exe"/> 
+          </recuperation>
+          <recuperation description="Installation Winpharma">
+	    <etape value="Désarchiver l'archive originale WPHARMA.rar sous C:\"/>
+            <etape value="copier les .dll suivantes du repertoire \WPHARMA dans le repertoire de Commit au meme niveau que commit.exe : evncall.dll , wpodbc3.dll , wpodbc3r.dll"/>
+            <etape value="si méthode à chaud , créer un repertoire DB sous WPHARMA y extraire le contenu de l'archive de sauvegarde "/>
+	    <etape value="S'il etait sous D:\ ou autre, il faudra modifier le WPSERVER.INI"/>
+            <etape value="Sous C:\WPHARMA\DB remplacer le fichier SYSTEM.MYD par le fichiers livré avec COMMIT (\Modules\Import\Ressources\Winpharma\SYSTEM.7z) "/>
+            <etape value="Copier Win93.cmd (aussi dans \Modules\Import\Ressources\Winpharma) sous WPHARMA\DB et l'executer"/>
+            <etape value="Lancer le programme C:\WPHARMA\wpserver.exe"/>
+            <etape value="En cas de problème avec WPSERVER , essayer de remplacer le evncall.dll de Winpharma avec selui dans l'archive"/>
+	    <etape value="En cas de problème à la connexion lié à ODBC, et après avoir tenté les différents SYSTEM.MYD présents : fermer wpserver, tenter de remplacer votre wpserver.exe par le wpserver.exe correspondant à votre version sur le ftp repf.groupe.pharmagest.com, dossier /ressources, et relancer wpserver.exe"/> 
+	  </recuperation>
+        </recuperations>
+      <fichiers>
+        <fichier nom="*.*" repertoire="C:\WPHARMA" description="Application et base de  données"/>
+      </fichiers>
+    </systeme>
+  </systemes>
+  <perimetres>
+    <donnee designation="Hopitaux"/>
+    <donnee designation="Praticiens"/>
+
+    <donnee designation="Organismes"/>
+    <donnee designation="Couvertures"/>
+
+    <donnee designation="Clients"/>
+    <donnee designation="Comptes et collectivités"/>
+
+    <donnee designation="Fournisseurs directs"/>
+    <donnee designation="Répartiteurs"/>		
+    <donnee designation="Produits" commentaire="Gestion du multi-stock"/>
+    <donnee designation="Historiques de ventes mensuels ( rotations )" commentaire="3 ans"/>
+    <donnee designation="Classifications produits"/>
+
+    <donnee designation="Opérateurs"/>
+    <donnee designation="Crédits" commentaire="A partir d'une extraction de winpharma ( voir plus bas ), limité à 3 ans"/>
+    <donnee designation="Factures en attente"/>		
+    <donnee designation="Vignettes avancées"/>
+    <donnee designation="Produits dûs" commentaire="A lancer manuellement"/>
+
+
+
+    <donnee designation="Commandes"/>    
+    <donnee designation="Catalogues" commentaire="Si le traitement des catalogues plante (champs cip_obs inexistant) : il faut remplacer le fichier 'WP_MYSQL_CATALOGUE.SQL' par celui là 'WP_MYSQL_CATALOGUE - Sans OBS.SQL' dans 'Commit\Modules\Import\Ressources\Winpharma' "/>
+    <donnee designation="Historiques de délivrances" commentaire="3 ans"/>
+    <donnee designation="Programmes de Relationnel" commentaire="Pour Cart'Activ necessite un fichier à recuperer sur le site  par le client" /> 
+
+    <donnee designation="Scans Ordonances/Attestations/BLs/Fournisseurs"/>
+  </perimetres>
+  <observations>
+    <observation texte="Si à la connexion au serveur WinPharma, il vous est mentionné que votre version n'est pas à jour, il suffit de copier toutes les DLL présentes dans le répertoire WPHARMA dans le répertoire de COMMIT et de se reconnecter.">
+
+		<images>
+			<image nom="winpharma_maj.png"/>
+		</images>
+    </observation>
+
+    <observation texte="En cas d'impossibilité d'effectuer l'import à cause d'une licence expirée, utilisez la méthode décrite précédemment dans le cas où ODBC n'est pas activé, à savoir récupérer le wpserver.exe correspondant à votre version sur le serveur ftp, et remplacer le votre par ce dernier.">  
+    </observation>
+    <observation texte="En cas d'erreurs Cannot open file ... BLOBBIN..  lors de la reprise des scans, assurez vous que l'application (wpharma.exe) n'est pas en route, si besoin redemarrez le serveur (wpserver.exe) .">
+		<images>
+			<image nom="winpharma_cannot.png"/>
+		</images>   
+    </observation>
+	<observation texte="Pensez aussi à vérifier que vous avez bien renseigné l'emplacement repertoire WPHARMA dans les paramêtre et non DB ou c: , par exemple"/>
+    <observation texte="L'option de reprise 'facteur de decoupage' peut etre utile en cas de donnees volumineuses en cas d'historiques manquants, faire passer à 20 puis verifier.">
+      <images>
+      <image nom="winpharma_decoupage.png"/>
+    </images>  
+    </observation>
+	
+	<observation texte="Faites une purge des scans dans winpharma avant l'import, le filtre par date ne fonctionnant pas bien il est prèfèrable de procéder ainsi et de tout reprendre, evitez ce genre de manip sur le serveur du client">
+		<images>
+			<image nom="winpharma_purge.png"/>
+		</images>
+  </observation>
+
+  <observation texte="Géneration des liste de credits : Gestion → Impayés → En cours Clients">
+    <images>
+      <image nom="Winpharma - En Cours Clients.png"/>
+    </images>
+  </observation>
+
+  <observation texte="Après avoir coché les options, cliquer Ecran">
+    <images>
+      <image nom="Winpharma - Options Clients.png"/>
+    </images>    
+  </observation>
+
+  <observation texte="à cette étape enregistrer le fichier via le menu Texte fichier!">
+
+    <images>
+      <image nom="Winpharma - Liste Clients.png"/>
+    </images>
+  </observation>
+ 
+   <observation texte="le nommer credits.txt">
+   
+    <images>
+      <image nom="Winpharma - Export texte.png"/>
+    </images>
+  </observation>
+
+  <observation texte="Recommencez la procedure pour les credits comptes menu : Gestion → Impayés → En cours Clients en compte et nommer le fichier credits_comptes.txt">
+  </observation>
+  </observations>
+</documentation>

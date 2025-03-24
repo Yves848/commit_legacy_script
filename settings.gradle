@@ -1,0 +1,17 @@
+pluginManagement {
+    repositories {
+        maven { url = "https://artifactory.groupe.pharmagest.com/maven-public" }
+    }
+    plugins {
+        id("pharmagest.base") version pharmagestPluginsVersion
+    }
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.namespace == "pharmagest") {
+                useVersion(pharmagestPluginsVersion)
+            }
+        }
+    }
+}
+rootProject.name = "commit_legacy"
+

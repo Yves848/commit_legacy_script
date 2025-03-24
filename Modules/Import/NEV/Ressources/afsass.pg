@@ -1,0 +1,85 @@
+CREATE OR REPLACE FUNCTION FCTCREATEafsass(CSVFILE text) RETURNS integer
+AS $$
+DECLARE afsassexists BOOLEAN;
+BEGIN
+        SELECT EXISTS into afsassexists (
+           SELECT FROM information_schema.tables
+           WHERE  table_schema = 'public'
+           AND    table_name   = 'afsass'
+        );
+
+        if afsassexists then
+           drop table afsass;
+        end if;
+        
+        CREATE TABLE public.afsass
+            (
+ass_asn text,
+ass_asc text,
+ass_mrq text,
+ass_core text,
+ass_cages text,
+ass_ceges text,
+ass_coges text,
+ass_typecarte text,
+ass_finvaliditecarte text,
+ass_ruf1 text,
+ass_ruf2 text,
+ass_ruf text,
+ass_ruffamille text,
+ass_cservicefam text,
+ass_debservifam text,
+ass_finservifam text,
+ass_orgatdefaut text,
+ass_codeatbgdh text,
+ass_identat text,
+ass_organismeat1 text,
+ass_codeat1bgdh text,
+ass_identat1 text,
+ass_organismeat2 text,
+ass_codeat2bgdh text,
+ass_identat2 text,
+updated_at text,
+                CONSTRAINT afsass_pkey PRIMARY KEY (ass_asn, ass_asc)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+            TABLESPACE pg_default;
+
+        execute 'COPY afsass(
+            ass_asn,
+ass_asc,
+ass_mrq,
+ass_core,
+ass_cages,
+ass_ceges,
+ass_coges,
+ass_typecarte,
+ass_finvaliditecarte,
+ass_ruf1,
+ass_ruf2,
+ass_ruf,
+ass_ruffamille,
+ass_cservicefam,
+ass_debservifam,
+ass_finservifam,
+ass_orgatdefaut,
+ass_codeatbgdh,
+ass_identat,
+ass_organismeat1,
+ass_codeat1bgdh,
+ass_identat1,
+ass_organismeat2,
+ass_codeat2bgdh,
+ass_identat2,
+updated_at
+        )
+            from ''' || $1 || '''
+            DELIMITER '';''
+            CSV HEADER';
+
+            return 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

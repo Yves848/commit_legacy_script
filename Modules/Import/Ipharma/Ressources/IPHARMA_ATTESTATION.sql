@@ -1,0 +1,10 @@
+select 
+  medecin_conseil_id,
+  personne_id,
+  tar_id,
+  tar30_categorie_code,
+  tar30_condition_code,
+  limite_validite,
+  numero_autorisation
+from 
+  medecin_conseil 

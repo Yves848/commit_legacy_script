@@ -1,0 +1,152 @@
+CREATE OR REPLACE FUNCTION fctCreateAf04(csvfile text) RETURNS integer
+AS $$
+DECLARE af04exists BOOLEAN;
+BEGIN
+		SELECT EXISTS into af04exists (
+		   SELECT FROM information_schema.tables 
+		   WHERE  table_schema = 'public'
+		   AND    table_name   = 'af04_crypt'
+		);
+		
+		if af04exists then
+		   drop table af04;
+		   
+		else
+            alter table af04 rename constraint af04_pkey to af04_crypt_pkey;           
+
+            alter index if exists af04_caanaissance_idx rename to  af04_caanaissance_crypt_idx;              
+            alter index if exists af04_caccesms_idx rename to af04_caccesms_crypt_idx;
+            alter index if exists af04_cattente_idx rename to af04_cattente_crypt_idx;
+            alter index if exists af04_cayantdroit_idx rename to af04_cayantdroit_crypt_idx;
+            alter index if exists af04_ccategorie_idx rename to af04_ccategorie_crypt_idx;
+            alter index if exists af04_cchronofact_idx rename to af04_cchronofact_crypt_idx;
+            alter index if exists af04_cchronoreglement_idx rename to af04_cchronoreglement_crypt_i;
+            alter index if exists af04_ccol_ratt_idx rename to af04_ccol_ratt_crypt_idx;
+            alter index if exists af04_ccol_relv_idx rename to af04_ccol_relv_crypt_idx;
+            alter index if exists af04_ccompte_idx rename to af04_ccompte_crypt_idx;
+            alter index if exists af04_cctxbase_idx rename to af04_cctxbase_crypt_idx;
+            alter index if exists af04_cdatecreation_idx rename to af04_cdatecreation_crypt_idx;
+            alter index if exists af04_cdatefacture_idx rename to af04_cdatefacture_crypt_idx;
+            alter index if exists af04_cdatereglement_idx rename to af04_cdatereglement_crypt_idx;
+            alter index if exists af04_cdecimales_idx rename to af04_cdecimales_crypt_idx;
+            alter index if exists af04_cfactu_forfait_idx rename to af04_cfactu_forfait_crypt_idx;
+            alter index if exists af04_cforfjourmedremb_idx rename to af04_cforfjourmedremb_crypt_i;
+            alter index if exists af04_cinscalcule_idx rename to af04_cinscalcule_crypt_idx;
+            alter index if exists af04_cjjnaissance_idx rename to af04_cjjnaissance_crypt_idx;
+            alter index if exists af04_cmedecin_idx rename to af04_cmedecin_crypt_idx;
+            alter index if exists af04_cmmnaissance_idx rename to af04_cmmnaissance_crypt_idx;
+            alter index if exists af04_cnum_barcomptoir_idx rename to af04_cnum_barcomptoir_crypt_i;
+            alter index if exists af04_cnum_barreleve_idx rename to af04_cnum_barreleve_crypt_idx;
+            alter index if exists af04_cpil_chambre_idx rename to af04_cpil_chambre_crypt_idx;
+            alter index if exists af04_cpil_etiq_idx rename to af04_cpil_etiq_crypt_idx;
+            alter index if exists af04_cpil_frequence_idx rename to af04_cpil_frequence_crypt_idx;
+            alter index if exists af04_cpil_gestion_idx rename to af04_cpil_gestion_crypt_idx;
+            alter index if exists af04_creserve_idx rename to af04_creserve_crypt_idx;
+            alter index if exists af04_crlocal_idx rename to af04_crlocal_crypt_idx;
+            alter index if exists af04_csavcode_idx rename to af04_csavcode_crypt_idx;
+            alter index if exists af04_ctypeclie_idx rename to af04_ctypeclie_crypt_idx;
+            alter index if exists af04_cusageprof_idx rename to af04_cusageprof_crypt_idx;
+            alter index if exists af04_cvar_idx rename to af04_cvar_crypt_idx;
+
+			alter table af04 rename to af04_crypt;
+        end if;
+
+
+    CREATE TABLE public.af04
+    (
+        ccode oid NOT NULL,
+        cindex smallint,
+        csavcode integer,
+        ctypeclie character varying(1) COLLATE pg_catalog."default",
+        caanaissance smallint,
+        cmmnaissance smallint,
+        cjjnaissance smallint,
+        cdatecreation date,
+        cdatefacture date,
+        cchronofact smallint,
+        cdatereglement date,
+        cchronoreglement smallint,
+        ccompte double precision,
+        cattente smallint,
+        cayantdroit smallint,
+        cvar smallint,
+        ccategorie character varying(1) COLLATE pg_catalog."default",
+        cnoobs smallint[],
+        cobs character varying(20) COLLATE pg_catalog."default",
+        ctiers character varying(1) COLLATE pg_catalog."default",
+        cmedecin integer,
+        cattcomret smallint,
+        cbl character varying(1) COLLATE pg_catalog."default",
+        cnum_barcommercial smallint,
+        creserve character varying(1) COLLATE pg_catalog."default",
+        cnum_barcomptoir smallint,
+        cnum_barreleve smallint,
+        cdecimales smallint,
+        ccol_relv character varying(1) COLLATE pg_catalog."default",
+        ccol_ratt integer,
+        ccol_extrelv character varying(1) COLLATE pg_catalog."default",
+        ccol_detrelv character varying(1) COLLATE pg_catalog."default",
+        ccol_norelv double precision,
+        ccol_datrelv date,
+        cob2 character varying(20) COLLATE pg_catalog."default",
+        ccumulavance double precision,
+        ccol_detprod character varying(1) COLLATE pg_catalog."default",
+        cnaturepxachat character varying(1) COLLATE pg_catalog."default",
+        carrondireleve character varying(1) COLLATE pg_catalog."default",
+        cdatereleve date,
+        cmtreleve double precision,
+        cnbreedit character varying(1) COLLATE pg_catalog."default",
+        cdetailrlbl character varying(1) COLLATE pg_catalog."default",
+        cexotva character varying(1) COLLATE pg_catalog."default",
+        ceuro character varying(1) COLLATE pg_catalog."default",
+        ccodfinalfranc character varying(1) COLLATE pg_catalog."default",
+        cmtfinalfranc double precision,
+        cavancefranc double precision,
+        cremiseligne character varying(1) COLLATE pg_catalog."default",
+        cmtremiseligne double precision,
+        ctypecoef character varying(1) COLLATE pg_catalog."default",
+        cdernmed integer[],
+        cctxbase character varying(1) COLLATE pg_catalog."default",
+        capplic_barreleve character varying(1) COLLATE pg_catalog."default",
+        cpil_gestion character varying(1) COLLATE pg_catalog."default",
+        cpil_frequence character varying(1) COLLATE pg_catalog."default",
+        cpil_etiq character varying(2) COLLATE pg_catalog."default",
+        cpil_chambre character varying(10) COLLATE pg_catalog."default",
+        crlocal character varying(1) COLLATE pg_catalog."default",
+        caccesms character varying(1) COLLATE pg_catalog."default",
+        cusageprof character varying(1) COLLATE pg_catalog."default",
+        cfactu_forfait character varying(1) COLLATE pg_catalog."default",
+        cforfjourmedremb double precision,
+        cforfjourdispomedic double precision,
+        cnumsinistre character varying(9) COLLATE pg_catalog."default",
+        cdateaccident date,
+        cregimeat character varying(2) COLLATE pg_catalog."default",
+        ccaissegat character varying(3) COLLATE pg_catalog."default",
+        ccentregat character varying(4) COLLATE pg_catalog."default",
+        cinscalcule character varying(22) COLLATE pg_catalog."default",
+        ctvaintracomm character varying(17) COLLATE pg_catalog."default",
+        cstatusinsc character varying(1) COLLATE pg_catalog."default",
+        cetatdmp character varying(1) COLLATE pg_catalog."default",
+        updated_at timestamp without time zone DEFAULT now(),
+        cdatedmp date,
+        cacceptemail character varying(1) COLLATE pg_catalog."default",
+        ccompte_debite integer,
+        cnom character varying(50) COLLATE pg_catalog."default",
+        cnomjf character varying(50) COLLATE pg_catalog."default",
+        cprenom character varying(50) COLLATE pg_catalog."default",
+        cnoss character varying(22) COLLATE pg_catalog."default",
+        csexe character varying(1) COLLATE pg_catalog."default",
+        CONSTRAINT af04_pkey PRIMARY KEY (ccode)
+    )
+    WITH (
+        OIDS = FALSE
+    );
+    execute 'COPY af04(##FIELDS##)
+			from ''' || $1 || '''
+			DELIMITER '',''
+			CSV HEADER';
+		
+			return 0;
+END;
+$$ 
+LANGUAGE plpgsql;

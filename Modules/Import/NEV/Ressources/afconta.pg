@@ -1,0 +1,56 @@
+CREATE OR REPLACE FUNCTION FCTCREATEafconta(CSVFILE text) RETURNS integer
+AS $$
+DECLARE afcontaexists BOOLEAN;
+BEGIN
+        SELECT EXISTS into afcontaexists (
+           SELECT FROM information_schema.tables
+           WHERE  table_schema = 'public'
+           AND    table_name   = 'afconta'
+        );
+
+        if afcontaexists then
+           drop table afconta;
+        end if;
+        
+        CREATE TABLE public.afconta
+            (
+conta_entite text,
+conta_nointerne text,
+conta_code text,
+conta_mrq text,
+conta_dupliclef text,
+conta_verrou text,
+conta_libelle text,
+conta_format text,
+conta_valeur text,
+conta_version text,
+updated_at text,
+
+            CONSTRAINT afconta_pkey PRIMARY KEY (conta_entite, conta_nointerne, conta_code)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+            TABLESPACE pg_default;
+
+        execute 'COPY afconta(
+            conta_entite,
+conta_nointerne,
+conta_code,
+conta_mrq,
+conta_dupliclef,
+conta_verrou,
+conta_libelle,
+conta_format,
+conta_valeur,
+conta_version,
+updated_at
+)
+            from ''' || $1 || '''
+            DELIMITER '';''
+            CSV HEADER';
+
+            return 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

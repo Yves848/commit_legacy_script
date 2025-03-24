@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="documentation.xsl" type="text/xsl"?>
+<documentation>
+  <description nom="LGO 2 / Giphar" os="Windows" type="sql"/>
+  <systemes>
+   <systeme>
+     <designation>Windows</designation>     
+       <recuperations>
+          <recuperation description="Generation d'un dump sur le serveur, cf lien en bas de page"    />
+
+       </recuperations>
+     <fichiers>
+       <fichier nom="dumpall.sql" repertoire="" description="à generer sur le serveur cf lien confluence"/>
+       <fichier nom="Dossier \Doc" repertoire="c:\EV6_SV140\Doc" description="recuperer l'arborescence complete ou les repertoires \Doc\Scan et \Doc\Customers"/>
+     </fichiers>
+   </systeme>
+  </systemes>
+  <perimetres>
+    <donnee designation="Praticiens" />
+    <donnee designation="Hopitaux" /> 
+    <donnee designation="Destinataires" commentaire="Informations à complèter après transfert"/>
+
+    <donnee designation="Organismes"/>
+    <donnee designation="Couvertures"/>
+    <donnee designation="Clients"/>
+    <donnee designation="Couvertures clients"/>
+    <donnee designation="Fournisseurs directs"/>
+    <donnee designation="Répartiteurs"/>    
+    <donnee designation="Produits"/>
+    <donnee designation="Stock"/>
+    <donnee designation="Historique de vente"/>
+    <donnee designation="Opérateurs"/>
+    <donnee designation="Crédits"/>
+    <donnee designation="Vignettes Avancées"/>
+    <donnee designation="Factures en attente"/>
+    <donnee designation="Historiques de délivrances"/> 
+    <donnee designation="Commandes"/>     
+    <donnee designation="Documents scannés" commentaire="Ordonnances et Cartes mutuelles"/>
+  </perimetres>
+ <observations>
+
+ </observations>
+    <liens>
+    <lien titre="Récuperation du dump ( lien Confluence ) ">
+      <url> https://agora.groupe.pharmagest.com/confluence/x/zX5FC</url>
+    </lien>
+  </liens> 
+</documentation>

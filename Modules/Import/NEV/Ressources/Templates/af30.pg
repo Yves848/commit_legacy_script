@@ -1,0 +1,82 @@
+CREATE OR REPLACE FUNCTION FCTCREATEaf30(CSVFILE text) RETURNS integer
+AS $$
+BEGIN
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_schema = 'public'
+               AND table_name = 'af30') THEN
+        DROP TABLE public.af30;
+    END IF;
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_name = 'temp_af30') THEN
+        DROP TABLE temp_af30;
+    END IF;
+      
+        CREATE TABLE public.af30
+            (
+            gronofour integer,
+            gronum integer,
+            groindex text,
+            groduplicle text,
+            gronom text,
+            grocomment text,
+            gro_idfclient text,
+            grotel text,
+            groauto text,
+            groutilauto text,
+            gronorme text,
+            groversionprotocole text,
+            groappel text,
+            grolivr text,
+            grotypc text,
+            filler_1 text,
+            grocdtimeout text,
+            groattimeout text,
+            gro_idrepart text,
+            gro_coderepart text,
+            gro_loginhttp text,
+            gro_motpassehttp text,
+            gro_cle_md5 text,
+            gro_url_un text,
+            gro_url_deux text,
+            gro_emet_cata text,
+            gro_id_fournisseur text,
+            gro_freq_declench text,
+            gro_prod_commander text,
+            gro_date_mensuel text,
+            gro_hh_mensuel text,
+            gro_mm_mensuel text,
+            gro_delai_mensuel text,
+            gro_date_annuel text,
+            gro_hh_annuel text,
+            gro_mm_annuel text,
+            gro_delai_annuel text,
+            gro_id_depot_rep text,
+            gro_specifique text,
+            gro_version text,
+            gro_vidage_depot text,
+            updated_at text,
+                CONSTRAINT af30_pkey PRIMARY KEY (gronofour, gronum)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+    TABLESPACE pg_default;
+
+
+    ##TEMP_TABLE_CREATION##
+
+    ##TEMP_COPY##
+
+    INSERT INTO public.af30 (
+    ##INSERT_COLUMNS##
+    )
+    SELECT
+        ##SELECT_COLUMNS##
+    FROM ##TEMP_TABLENAME## temp;
+
+    RETURN 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

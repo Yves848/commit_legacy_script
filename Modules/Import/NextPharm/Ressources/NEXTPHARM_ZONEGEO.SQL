@@ -1,0 +1,1 @@
+﻿SELECT idlocalisations, localisation FROM Localisations

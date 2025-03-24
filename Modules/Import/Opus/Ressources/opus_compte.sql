@@ -1,0 +1,11 @@
+select 
+trim(ro_code),
+trim(ro_nom),
+trim(ro_rue),
+trim(ro_rue2),
+trim(ro_codpo),
+trim(ro_ville),
+trim(ro_tel),
+trim(ro_fax)
+from
+  regroup

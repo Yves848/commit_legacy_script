@@ -1,0 +1,27 @@
+set sql dialect 3;
+
+insert into t_ref_regime (t_ref_regime_id, code, libelle, sans_centre_gestionnaire) values (1, '01', 'Régime Général.  C.N.A.M.T.S.', '1');
+insert into t_ref_regime (t_ref_regime_id, code, libelle, sans_centre_gestionnaire) values (2, '02', 'Régime Agricole. C.C.M.S.A.', '1');
+insert into t_ref_regime (t_ref_regime_id, code, libelle, sans_centre_gestionnaire) values (3, '03', 'AMPI - Assurance Maladie Professions Indépendantes', '0');
+insert into t_ref_regime (t_ref_regime_id, code, libelle, sans_centre_gestionnaire) values (4, '04', 'SNCF - Caisse Nationale de Prevoyance.', '0');
+insert into t_ref_regime (t_ref_regime_id, code, libelle, sans_centre_gestionnaire) values (5, '05', 'RATP - Caisse de Coordination.', '0');
+insert into t_ref_regime (t_ref_regime_id, code, libelle, sans_centre_gestionnaire) values (6, '06', 'ENIM  - Etablissement National des Invalides de la Marine', '0');
+insert into t_ref_regime (t_ref_regime_id, code, libelle, sans_centre_gestionnaire) values (7, '07', 'Régime Minier de Sécurité Sociale.', '1');
+insert into t_ref_regime (t_ref_regime_id, code, libelle, sans_centre_gestionnaire) values (8, '08', 'CNMSS - Caisse Nationale Militaire de la Sécurité Sociale', '0');
+insert into t_ref_regime (t_ref_regime_id, code, libelle, sans_centre_gestionnaire) values (9, '09', 'CPM - Banque de France', '0');
+insert into t_ref_regime (t_ref_regime_id, code, libelle, sans_centre_gestionnaire) values (10, '10', 'CRPCEN - Caisse de Retraite et de Prévoyance des clercs et Employés de Notaire', '0');
+insert into t_ref_regime (t_ref_regime_id, code, libelle, sans_centre_gestionnaire) values (11, '12', 'CCIP - Chambre de Commerce et d Industrie de Paris', '0');
+insert into t_ref_regime (t_ref_regime_id, code, libelle, sans_centre_gestionnaire) values (12, '14', 'ASSEMBLEE NATIONALE', '0');
+insert into t_ref_regime (t_ref_regime_id, code, libelle, sans_centre_gestionnaire) values (13, '15', 'SENAT - Caisse Autonome Sécurité Sociale.', '0');
+insert into t_ref_regime (t_ref_regime_id, code, libelle, sans_centre_gestionnaire) values (14, '16', 'CAISSE DE PREVOYANCE DU PERSONNEL TITULAIRE DU PORT AUTONOME DE BORDEAUX', '0');
+insert into t_ref_regime (t_ref_regime_id, code, libelle, sans_centre_gestionnaire) values (15, '17', 'CAISSE DES FRANCAIS A L ETRANGER', '0');
+insert into t_ref_regime (t_ref_regime_id, code, libelle, sans_centre_gestionnaire) values (16, '80', 'Ministère des Anciens Combattants.', '0');
+insert into t_ref_regime (t_ref_regime_id, code, libelle, sans_centre_gestionnaire) values (17, '90', 'C.A.V.I.M.A.C - Caisse Assurance Vieillesse Invalidité et Maladie des Cultes', '0');
+insert into t_ref_regime (t_ref_regime_id, code, libelle, sans_centre_gestionnaire) values (18, '91', 'M.G.E.N - Mutuelle Générale Education Nationale', '0');
+insert into t_ref_regime (t_ref_regime_id, code, libelle, sans_centre_gestionnaire) values (19, '92', 'M.G.P.T.T - Mutuelle Générale des P.T.T.', '0');
+insert into t_ref_regime (t_ref_regime_id, code, libelle, sans_centre_gestionnaire) values (20, '93', 'M.G.P - Mutuelle Générale de la Police', '0');
+insert into t_ref_regime (t_ref_regime_id, code, libelle, sans_centre_gestionnaire) values (21, '94', 'M.F.P - Mutuelle de la Fonction Publique', '0');
+insert into t_ref_regime (t_ref_regime_id, code, libelle, sans_centre_gestionnaire) values (22, '95', 'M.N.H - Mutuelle Nationale des Hospitaliers', '0');
+insert into t_ref_regime (t_ref_regime_id, code, libelle, sans_centre_gestionnaire) values (23, '96', 'M.N.A.M - Mutuelle Nationale Aviation Marine', '0');
+insert into t_ref_regime (t_ref_regime_id, code, libelle, sans_centre_gestionnaire) values (24, '99', 'Autres Sections Locales Mutualistes.', '0');
+insert into t_ref_regime (t_ref_regime_id, code, libelle, sans_centre_gestionnaire) values (25, '82', 'Régime MONACO IRIS/B2', '0');

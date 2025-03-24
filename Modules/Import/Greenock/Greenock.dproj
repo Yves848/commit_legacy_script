@@ -1,0 +1,119 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{69D335D8-4020-44F6-B589-A21B61303176}</ProjectGuid>
+			<MainSource>Greenock.dpk</MainSource>
+			<Config Condition="'$(Config)'==''">Débogage</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+			<ProjectVersion>12.0</ProjectVersion>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Débogage' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_DcuOutput>..\..\..\Lib</DCC_DcuOutput>
+			<DCC_DcpOutput>..\..\..\Lib</DCC_DcpOutput>
+			<DCC_BplOutput>..\..\..\Bin\Modules\Import</DCC_BplOutput>
+			<DesignOnlyPackage>false</DesignOnlyPackage>
+			<RuntimeOnlyPackage>true</RuntimeOnlyPackage>
+			<DCC_DependencyCheckOutputName>..\..\..\Bin\Modules\Import\Greenock.bpl</DCC_DependencyCheckOutputName>
+			<DCC_Description>Greenock</DCC_Description>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_RangeChecking>true</DCC_RangeChecking>
+			<GenDll>true</GenDll>
+			<DCC_IntegerOverflowCheck>true</DCC_IntegerOverflowCheck>
+			<GenPackage>true</GenPackage>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_Platform>x86</DCC_Platform>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="Greenock.dpk">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="MSQL.dcp"/>
+			<DCCReference Include="mdlGreenock.pas">
+				<Form>frGreenock</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Débogage">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<PropertyGroup>
+			<PostBuildEvent><![CDATA[powershell -noprofile -command $(SVN)\post-build.ps1 -target cp_rss_modules -rep_dest $(OUTPUTDIR) -type_mod Import -module $(OUTPUTNAME)]]></PostBuildEvent>
+		</PropertyGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType>Package</Borland.ProjectType>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">Greenock.dpk</Source>
+					</Source>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+						<Parameters Name="HostApplication">D:\SVN\COMMIT\branches\COMMIT v3.1\Bin\COMMIT.exe</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">True</VersionInfo>
+						<VersionInfo Name="MajorVer">4</VersionInfo>
+						<VersionInfo Name="MinorVer">8</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">12</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1036</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName">Pharmagest Inter@ctive</VersionInfoKeys>
+						<VersionInfoKeys Name="FileDescription">Greenock</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">4.8.0.12</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName">GREENOCK.BPL</VersionInfoKeys>
+						<VersionInfoKeys Name="LegalCopyright">Pharmagest Inter@ctive</VersionInfoKeys>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName">COMMIT</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductVersion">4.7</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+						<VersionInfoKeys Name="Pays">BE</VersionInfoKeys>
+					</VersionInfoKeys>
+					<Excluded_Packages/>
+				</Delphi.Personality>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>

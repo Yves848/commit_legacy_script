@@ -1,0 +1,15 @@
+select 
+  index_centre,
+  regime,
+  caissegestion,
+  centregestion,
+  nom,
+  code_centre,
+  adresse,
+  adresse2,
+  ville,
+  codepostal,
+  telephone,
+  fax
+from 
+  dbo.centres

@@ -1,0 +1,77 @@
+CREATE OR REPLACE FUNCTION FCTCREATEaf15(CSVFILE text) RETURNS integer
+AS $$
+DECLARE af15exists BOOLEAN;
+BEGIN
+        SELECT EXISTS into af15exists (
+           SELECT FROM information_schema.tables
+           WHERE  table_schema = 'public'
+           AND    table_name   = 'af15'
+        );
+
+        if af15exists then
+           drop table af15;
+        end if;
+        
+        CREATE TABLE public.af15
+            (
+            csnocontrat text,
+            csindex text,
+            cslibelle text,
+            cstypecontrat text,
+            csmode integer,
+            cstyperembt text,
+            cstypeplafond text,
+            cstypeforfait text,
+            csbase text,
+            cstrtips text,
+            cstrtpn text,
+            csrembt float[],
+            csplafond text,
+            csforfait text,
+            cscouverture text,
+            csaccident text,
+            csvalidite text,
+            csactspe text,
+            csnatassurance text,
+            csjustification text,
+            cseuro text,
+            updated_at text,
+                CONSTRAINT af15_pkey PRIMARY KEY (csnocontrat, csindex)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+            TABLESPACE pg_default;
+
+        execute 'COPY af15(
+            csnocontrat,
+csindex,
+cslibelle,
+cstypecontrat,
+csmode,
+cstyperembt,
+cstypeplafond,
+cstypeforfait,
+csbase,
+cstrtips,
+cstrtpn,
+csrembt,
+csplafond,
+csforfait,
+cscouverture,
+csaccident,
+csvalidite,
+csactspe,
+csnatassurance,
+csjustification,
+cseuro,
+updated_at
+        )
+            from ''' || $1 || '''
+            DELIMITER '';''
+            CSV HEADER';
+
+            return 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

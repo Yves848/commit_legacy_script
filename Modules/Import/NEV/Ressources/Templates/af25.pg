@@ -1,0 +1,117 @@
+CREATE OR REPLACE FUNCTION FCTCREATEaf25(CSVFILE text) RETURNS integer
+AS $$
+BEGIN
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_schema = 'public'
+               AND table_name = 'af25') THEN
+        DROP TABLE public.af25;
+    END IF;
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_name = 'temp_af25') THEN
+        DROP TABLE temp_af25;
+    END IF;
+
+        
+        CREATE TABLE public.af25
+            (
+lfdate date not null,
+lfnochrono integer not null,
+lfnoligne smallint not null,
+lfindex smallint,
+lfsav_date date,
+lfsav_chrono smallint,
+lfsav_noligne smallint,
+lftypeligne text COLLATE pg_catalog."default",
+lfnom text COLLATE pg_catalog."default",
+lfcip text,
+lflpp text COLLATE pg_catalog."default",
+lftableau text COLLATE pg_catalog."default",
+lfpxbaserembt text,
+lftva text,
+lfnorembt smallint,
+lfacte smallint,
+lfqte integer,
+lfpuvente float,
+lftypepu text,
+lfcodefrais smallint,
+lffrais text,
+lfmaladie smallint,
+lfdestockage smallint,
+lfpromotion smallint,
+lfdci text COLLATE pg_catalog."default",
+lfdatordo date,
+lffamille text COLLATE pg_catalog."default",
+lfcdlabo text,
+lfprmp text,
+lffaminterne text COLLATE pg_catalog."default",
+lfmarge text,
+lfremise text,
+lfcippres text COLLATE pg_catalog."default",
+lfqtepres text,
+lftypeservice text,
+lfcodeent text,
+lfdtenvent date,
+lfqualifdep text COLLATE pg_catalog."default",
+lfvetolait smallint,
+lfvetoviande smallint,
+lfexoneration text COLLATE pg_catalog."default",
+lfeuro text COLLATE pg_catalog."default",
+lfnumcondition text,
+lfnoprescinit integer,
+lfunite smallint,
+lfordonnancier bigint,
+lfcleoreg bytea,
+lfnumlot text COLLATE pg_catalog."default",
+lfdateperemption date,
+lfcodlieu_destock text COLLATE pg_catalog."default",
+lfpxachat text,
+lfpxremise text,
+lfpxfacture text,
+lfpartenariat text COLLATE pg_catalog."default",
+lfnointorga smallint,
+lfsubstitution text COLLATE pg_catalog."default",
+lfdecondit text COLLATE pg_catalog."default",
+lfvigavance smallint,
+lfdatvigavance date,
+lfnoserie text COLLATE pg_catalog."default",
+lfacte_honodisp smallint,
+lfhonodisp_init text,
+lfpu_honodisp text,
+lfqte_honodisp text,
+lftva_honodisp text,
+lfrembt_honodisp smallint,
+lfpu_produit text,
+lfprescription text COLLATE pg_catalog."default",
+lfpartorg_honodisp text,
+lfbox_noligne text,
+lfbox_noligne_honodisp text,
+lfbox_puttc text,
+lfpartorg_produit numeric(24,12)[] DEFAULT '{0,0,0}'::numeric[],
+lftauxamo_prod numeric(16,8) DEFAULT 0,
+lftauxamo_honodisp numeric(16,8) DEFAULT 0,
+updated_at text,
+CONSTRAINT af25_pkey PRIMARY KEY (lfdate,lfnochrono,lfnoligne)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+    TABLESPACE pg_default;
+
+
+    ##TEMP_TABLE_CREATION##
+
+    ##TEMP_COPY##
+
+    INSERT INTO public.af25 (
+    ##INSERT_COLUMNS##
+    )
+    SELECT
+        ##SELECT_COLUMNS##
+    FROM ##TEMP_TABLENAME## temp;
+
+    RETURN 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

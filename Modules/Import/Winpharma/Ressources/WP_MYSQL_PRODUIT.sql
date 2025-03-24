@@ -1,0 +1,32 @@
+select 
+    prd.cip, 
+    prd.nom , 
+    prd.ean13 , 
+    prd.tableau, 
+    prd.base_rembt,
+    prd.Prix_RefBD ,
+    prd.MoyenPrixAHT,
+    prd.prix_public , 
+    prd.tva , 
+    prd.code_rembt , 
+    prd.codeforme , 
+    prd.codeacte ,
+    prd.Seuil_alerte mini,
+    prd.Stock_max maxi,
+    (prd.wflag >> 1)&1 commandes , 
+    (prd.wflag >> 2)&1 optimisation ,
+    (prd.wflag >> 5)&1 gererenpromis ,
+    prd.wflag & 1 etiquette,
+    (prd.flag3 >> 9) & 1 pas_cmd_grossiste,
+    prd.colisagel,
+    prd.code_fourn MARQUE,
+    prd.Dernier_Vente,
+    prd.dtperemtion,
+    prd.unit_cont,  
+    cast(prd.contenance as signed) , 
+    CodeLabEUR HOMEO,
+    com.memo,
+    prd.acte_nom
+from  produit prd
+left join memores com on (com.ti = prd.memo_ti and com.tbln =0 )
+where (datediff( current_date, Dernier_Vente) < 1095 or en_stock > 0)

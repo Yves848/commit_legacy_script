@@ -1,0 +1,157 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{F89E7D66-3C39-4D39-9EA2-FC65EA8D35C7}</ProjectGuid>
+			<ProjectVersion>12.0</ProjectVersion>
+			<MainSource>COMMIT.dpr</MainSource>
+			<Config Condition="'$(Config)'==''">Release</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Débogage' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_Optimize>false</DCC_Optimize>
+			<DCC_ExeOutput>..\..\Bin</DCC_ExeOutput>
+			<DCC_UsePackage>projet;moduleimport;MPCommonLibD14;VirtualTreesD13;EasyListviewD14;VirtualShellToolsD14</DCC_UsePackage>
+			<DCC_DcuOutput>..\..\Lib</DCC_DcuOutput>
+			<DCC_DcpOutput>..\..\Lib</DCC_DcpOutput>
+			<DCC_BplOutput>..\..\Bin</DCC_BplOutput>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<UsePackages>true</UsePackages>
+			<DCC_DependencyCheckOutputName>..\..\Bin\COMMIT.exe</DCC_DependencyCheckOutputName>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_Platform>x86</DCC_Platform>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="COMMIT.dpr">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<RcCompile Include="rdm_commit.rc">
+				<ContainerId>RC</ContainerId>
+				<ContainerId>RC</ContainerId>
+				<Form>rdm_commit.res</Form>
+			</RcCompile>
+			<DCCReference Include="mdlAide.pas">
+				<Form>frmAide</Form>
+			</DCCReference>
+			<DCCReference Include="mdlAProposDe.pas">
+				<Form>frmAProposDe</Form>
+			</DCCReference>
+			<DCCReference Include="mdlClientFTP.pas">
+				<Form>frmClientFTP</Form>
+			</DCCReference>
+			<DCCReference Include="mdlCreationProjet.pas">
+				<Form>frmCreationProjet</Form>
+			</DCCReference>
+			<DCCReference Include="mdlDetailTraitementEnCours.pas">
+				<Form>frmDetailTraitementEnCours</Form>
+			</DCCReference>
+			<DCCReference Include="mdlFichierProjet.pas"/>
+			<DCCReference Include="mdlFluxRSS.pas">
+				<Form>frmItemRSS</Form>
+			</DCCReference>
+			<DCCReference Include="mdlIcmp.pas"/>
+			<DCCReference Include="mdlInformationsModules.pas">
+				<Form>frmInformationsModules</Form>
+			</DCCReference>
+			<DCCReference Include="mdlLecteurRSS.pas"/>
+			<DCCReference Include="mdlListesFichiers.pas">
+				<Form>frmListeFichiers</Form>
+			</DCCReference>
+			<DCCReference Include="mdlMAJCommit.pas"/>
+			<DCCReference Include="mdlOptionsReprise.pas">
+				<Form>frmOptionsReprise</Form>
+			</DCCReference>
+			<DCCReference Include="mdlPrincipale.pas">
+				<Form>frmPrincipale</Form>
+			</DCCReference>
+			<DCCReference Include="mdlSplash.pas">
+				<Form>frmSplash</Form>
+			</DCCReference>
+			<DCCReference Include="mdlFTPDev.pas">
+				<Form>frmFTPDev</Form>
+			</DCCReference>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Débogage">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<PropertyGroup>
+			<PostBuildEvent><![CDATA[copy commit.xml "$(OUTPUTDIR)"
+copy ..\..\Aide\documentation.xsl "$(OUTPUTDIR)\Aide"
+copy ..\..\Aide\documentation.css "$(OUTPUTDIR)\Aide"]]></PostBuildEvent>
+		</PropertyGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+						<Parameters Name="DebugSourceDirs">D:\svn\composants\pi\PIClasses\;C:\Git\Composants\AccesBD\uib25\source\</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">True</VersionInfo>
+						<VersionInfo Name="MajorVer">4</VersionInfo>
+						<VersionInfo Name="MinorVer">8</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">8</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1036</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName">PHARMAGEST INTERACTIVE</VersionInfoKeys>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">4.8.0.8</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName">COMMIT.EXE</VersionInfoKeys>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName">COMMIT</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductVersion">4.8</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Source>
+						<Source Name="MainSource">COMMIT.dpr</Source>
+					</Source>
+					<Excluded_Packages/>
+				</Delphi.Personality>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>

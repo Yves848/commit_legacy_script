@@ -1,0 +1,48 @@
+CREATE OR REPLACE FUNCTION FCTCREATEafnota(CSVFILE text) RETURNS integer
+AS $$
+BEGIN
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_schema = 'public'
+               AND table_name = 'afnota') THEN
+        DROP TABLE public.afnota;
+    END IF;
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_name = 'temp_afnota') THEN
+        DROP TABLE temp_afnota;
+    END IF;
+      
+        CREATE TABLE public.afnota
+            (
+                nottype integer,
+                notcode integer,
+                notnoligne text,
+                notindex text,
+                notduplicle text,
+                nottexte text,
+                updated_at text,
+                remark_gravity text,
+                CONSTRAINT afnota_pkey PRIMARY KEY (nottype, notcode,notnoligne)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+    TABLESPACE pg_default;
+
+
+    ##TEMP_TABLE_CREATION##
+
+    ##TEMP_COPY##
+
+    INSERT INTO public.afnota (
+    ##INSERT_COLUMNS##
+    )
+    SELECT
+        ##SELECT_COLUMNS##
+    FROM ##TEMP_TABLENAME## temp;
+
+    RETURN 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

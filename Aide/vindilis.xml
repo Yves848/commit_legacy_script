@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="documentation.xsl" type="text/xsl"?>
+<documentation>
+  <description nom="Vindilis" os="Linux" type="sql"/>
+  <systemes>
+    <systeme>
+      <designation>Linux</designation>
+      <recuperations> 
+  		<recuperation description="Récupération du dump" remarques="C'est un format déjà compressé, inutile de passer un gz ">
+	  		<etape value="À la ligne de commande se loguer avec le user vindilis mot de passe vindilis ( su - vindilis )"/>
+	  		<etape value="Sous /home/pharma/Sauvegardes récupérer le dump POSTGRES SauvegardeBdd.backup sa date doit correspondre à la dernière sauvegarde"/>
+        <etape value="le copier via une cle USB ou via le ftp sur votre machine commit"/>
+
+  		</recuperation>
+
+       <recuperation description="Installation de Postgres SQL" remarques="Si vous avez déjà procédé à l'installation de Postgres passer à l'étape de restauration">
+          <etape value="Voir liens de téléchargement en bas de cette doc "/> 
+          <etape value="si vieille machine en 32 bits il faudra se rabattre sur la version precedente de PGSQL , la 10 "/> 
+          <etape value="À l'installation, créer un utilisateur et mot de passe : postgres"/> 
+       </recuperation>
+
+       <recuperation description="Vérification du PATH" remarques="Pour executer les commandes postgres de n'importe ou">
+          <etape value="Verifier la presence des executables Posgres dans le PATH"/> 
+          <etape value="À la ligne de commande : echo %PATH% devrait renvoyer  C:\Program Files\PostgreSQL\11\bin ou C:\Program Files\PostgreSQL\10\bin"/> 
+          <etape value="si ce n'est pas le cas executer ceci à la ligne de commande selon votre version "/> 
+          <etape value="setx PATH C:\Program Files\PostgreSQL\11\bin "/>
+          <etape value="ou pour une version 10 :"/>
+          <etape value="setx PATH C:\Program Files\PostgreSQL\10\bin "/>
+          <etape value="ou en mode graphique executer SystemPropertiesAdvanced.exe -> Variables d'environnement "/> 
+          <etape value="Variables système, Path, modifier, ajouter un des 2 chemins plus haut "/> 
+       </recuperation> 
+
+       <recuperation description="Restauration du dump" remarques="">
+          <etape value="Une fois installé, il faut créer une base choisissez un nom de base qui vous permettra de facilement vous y retrouver comme pour votre nom de projet car vous serez susceptibles d'avoir plusieurs bases sur votre poste , attention postgres est sensible aux majuscules"/> 
+          <etape value="createdb -U postgres nom_de_la_base"/> 
+          <etape value="( ou créer cette base à l'aide de pgAdmin, cf plus bas )"/>
+          <etape value="pour remonter la base, lancer pgAdmin puis clic droit sur la base créé juste avant, donner un nom puis restore ( cf plus bas ) "/>
+
+          <etape value="Dans Commit renseignez de nom de base préalablement choisie, comme serveur mettre LOCALHOST, utilisateur: postgres, mot de passe: postgres."/> 
+       </recuperation>   
+
+      </recuperations>  
+ 
+      <fichiers>
+        <fichier nom="SauvegardeBdd.backup" repertoire="/home/pharma/Sauvegardes" description="Dump de la BD Postgres créée par la sauvegarde automatique"/>
+	  </fichiers>
+    </systeme>
+ 	</systemes>
+  <perimetres>
+    <donnee designation="Praticiens" commentaire=""/>
+    <donnee designation="Organismes" commentaire=""/>
+    <donnee designation="Clients" commentaire=""/>
+    <donnee designation="Compte clients" commentaire=""/>
+    <donnee designation="Fournisseurs directs" commentaire="Informations à vérifier après transfert"/>
+    <donnee designation="Répartiteurs" commentaire="Informations à complèter après transfert"/>
+    <donnee designation="Zones géographiques" commentaire=""/>
+    <donnee designation="Produits" commentaire="Gestion du multi-stock"/>
+    <donnee designation="Historiques d'achat"/>
+    <donnee designation="Historiques de délivrances" commentaire=""/>
+    <donnee designation="Vignettes avancées" commentaire=""/>
+    <donnee designation="Historique d'achats" commentaire=""/>
+    <donnee designation="Commandes à réceptionner" commentaire=""/>    
+
+  </perimetres>
+  <observations>
+    <observation texte="Création de la base">
+    <images>
+      <image nom="vindilis_creer_base.png" legende="Creation de la base dans Postgres"/>
+      <image nom="vindilis_creer_base2.png" legende="Creation de la base dans Postgres"/>
+    </images>
+  </observation>  
+	
+  <observation texte="Restauration du fichier SauvegardeBdd.backup">
+	  <images>
+        <image nom="vindilis_restore.png" legende="Restauration de la base dans Postgres"/>
+        <image nom="vindilis_restore_2.png" legende="Restauration de la base dans Postgres"/>
+        <image nom="vindilis_params.png" legende="Création de la base dans Postgres"/>
+	  </images>
+	</observation>
+
+  </observations>
+
+  <liens>
+    <lien titre="Postgres SQL 11 64 bits sur notre ftp ">
+      <url> ftp://repf.groupe.pharmagest.com/outils/postgresql-11.2-1-windows-x64.exe</url>
+    </lien>  
+    <lien titre="Postgres SQL 10 32 bits sur notre ftp">
+      <url> ftp://repf.groupe.pharmagest.com/outils/postgresql-10.7-1-windows.exe</url>
+    </lien>
+    <lien titre="Site Postgres SQL , choisir l'installeurs Enterprise DB ( et pas BIGSQL, procedure d install differente  ) ">
+      <url>https://www.enterprisedb.com/downloads/postgres-postgresql-downloads</url>
+
+    </lien>
+  </liens>
+</documentation>

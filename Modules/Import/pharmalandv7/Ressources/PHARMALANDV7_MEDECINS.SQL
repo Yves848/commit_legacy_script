@@ -1,0 +1,17 @@
+select
+  tocleunik,
+  tonom,
+  toadr,
+  toadrs,
+  tocp,
+  toville,
+  tospe,
+  tonumid,
+  trim(toimma),
+  totel,
+  tofax,
+  replace(substring(toobs,1,5000),'/',''),
+  substring(tohop,1,200),
+  toesthop
+from
+  medecin

@@ -1,0 +1,9 @@
+select 
+  t_classif_fournisseur_id,
+  libelle,
+  date_deb_marche,
+  duree_marche,
+  t_classif_parent_id,
+  t_catalogue_id 
+from 
+  erp.t_classif_fournisseur

@@ -1,0 +1,66 @@
+CREATE OR REPLACE FUNCTION FCTCREATEafsass(CSVFILE text) RETURNS integer
+AS $$
+BEGIN
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_schema = 'public'
+               AND table_name = 'afsass') THEN
+        DROP TABLE public.afsass;
+    END IF;
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_name = 'temp_afsass') THEN
+        DROP TABLE temp_afsass;
+    END IF;
+    
+        CREATE TABLE public.afsass
+            (
+ass_asn text,
+ass_asc text,
+ass_mrq text,
+ass_core text,
+ass_cages text,
+ass_ceges text,
+ass_coges text,
+ass_typecarte text,
+ass_finvaliditecarte text,
+ass_ruf1 text,
+ass_ruf2 text,
+ass_ruf text,
+ass_ruffamille text,
+ass_cservicefam text,
+ass_debservifam text,
+ass_finservifam text,
+ass_orgatdefaut text,
+ass_codeatbgdh text,
+ass_identat text,
+ass_organismeat1 text,
+ass_codeat1bgdh text,
+ass_identat1 text,
+ass_organismeat2 text,
+ass_codeat2bgdh text,
+ass_identat2 text,
+updated_at text,
+                CONSTRAINT afsass_pkey PRIMARY KEY (ass_asn, ass_asc)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+    TABLESPACE pg_default;
+
+
+    ##TEMP_TABLE_CREATION##
+
+    ##TEMP_COPY##
+
+    INSERT INTO public.afsass (
+    ##INSERT_COLUMNS##
+    )
+    SELECT
+        ##SELECT_COLUMNS##
+    FROM ##TEMP_TABLENAME## temp;
+
+    RETURN 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

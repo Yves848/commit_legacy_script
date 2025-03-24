@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="documentation.xsl" type="text/xsl"?>
+<documentation>
+  <description nom="SmartRx, Alliance" os="Linux UseIt ou Red Hat" type="PostgreSQL"/>
+  <systemes>
+    <systeme>
+      <designation>Linux UseIt / Red Hat </designation>
+      <recuperations> 
+  		<recuperation description=" *** IMPORTANT , c'est desormais Smart RX qui livre les outils et données necessaires à la reprise  ***" remarques="veuillez vous referer au Document Confluence lien en bas">
+
+	  		<etape value="Récuperer le dump POSTGRES global.dumpall.gz"/>
+        <etape value="Récuperer les fichiers af04.csv af25.csv"/>
+	  		<etape value="Récuperer les scans"/>
+	  		<etape value="La remontée du dump est entierement prise en charge par le module SmartRx lui meme, cf plus bas "/>  	
+  		</recuperation>
+
+       <recuperation description="Installation de Postgres SQL" remarques="Se fait à partir de Commit">
+          <etape value="Commit doit etre exécuté en mode ADMINISTRATEUR"/> 
+          <etape value="Si problemes Voir Liens de telechargement en bas de cette doc "/> 
+          <etape value="si vieille machine en 32 bits il faudra se rabattre sur la version precedente de PGSQL , la 10 "/> 
+          <etape value="A l'installation, créer un utilisateur et mot de passe : postgres"/> 
+       </recuperation>
+
+
+
+      </recuperations>  
+ 
+      <fichiers>
+        <fichier nom="global.dumpall.gz" repertoire="fourni par alliance" description="Dump de la BD Postgres créée par l'outil alliance'"/>
+        <fichier nom="af04.csv af25.csv " repertoire="fourni par alliance" description="données rgpd déchifrées"/>
+
+    	<fichier nom="*.pdf" repertoire="/database/a/fi/scans/client" description="Cartes mutuelles scannées"/>
+      <fichier nom="*.pdf" repertoire="/database/a/fi/scans/ordonnance" description="Scan ordonnances"/>
+	  </fichiers>
+    </systeme>
+ 	</systemes>
+  <perimetres>
+    <donnee designation="Praticiens" commentaire=""/>
+    <donnee designation="Destinataires" commentaire="Informations à complèter après transfert"/>
+    <donnee designation="Organismes" commentaire=""/>
+    <donnee designation="Clients" commentaire=""/>
+    <donnee designation="Compte clients" commentaire=""/>
+    <donnee designation="Fournisseurs directs" commentaire="Informations à vérifier après transfert"/>
+    <donnee designation="Répartiteurs" commentaire="Informations à complèter après transfert"/>
+    <donnee designation="Zones géographiques" commentaire=""/>
+    <donnee designation="Familles" commentaire="Transfèrer dans les codifications 1 et 2"/>
+    <donnee designation="Gammes" commentaire="Transfèrer dans la codification 3"/>
+    <donnee designation="Produits" commentaire="Gestion du multi-stock"/>
+    <donnee designation="Commandes" commentaire="Historique achat + Commandes à réceptionner"/>
+    <donnee designation="Opérateurs" commentaire=""/>
+    <donnee designation="Historiques de délivrances" commentaire=""/>
+    <donnee designation="Vignettes avancées" commentaire=""/>
+    <donnee designation="Crédits" commentaire=""/>
+    <donnee designation="Produits dus" commentaire=""/>
+    <donnee designation="Historique d'achats" commentaire=""/>
+    <donnee designation="Documents scannées" commentaire="effacer les fichiers *_tv.pdf (ticket vitale ) du repertoire ordonnance avant les traitements"/>
+  </perimetres>
+  <observations>
+
+ <observation texte="Restoration du fichier global.dumpall.gz">
+	  <images>
+        <image nom="restoredumpall-1.png"/>
+        <image nom="restoredumpall-2.png"/>
+        <image nom="restoredumpall-3.png"/>
+        <image nom="restoredumpall-4.png"/>
+	  </images>
+	</observation>
+
+	<observation texte="Fenetre de conversion des scans">
+	  <images>
+		<image nom="smartrx_scans.png" legende="Selectionner PDF et cocher recursif et conversion tif"/>
+	  </images>
+	</observation>
+  </observations>
+
+  <liens>
+  	<lien titre="Reprise physique des données Documentation Technique Confluence ">
+      <url>https://agora.groupe.pharmagest.com/confluence/pages/viewpage.action?pageId=89821500</url>
+    </lien>  
+    <lien titre="Postgres SQL 11 64 bits sur notre ftp ">
+      <url> ftp://repf.groupe.pharmagest.com/outils/postgresql-11.2-1-windows-x64.exe</url>
+    </lien>  
+    <lien titre="Postgres SQL 10 32 bits sur notre ftp">
+      <url> ftp://repf.groupe.pharmagest.com/outils/postgresql-10.7-1-windows.exe</url>
+    </lien>
+    <lien titre="Site Postgres SQL , choisir l'installeurs Enterprise DB ( et pas BIGSQL, procedure d install differente  ) ">
+      <url>https://www.enterprisedb.com/downloads/postgres-postgresql-downloads</url>
+
+    </lien>
+  </liens>
+</documentation>

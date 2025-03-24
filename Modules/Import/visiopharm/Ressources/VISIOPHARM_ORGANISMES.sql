@@ -1,0 +1,25 @@
+select 
+org.caisse, 
+org.mutuelle,
+org.ncaisse,
+org.nom,
+org.regime,
+org.codecaisse,
+org.codecentre,
+org.cetip, 
+org.codemutuelle,
+org.adresse1, 
+org.adresse2,
+org.codepostal,
+org.ville,
+org.telephone,
+org.fax,
+org.remarque,
+org.commentaire,
+org.tauxcompl1,
+org.tauxcompl2,
+org.tauxcompl3,
+org.tips1,
+org.tauxcompl4
+
+from caisse org

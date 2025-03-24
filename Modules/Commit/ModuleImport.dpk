@@ -1,0 +1,52 @@
+package ModuleImport;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  projet,
+  gfl;
+
+contains
+  mdlConversions in 'mdlConversions.pas' {frConversions: TFrame},
+  mdlConversionsComptes in 'mdlConversionsComptes.pas' {frConversionsComptes: TFrame},
+  mdlConversionsCouverturesAMO in 'mdlConversionsCouverturesAMO.pas' {frConversionsCouverturesAMO: TFrame},
+  mdlConversionsFournisseurs in 'mdlConversionsFournisseurs.pas' {frConversionsFournisseurs: TFrame},
+  mdlConversionsOrganismesAMO in 'mdlConversionsOrganismesAMO.pas' {frConversionsOrganismesAMO: TFrame},
+  mdlConversionsReferenceAnalytiques in 'mdlConversionsReferenceAnalytiques.pas' {frConversionsReferenceAnalytiques: TFrame},
+  mdlConversionsRepartiteurs in 'mdlConversionsRepartiteurs.pas' {frConversionsRepartiteurs: TFrame},
+  mdlConversionsTIFF in 'mdlConversionsTIFF.pas' {frmConversionTIFF},
+  mdlLIsteClients in 'mdlLIsteClients.pas' {frmListeClients},
+  mdlModuleImport in 'mdlModuleImport.pas' {frModuleImport: TFrame},
+  mdlModuleImportPHA in 'mdlModuleImportPHA.pas' {dmModuleImportPHA: TDataModule},
+  mdlOptionsSCANS in 'mdlOptionsSCANS.pas' {frmOptionsSCANS},
+  mdlRechercheCouverturesAMORef in 'mdlRechercheCouverturesAMORef.pas' {frmRechercheCouverturesAMORef},
+  mdlRechercheFournisseurRef in 'mdlRechercheFournisseurRef.pas' {frmRechercheFournisseurRef},
+  mdlRechercheOrganismesAMORef in 'mdlRechercheOrganismesAMORef.pas' {frmRechercheOrganismesAMORef},
+  mdlRechercheReferenceAnalytiqueRef in 'mdlRechercheReferenceAnalytiqueRef.pas' {frmRechercheReferenceAnalytiqueRef},
+  mdlRechercheRepartiteurRef in 'mdlRechercheRepartiteurRef.pas' {frmRechercheRepartiteurRef};
+
+end.

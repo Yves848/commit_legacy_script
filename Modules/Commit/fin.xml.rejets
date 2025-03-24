@@ -1,0 +1,42 @@
+      </rejets>
+    </log>
+  </xsl:variable>
+  <xsl:template match="log">
+    <html>
+      <head>
+        <title><xsl:value-of select="titre"/></title>
+        <link href="export_erreurs.css" rel="stylesheet" type="text/css"/>
+      </head>
+      <body>
+        <br/>
+        <table align="center" border="1" width="33%" height="50" margin-right="33%" margin-left="33%">
+          <tr><td align="center"><b><font size="5"><xsl:value-of select="titre"/></font></b></td></tr>
+        </table>
+        <br/><br/>
+        <table border="1">
+          <tr>
+            <xsl:for-each select="rejets/entetes/entete">
+              <th><xsl:value-of select="."/></th>
+            </xsl:for-each>
+          </tr>
+          <xsl:for-each select="rejets/donnees">
+            <tr>
+              <xsl:for-each select="donnee">
+                <td>
+                  <xsl:choose>
+                    <xsl:when test="normalize-space(@valeur)">
+                      <xsl:value-of select="@valeur"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:text disable-output-escaping="yes">&#160;</xsl:text>
+                    </xsl:otherwise>
+                  </xsl:choose>
+                </td>
+              </xsl:for-each>
+            </tr>
+          </xsl:for-each>
+        </table>
+      </body>
+    </html>
+  </xsl:template>
+</xsl:stylesheet>

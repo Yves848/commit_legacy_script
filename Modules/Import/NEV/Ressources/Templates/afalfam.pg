@@ -1,0 +1,46 @@
+CREATE OR REPLACE FUNCTION FCTCREATEafalfam(CSVFILE text) RETURNS integer
+AS $$
+BEGIN
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_schema = 'public'
+               AND table_name = 'afalfam') THEN
+        DROP TABLE public.afalfam;
+    END IF;
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_name = 'temp_afalfam') THEN
+        DROP TABLE temp_afalfam;
+    END IF;
+
+    CREATE TABLE public.afalfam
+        (
+        alfam_cle integer,
+        alfam_mrq text,
+        alfam_zoncle text,
+        alfam_libelle text,
+        updated_at text,
+
+            CONSTRAINT afalfam_pkey PRIMARY KEY (alfam_cle)
+        )
+        WITH (
+            OIDS = FALSE
+        )
+    TABLESPACE pg_default;
+
+
+    ##TEMP_TABLE_CREATION##
+
+    ##TEMP_COPY##
+
+    INSERT INTO public.afalfam (
+    ##INSERT_COLUMNS##
+    )
+    SELECT
+        ##SELECT_COLUMNS##
+    FROM ##TEMP_TABLENAME## temp;
+
+    RETURN 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

@@ -1,0 +1,68 @@
+<COMMIT>
+  <Console>
+    <Couleur>$FF7F50</Couleur>
+    <Message>Commit v4.8.8 |ftp://repf.groupe.pharmagest.com|https://agora.groupe.pharmagest.com/jira (REPF)|Canal Assistance REPF sur Webex Teams |assistance-repf.pharmagest@equasens.com</Message>
+  </Console>
+  <ListePays>
+    <Pays libelle="France" code="FR">
+      <Conversions>
+        <Conversion classe="TfrConversionsOrganismesAMO" libelle="Organismes AMO" procedure="PS_CONVERTIR_ORGANISMES_AMO"/>
+        <Conversion classe="TfrConversionsCouverturesAMO" libelle="Couvertures AMO" procedure="PS_CONVERTIR_COUVERTURES_AMO"/>
+        <Conversion classe="TfrConversionsComptes" libelle="Comptes" procedure="PS_CONVERTIR_COMPTES"/>
+      </Conversions>
+      <AutresConversions>
+        <AutreConversion>PS_CONVERTIR_COUVERTURES_AMC</AutreConversion>
+        <AutreConversion>PS_CONVERTIR_CP_VILLE</AutreConversion>
+        <AutreConversion>PS_CONVERTIR_HOPITAUX</AutreConversion>
+        <AutreConversion>PS_GERER_NUMEROS_TELEPHONE</AutreConversion>
+        <AutreConversion>PS_CREER_VUE_PRESTATIONS_AMO</AutreConversion>
+        <AutreConversion>PS_CREER_VUE_COUVERTURES_REF</AutreConversion>
+      </AutresConversions>
+    </Pays>
+    <Pays libelle="Belgique" code= "BE">
+      <Conversions>
+        <Conversion classe="TfrConversionsFournisseurs" libelle="Fournisseur" procedure="CONVFOURNISSEUR"/>
+        <Conversion classe="TfrConversionsRepartiteurs" libelle="Repartiteurs" procedure="CONVREPARTITEUR"/>
+        <Conversion classe="TfrConversionsReferenceAnalytiques" libelle="Reference Analytique" procedure="CONVREFERENCEANALYTIQUE"/>
+      </Conversions>
+      <AutresConversions>
+        <AutreConversion>PS_UPDATE_LIENF</AutreConversion>
+        <AutreConversion>PS_CREER_DEPOT</AutreConversion>
+        <AutreConversion>ps_maj_priorite_stock</AutreConversion>
+        <AutreConversion>ps_ajout_schema_poso_client</AutreConversion>
+      </AutresConversions>
+    </Pays>
+  </ListePays>
+  <ServeursMAJ>
+    <ServeurMAJ serveur="repf.groupe.pharmagest.com" port="21" utilisateur="commit" mot_de_passe="commit" repertoire="/v4.8/mises_a_jour"/>
+  </ServeursMAJ>
+  <transfert>
+    <fr>      
+      <version>2.20.1</version>
+      <version>2.20.2</version>
+      <version>2.20.3</version>
+      <version>2.20.4</version>
+      <version>2.21</version>
+    </fr> 
+    <be>
+      <version>3.1.15</version>
+      <version>4.0.0</version>
+      <version>4.0.4</version>
+      <version>4.2.8</version>
+    </be>  
+  </transfert>
+  <import>
+   <fr>
+      <version>2.21</version>
+      <version>2.15</version>
+      <version>2.19</version>
+      <version>2.20</version>
+   </fr>
+    <be>
+      <version>3.1.15</version>
+      <version>4.0.0</version>
+      <version>4.0.4</version>
+      <version>4.2.8</version>
+    </be>  
+  </import>
+</COMMIT>

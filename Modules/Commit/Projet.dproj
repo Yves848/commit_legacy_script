@@ -1,0 +1,196 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{56859536-F704-4F9F-A3E1-D31D43946640}</ProjectGuid>
+			<MainSource>Projet.dpk</MainSource>
+			<Config Condition="'$(Config)'==''">Débogage</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+			<ProjectVersion>12.0</ProjectVersion>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Débogage' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_DebugDCUs>true</DCC_DebugDCUs>
+			<BRCC_CodePage>65001</BRCC_CodePage>
+			<DCC_DcuOutput>..\..\Lib</DCC_DcuOutput>
+			<DesignOnlyPackage>false</DesignOnlyPackage>
+			<DCC_BplOutput>..\..\Bin</DCC_BplOutput>
+			<DCC_DcpOutput>..\..\Lib</DCC_DcpOutput>
+			<DCC_DependencyCheckOutputName>..\..\Bin\Projet.bpl</DCC_DependencyCheckOutputName>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<GenPackage>true</GenPackage>
+			<RuntimeOnlyPackage>true</RuntimeOnlyPackage>
+			<DCC_RangeChecking>true</DCC_RangeChecking>
+			<DCC_Platform>x86</DCC_Platform>
+			<DCC_Description>Algorithme de gestion des fichiers projets</DCC_Description>
+			<DCC_IntegerOverflowCheck>true</DCC_IntegerOverflowCheck>
+			<DCC_S>false</DCC_S>
+			<GenDll>true</GenDll>
+			<DCC_N>false</DCC_N>
+			<DCC_E>false</DCC_E>
+			<DCC_F>false</DCC_F>
+			<DCC_K>false</DCC_K>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="Projet.dpk">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="SynEdit_R2009.dcp"/>
+			<DCCReference Include="PIClasses.dcp"/>
+			<DCCReference Include="PIDB.dcp"/>
+			<DCCReference Include="JvCore.dcp"/>
+			<DCCReference Include="JvXPCtrls.dcp"/>
+			<DCCReference Include="vclactnband.dcp"/>
+			<DCCReference Include="JvDB.dcp"/>
+			<DCCReference Include="JvWizards.dcp"/>
+			<DCCReference Include="PowerPDFDR.dcp"/>
+			<DCCReference Include="PIStandard.dcp"/>
+			<DCCReference Include="PIExtended.dcp"/>
+			<DCCReference Include="xmlrtl.dcp"/>
+			<DCCReference Include="vcl.dcp"/>
+			<DCCReference Include="rtl.dcp"/>
+			<DCCReference Include="dbrtl.dcp"/>
+			<DCCReference Include="vcldb.dcp"/>
+			<DCCReference Include="vclimg.dcp"/>
+			<DCCReference Include="vclx.dcp"/>
+			<DCCReference Include="dsnap.dcp"/>
+			<DCCReference Include="Jcl.dcp"/>
+			<DCCReference Include="JclVcl.dcp"/>
+			<DCCReference Include="JvStdCtrls.dcp"/>
+			<DCCReference Include="JvSystem.dcp"/>
+			<DCCReference Include="UIBD14Win32R.dcp"/>
+			<DCCReference Include="FB_IB_DataSets.dcp"/>
+			<DCCReference Include="VirtualTreesD13.dcp"/>
+			<DCCReference Include="inet.dcp"/>
+			<DCCReference Include="mdlPHA.pas">
+				<Form>dmPHA</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlProjet.pas"/>
+			<DCCReference Include="mdlDialogue.pas">
+				<Form>frmDialogue</Form>
+			</DCCReference>
+			<DCCReference Include="mdlLectureFichierBinaire.pas"/>
+			<DCCReference Include="mdlModuleOutils.pas">
+				<Form>mdlModuleOutils</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlConsole.pas">
+				<Form>frmConsole</Form>
+			</DCCReference>
+			<DCCReference Include="mdlBase.pas">
+				<Form>frmBase</Form>
+			</DCCReference>
+			<DCCReference Include="mdlVisualisationScriptSQL.pas">
+				<Form>frmVisualisationScriptSQL</Form>
+			</DCCReference>
+			<DCCReference Include="mdlConfiguration.pas">
+				<Form>frConfiguration</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlActionTransaction.pas">
+				<Form>frmActTrans</Form>
+			</DCCReference>
+			<DCCReference Include="mdlGenerationSQL.pas">
+				<Form>frmGenerationSQL</Form>
+			</DCCReference>
+			<DCCReference Include="mdlErreurs.pas">
+				<Form>frmErreurs</Form>
+			</DCCReference>
+			<DCCReference Include="mdlModule.pas">
+				<Form>frModule</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlConnexionServeur.pas">
+				<Form>frmConnexionServeur</Form>
+			</DCCReference>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Débogage">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<PropertyGroup>
+			<PostBuildEvent><![CDATA[powershell -noprofile -command $(SVN)\post-build.ps1 -target cp_rss_commun -rep_dest $(OUTPUTDIR)]]></PostBuildEvent>
+		</PropertyGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType>Package</Borland.ProjectType>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">Projet.dpk</Source>
+					</Source>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+						<Parameters Name="HostApplication">..\..\Bin\COMMIT.exe</Parameters>
+						<Parameters Name="DebugSourceDirs">D:\svn\composants\pi\PIClasses\;D:\svn\composants\AccesBD\uib25\source\</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">True</VersionInfo>
+						<VersionInfo Name="MajorVer">4</VersionInfo>
+						<VersionInfo Name="MinorVer">8</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">44</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1036</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName">Phamargest Inter@ctive</VersionInfoKeys>
+						<VersionInfoKeys Name="FileDescription">Algorithme de gestion des fichiers projets</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">4.8.0.44</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName">PROJET.BPL</VersionInfoKeys>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName">COMMIT</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductVersion">4.8</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Excluded_Packages>
+						<Excluded_Packages Name="D:\SVN\COMPOSANTS\AccesBD\ODAC\Bin\odac140.bpl">Oracle Data Access Components</Excluded_Packages>
+						<Excluded_Packages Name="D:\SVN\COMPOSANTS\AccesBD\ODAC\Bin\dac140.bpl">Devart Data Access Components</Excluded_Packages>
+						<Excluded_Packages Name="D:\SVN\COMPOSANTS\AccesBD\ODAC\Bin\crcontrols140.bpl">Devart Controls</Excluded_Packages>
+						<Excluded_Packages Name="$(BDS)\bin\dcloffice2k140.bpl">Composants Microsoft Office 2000 Sample Automation Server Wrapper</Excluded_Packages>
+						<Excluded_Packages Name="$(BDS)\bin\dclofficexp140.bpl">Composants Microsoft Office XP Sample Automation Server Wrapper</Excluded_Packages>
+						<Excluded_Packages Name="D:\SVN\COMPOSANTS\AccesBD\ODAC\Bin\dacvcl140.bpl">Devart Data Access GUI related Components</Excluded_Packages>
+					</Excluded_Packages>
+				</Delphi.Personality>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>

@@ -1,0 +1,81 @@
+package MSQL;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  Projet,
+  ModuleImport,
+  ZComponent,
+  ZCore,
+  ZDbc,
+  ZParseSql,
+  ZPlain,
+  bdertl,
+  adortl,
+  PIDataSet,
+  PIClasses,
+  JvHMI,
+  VclSmp,
+  JvMM,
+  IndyCore,
+  IndySystem,
+  IndyProtocols,
+  Abbrevia,
+  AbbreviaVCL;
+
+contains
+  mdlMIFirebird in 'mdlMIFirebird.pas' {frMIFirebird},
+  mdlFirebirdConnexionServeur in 'mdlFirebirdConnexionServeur.pas' {frmFirebirdConnexionServeur},
+  mdlMIFirebirdPHA in 'mdlMIFirebirdPHA.pas' {dmMIFirebirdPHA: TDataModule},
+  mdlMIHyperFile in 'mdlMIHyperFile.pas' {frMIHyperFile},
+  mdlMIHyperFilePHA in 'mdlMIHyperFilePHA.pas' {dmMIHyperFilePHA: TDataModule},
+  mdlHyperFileConnexionServeur in 'mdlHyperFileConnexionServeur.pas' {frmHyperFileConnexionServeur},
+  mdlMIOLEDBPHA in 'mdlMIOLEDBPHA.pas',
+  mdlMIOLEDB in 'mdlMIOLEDB.pas',
+  mdlMISQLServeur in 'mdlMISQLServeur.pas' {frMISQLServeur: TFrame},
+  mdlMISQLServeurPHA in 'mdlMISQLServeurPHA.pas' {dmMISQLServeurPHA: TDataModule},
+  mdlSQLServeurConnexionServeur in 'mdlSQLServeurConnexionServeur.pas' {frmSQLServeurConnexionServeur},
+  mdlMIMySQLPHA in 'mdlMIMySQLPHA.pas' {dmMIMySQLPHA: TDataModule},
+  mdlMIMySQL in 'mdlMIMySQL.pas' {frMIMySQL: TFrame},
+  mdlMIODBCPHA in 'mdlMIODBCPHA.pas' {dmMIODBCPHA: TDataModule},
+  mdlMIASAPHA in 'mdlMIASAPHA.pas' {p},
+  mdlMIBDEPHA in 'mdlMIBDEPHA.pas',
+  mdlMIBDE in 'mdlMIBDE.pas' {frMIBDE: TFrame},
+  mdlOracleConnexionServeur in 'mdlOracleConnexionServeur.pas' {frmOracleConnexionServeur},
+  mdlMySQLConnexionServeur in 'mdlMySQLConnexionServeur.pas' {frmMySQLConnexionServeur},
+  mdlMIPI in 'mdlMIPI.pas' {frMIPI: TFrame},
+  mdlMIPIPHA in 'mdlMIPIPHA.pas' {dmMIPIPHA: TDataModule},
+  mdlMIPostgreSQL in 'mdlMIPostgreSQL.pas',
+  mdlMIPostgreSQLPHA in 'mdlMIPostgreSQLPHA.pas',
+  mdlPostgreSQLConnexionServeur in 'mdlPostgreSQLConnexionServeur.pas',
+  mdlBDEConnexionServeur in 'mdlBDEConnexionServeur.pas' {frmBDEConnexionServeur},
+  dumpallcut in 'dumpallcut.pas' {fDumpAllCut},
+  mdlCSV in 'mdlCSV.pas' {Frame1: TFrame},
+  mdlPostgresClean in 'mdlPostgresClean.pas' {frmPostgresClean};
+
+end.
+
+

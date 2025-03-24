@@ -1,0 +1,160 @@
+<project name="COMMIT" default="dist" basedir="."
+         xmlns:if="ant:if">
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+	
+	<property environment="env"/>
+	<property name="type_mod" value=""/>
+	<property name="module" value=""/>
+	<property name="rep_dest" value=""/>
+	<tstamp>
+		<format property="current_date" pattern="ddMMyyyy" locale="fr,FR"/>		
+	</tstamp>
+	
+	<target name="cp_rss_commun">
+		<mkdir dir="${rep_dest}Aide"/>
+		<mkdir dir="${rep_dest}Aide\Images"/>
+		<mkdir dir="${rep_dest}Scripts"/>
+		<mkdir dir="${rep_dest}Scripts\Commun"/>
+		<mkdir dir="${rep_dest}Scripts\Modules"/>
+		
+		<copy todir="${rep_dest}Scripts\Commun">
+			<fileset dir="${rep_dest}..\Scripts\Commun" casesensitive="false">
+				<include name="**\*.sql"/>
+			</fileset>
+		</copy>
+		
+		<copy todir="${rep_dest}Scripts\Modules">
+			<fileset dir="${rep_dest}..\Scripts\Modules" casesensitive="false">
+				<include name="*.sql"/>
+			</fileset>
+		</copy>		
+		
+		<copy todir="${rep_dest}Aide">
+			<fileset dir="${rep_dest}..\Aide" casesensitive="false">
+				<include name="documentation*.*"/>			
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="cp_rss_modules">
+		<mkdir dir="${rep_dest}Ressources\${module}"/>
+		<mkdir dir="${rep_dest}..\..\Scripts"/>
+		<mkdir dir="${rep_dest}..\..\Scripts\Modules\${type_mod}"/>
+		
+		<copy todir="${rep_dest}..\..\Aide">
+			<fileset dir="${rep_dest}..\..\..\Aide" casesensitive="false">
+				<include name="**\${module}**.*"/>
+			</fileset>
+		</copy>
+		
+		<copy todir="${rep_dest}..\..\Scripts\Modules\${type_mod}">
+			<fileset dir="${rep_dest}..\..\..\Scripts\Modules\${type_mod}" casesensitive="false">
+				<include name="${module}*.sql"/>
+			</fileset>
+		</copy>
+		
+		<if>
+			<available file="${rep_dest}..\..\..\Modules\${type_mod}\${module}\Ressources" type="dir" />
+			<then>
+				<copy todir="${rep_dest}Ressources\${module}">
+					<fileset dir="${rep_dest}..\..\..\Modules\${type_mod}\${module}\Ressources" casesensitive="false">
+						<include name="**\*.*"/>
+					</fileset>
+				</copy>
+			</then>
+		</if>
+	</target>
+	
+	<target name="dist">
+		<mkdir dir="${rep_dest}\dist"/>
+		<copy todir="${rep_dest}\dist">
+			<fileset dir="${env.ProgramFiles(x86)}\Embarcadero\RAD Studio\7.0\bin">
+				<include name="designide140.*"/>
+				<include name="Indy*140.bpl"/>
+			</fileset>
+			<fileset dir="${env.SystemRoot}\SysWow64">
+				<include name="adortl140.*"/>
+			</fileset>
+			<fileset dir="${env.SystemRoot}\SysWow64">
+				<include name="bdertl140.*"/>
+			</fileset>
+			<fileset dir="${env.SystemRoot}\SysWow64">
+				<include name="dbrtl140.*"/>
+			</fileset>
+			<fileset dir="${env.SystemRoot}\SysWow64">
+				<include name="rtl140.*"/>
+			</fileset>
+			<fileset dir="${env.SystemRoot}\SysWow64">
+				<include name="dsnap*140.*"/>
+			</fileset>
+			<fileset dir="${env.SystemRoot}\SysWow64">
+				<include name="tee*140.*"/>
+			</fileset>
+			<fileset dir="${env.SystemRoot}\SysWow64">
+				<include name="vcl140.*"/>
+			</fileset>
+			<fileset dir="${env.SystemRoot}\SysWow64">
+				<include name="vclactnband140.*"/>
+			</fileset>
+			<fileset dir="${env.SystemRoot}\SysWow64">
+				<include name="vcldb140.*"/>
+			</fileset>
+			<fileset dir="${env.SystemRoot}\SysWow64">
+				<include name="vclimg140.*"/>
+			</fileset>
+			<fileset dir="${env.SystemRoot}\SysWow64">
+				<include name="vclsmp140.*"/>
+			</fileset>
+			<fileset dir="${env.SystemRoot}\SysWow64">
+				<include name="vclx140.*"/>
+			</fileset>
+			<fileset dir="${env.SystemRoot}\SysWow64">
+				<include name="xmlrtl140.*"/>
+			</fileset>					
+		</copy>
+		<copy todir="${rep_dest}\dist">
+			<fileset dir="${env.SVN}\commit_legacy\composants\bin">
+				<include name="**.bpl"/>
+			</fileset>
+			<fileset dir="${env.ProgramFiles(x86)}\Devart\ODAC for RAD Studio 2010\Bin">
+				<include name="dac*140.bpl"/>
+				<include name="odac*140.bpl"/>
+			</fileset>
+		</copy>
+		<copy todir="${rep_dest}\dist">
+			<fileset dir="${rep_dest}\bin">
+				<include name="*\**"/>
+			</fileset>
+		</copy>
+		<unzip src="${env.SVN}\commit_legacy\wpodbc3.zip" dest="${rep_dest}\bin"/>
+		<unzip src="${env.SVN}\commit_legacy\fb.zip" dest="${rep_dest}\bin"/>
+		<unzip src="${env.SVN}\commit_legacy\MySQL51.zip" dest="${rep_dest}\bin"/>	
+		<unzip src="${env.SVN}\commit_legacy\windev16.zip" dest="${rep_dest}\bin"/>	
+		<unzip src="${env.SVN}\commit_legacy\LibMySQL.zip" dest="${rep_dest}\bin"/>	
+		<unzip src="${env.SVN}\commit_legacy\firebird25.zip" dest="${rep_dest}\bin"/>	
+		<unzip src="${env.SVN}\commit_legacy\instantclient11.zip" dest="${rep_dest}\bin"/>			
+		<unzip src="${env.SVN}\commit_legacy\libgfl.zip" dest="${rep_dest}\bin"/>	
+		<unzip src="${env.SVN}\commit_legacy\ghost-script.zip" dest="${rep_dest}\bin"/>
+		<unzip src="${env.SVN}\commit_legacy\outils.zip" dest="${rep_dest}\bin\Outils"/>
+		<unzip src="${env.SVN}\commit_legacy\postgresql.zip" dest="${rep_dest}\bin"/>
+		<unzip src="${env.SVN}\commit_legacy\dependencies.zip" dest="${rep_dest}\bin"/>
+		
+		<exec executable="C:\Program Files\7-Zip\7z.exe">
+      <arg value="a"/>
+      <arg line="-t7z COMMIT_${current_date}.7z ${rep_dest}\dist\"/>
+    </exec>
+    
+    <!--
+      <zip destfile=>
+			  <fileset dir="${rep_dest}\dist\"/>
+		  </zip>
+    -->
+    
+    <ftp server="repf.groupe.pharmagest.com" userid="admin_ftp" password="admin_ftp"
+         remotedir="/v4.8/distributions">
+      <fileset dir="${rep_dest}">
+        <include name="COMMIT_${current_date}.7z"/>
+      </fileset>
+    </ftp>
+	</target>
+</project>

@@ -1,0 +1,53 @@
+package OutilsERP_fr;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Outils de vérification et de statistiques de la base LGPI'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  vcl,
+  rtl,
+  dbrtl,
+  vcldb,
+  bdertl,
+  dac140,
+  odac140,
+  Projet,
+  PIDB,
+  PIExtended,
+  vclimg,
+  PIClasses,
+  vclx,
+  VclSmp,
+  dsnap;
+
+contains
+  mdlOutilsERP_fr in 'mdlOutilsERP_fr.pas' {dmOutilsERP_fr: TDataModule},
+  mdlOutilsERPERP_fr in 'mdlOutilsERPERP_fr.pas' {dmOutilsERPERP_fr: TDataModule},
+  mdlNoLot in 'mdlNoLot.pas' {frmNoLot},
+  mdlStatistiques in 'mdlStatistiques.pas' {frmStatistiques},
+  mdlSequenceOrdonnancier_fr in 'mdlSequenceOrdonnancier_fr.pas' {frmSequenceOrdonnancier};
+
+end.

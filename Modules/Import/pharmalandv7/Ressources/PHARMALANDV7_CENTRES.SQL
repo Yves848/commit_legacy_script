@@ -1,0 +1,18 @@
+select
+  cecode,
+  cegrareg,
+  cegpay,
+  cegestio,
+  ceprefec,
+  cetype,
+  cenom,
+  ceadr,
+  ceadrs,
+  cecp,
+  cevil,
+  cetel,
+  cefax,
+  ceobs,
+  cemutdiv[5]
+from
+  centre

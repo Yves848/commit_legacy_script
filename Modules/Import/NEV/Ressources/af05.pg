@@ -1,0 +1,59 @@
+CREATE OR REPLACE FUNCTION FCTCREATEaf05(CSVFILE text) RETURNS integer
+AS $$
+DECLARE af05exists BOOLEAN;
+BEGIN
+        SELECT EXISTS into af05exists (
+           SELECT FROM information_schema.tables
+           WHERE  table_schema = 'public'
+           AND    table_name   = 'af05'
+        );
+
+        if af05exists then
+           drop table af05;
+        end if;
+        
+        CREATE TABLE public.af05
+            (
+                mnomedecin integer not null,
+                mindex integer,
+                mnom text,
+                minsee text,
+                mspecialite text,
+                mcodespecialite text,
+                mdatederfacture text,
+                magrementratp text,
+                msalarie text,
+                mrpps text,
+                mstructure text,
+                metablissement text,
+                updated_at text,
+                CONSTRAINT af05_pkey PRIMARY KEY (mnomedecin)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+            TABLESPACE pg_default;
+
+        execute 'COPY af05(
+            mnomedecin,
+mindex,
+mnom,
+minsee,
+mspecialite,
+mcodespecialite,
+mdatederfacture,
+magrementratp,
+msalarie,
+mrpps,
+mstructure,
+metablissement,
+updated_at
+        )
+            from ''' || $1 || '''
+            DELIMITER '';''
+            CSV HEADER';
+
+            return 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

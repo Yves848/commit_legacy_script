@@ -1,0 +1,55 @@
+CREATE OR REPLACE FUNCTION FCTCREATEafztab(CSVFILE text) RETURNS integer
+AS $$
+DECLARE afztabexists BOOLEAN;
+BEGIN
+        SELECT EXISTS into afztabexists (
+           SELECT FROM information_schema.tables
+           WHERE  table_schema = 'public'
+           AND    table_name   = 'afztab'
+        );
+
+        if afztabexists then
+           drop table afztab;
+        end if;
+        
+        CREATE TABLE public.afztab
+            (
+tab_cle text,
+tab_mrq text,
+tab_codtab text,
+tab_codent text,
+tab_zonlib text,
+tab_zon text[],
+tab_codetaent text,
+tab_annmajent text,
+tab_moimajent text,
+tab_joumajent text,
+updated_at text,
+                CONSTRAINT afztab_pkey PRIMARY KEY (tab_cle)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+            TABLESPACE pg_default;
+
+        execute 'COPY afztab(
+            tab_cle,
+tab_mrq,
+tab_codtab,
+tab_codent,
+tab_zonlib,
+tab_zon,
+tab_codetaent,
+tab_annmajent,
+tab_moimajent,
+tab_joumajent,
+updated_at
+        )
+            from ''' || $1 || '''
+            DELIMITER '';''
+            CSV HEADER';
+
+            return 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

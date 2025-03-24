@@ -1,0 +1,65 @@
+CREATE OR REPLACE FUNCTION FCTCREATEaf37(CSVFILE text) RETURNS integer
+AS $$
+BEGIN
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_schema = 'public'
+               AND table_name = 'af37') THEN
+        DROP TABLE public.af37;
+    END IF;
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_name = 'temp_af37') THEN
+        DROP TABLE temp_af37;
+    END IF;
+       
+        CREATE TABLE public.af37
+            (
+prmcode integer,
+prmnopromis text,
+prmdate date,
+prmnocip text,
+prmchrono integer,
+prmindex integer,
+prmduplicle text,
+prmfdate date,
+prmfchrono text,
+prmhh text,
+prmmm text,
+prmqte integer,
+prmpufact float,
+prmavance text,
+prmdestock text,
+filler_1 text,
+prmeuro text,
+prmdatepromis text,
+prmheurepromis text,
+prmminpromis text,
+prmqteunite text,
+prmnovend text,
+prmrappel text,
+updated_at text,
+prmdatedeliv text,
+prmvenddeliv integer
+            )
+            WITH (
+                OIDS = FALSE
+            )
+    TABLESPACE pg_default;
+
+
+    ##TEMP_TABLE_CREATION##
+
+    ##TEMP_COPY##
+
+    INSERT INTO public.af37 (
+    ##INSERT_COLUMNS##
+    )
+    SELECT
+        ##SELECT_COLUMNS##
+    FROM ##TEMP_TABLENAME## temp;
+
+    RETURN 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

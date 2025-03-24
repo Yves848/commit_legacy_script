@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="documentation.xsl" type="text/xsl"?>
+<documentation>
+  <description nom="Periphar" os="Linux UseIt" type="fichiers"/>
+  <systemes>
+    <systeme>
+      <designation>"Linux UseIt"</designation>
+      <recuperations>
+        <recuperation description="FTP" remarques="Le serveur Periphar fait office de client FTP et COMMIT de serveur FTP via la commande Fichier => Activer Serveur FTP">
+        <etape value="on peut essayer dans l'autre sens avec le login php / asp mais ces identifiants ne fonctionnent pas toujours"/>   
+        <etape value="Si utilisation d'une base de données : Création d'un dump de la base MySQL (mysqldump -u root -ptiesu32.fr aspline > aspline.sql) et téléchargement du fichier aspline.sql sur le poste COMMIT"/>    
+        <etape value="Télécharger les fichiers *.D sur le poste COMMIT"/>
+    </recuperation>
+        <recuperation description="montage du dump en local" remarques="pour prendre en compte il faut s'assurer  que la case Utilisation de la partie graphique soit coché dans Reprise>Options, c'est elle qui fera apparaitre les option de paramétrage MySQL à droite">
+          <etape value="s'assurer qu'un serveur MySQL ne tourne pas deja sur votre poste , si oui arretez le services ou killez les processus mysql, mysqld"/>
+          <etape value="Choisir la version du serveur (5.1) et renseigner le chemin de 'aspline.sql' dans Dump SQL et cocher connexion locale puis OK puis Oui"/>    
+          <etape value="la restauration du dump se fait dans une fenetre de ligne de commande, attendre qu'elle se ferme d'elle meme ( plusieurs minutes ou dizaine de minutes)  "/>
+          <etape value="Une fois terminé : les fichiers MySQL ( .frm , .MYD , MYI) seront crées dans .\Commit v4 beta3\MySQL51\data\aspline"/>
+          <etape value="SURTOUT fermer puis relancer COMMIT "/>
+          <etape value="Cliquer sur connexion mais NE PAS redonner le chemin du 'aspline.sql' sinon il va relancer le chargement de la base (plusieurs minutes ...)"/>
+          <etape value="si la connexion ne se fait pas , remplacer le mot de passe MySQL par root "/>
+         </recuperation>  
+         <recuperation description="connexion au serveur MySQL du client" remarques="pour se connecter il faut autoriser l'utilisateur root a se connecter sur le poste serveur">
+          <etape value="sur le serveur du client en ligne de commande"/>  
+          <etape value="mysql -u root -ptiesu32.fr aspline"/>
+          <etape value="grant all privileges on *.* to root@ip_du_poste_commit  identified by 'tiesu32.fr' with grant option;"/>
+          <etape value="flush privileges;"/>
+          <etape value="apres ca renseignez dans commit l'IP du serveur decocher serveur local"/>
+         </recuperation>      
+      </recuperations>
+      <fichiers>
+        <fichier nom="PHFTVA.D" repertoire="/home/appli/php/fich" description="TVAs"/>
+        <fichier nom="PHFCOM.D" repertoire="/home/appli/php/fich" description="Codes postaux"/> 
+        <fichier nom="PHFMED.D" repertoire="/home/appli/php/fich" description="Médecins"/>
+        <fichier nom="PHFORG.D" repertoire="/home/appli/php/fich" description="Organismes"/>
+        <fichier nom="PHFCTS.D" repertoire="/home/appli/php/fich" description="Contrats types"/>
+        <fichier nom="PHFCTO.D" repertoire="/home/appli/php/fich" description="Associations organismes - contrats types"/>
+        <fichier nom="PHFCLI.D" repertoire="/home/appli/php/fich" description="Clients"/>
+        <fichier nom="PHFCTC.D" repertoire="/home/appli/php/fich" description="Contrats clients"/>
+        <fichier nom="PHFTEXT.D" repertoire="/home/appli/php/fich" description="Commentaires"/>   
+        <fichier nom="PHFSOC.D" repertoire="/home/appli/php/fich" description="Fournisseurs"/>
+        <fichier nom="PHFTDC.D" repertoire="/home/appli/php/fich" description="Parametres de télétransmissions fournisseurs"/>
+        <fichier nom="PHFPDT.D" repertoire="/home/appli/php/fich" description="Produits"/>
+        <fichier nom="PHFPDT2.D" repertoire="/home/appli/php/fich" description="Informations complementaires produits"/>
+        <fichier nom="PHFPEA.D" repertoire="/home/appli/php/fich" description="Codes EAN13"/>
+        <fichier nom="PHFLPC2.D" repertoire="/home/appli/php/fich" description="Associations codes LPP - Produits"/>
+        <fichier nom="PHFLPP2.D" repertoire="/home/appli/php/fich" description="Codes LPP"/>
+        <fichier nom="PHFSTOC.D" repertoire="/home/appli/php/fich" description="Stocks"/>
+        <fichier nom="PHFQTVM.D" repertoire="/home/appli/php/fich" description="Historiques de ventes"/>
+        <fichier nom="PHFFACTU.D" repertoire="/home/appli/php/fich" description="Factures"/>
+        <fichier nom="PHFLGFA.D" repertoire="/home/appli/php/fich" description="Lignes de factures"/>
+        <fichier nom="PHFVEND.D" repertoire="/home/appli/php/fich" description="Vendeurs"/>
+        <fichier nom="PHFPAV.D" repertoire="/home/appli/php/fich" description="Vignettes avancées"/>
+        <fichier nom="PHFBLF.D" repertoire="/home/appli/php/fich" description="Historiques commandes en fichier"/>
+        <fichier nom="PHFLGF.D" repertoire="/home/appli/php/fich" description="Détails historiques commandes en fichier"/>
+        <fichier nom="PHFCFI.D" repertoire="/home/appli/php/fich" description="Programmes de fidélité"/>
+        <fichier nom="PHFPFC.D" repertoire="/home/appli/php/fich" description="Produits fidélité"/>
+        <fichier nom="CREDITS.TXT" repertoire="/home/appli/php" description="Crédits par clients : necessaire d appeler periphar pour cela"/>
+        <fichier nom="aspline.sql" repertoire="/home/... la ou  il a été créé" description="Fournisseurs / Commandes en Base MySQL( dump à générer , voir plus haut)"  />      
+        <fichier nom="*_MUT_*.jpg" repertoire="/home/appli/scans/GED/clients" description="Attestations mutuelles"/>
+      </fichiers>
+    </systeme>
+  </systemes>
+  <perimetres>
+    <donnee designation="Praticiens, Hopitaux"/>
+
+    <donnee designation="Organismes" rejets="Couvertures supprimées"/>
+
+    <donnee designation="Clients" rejets="Clients supprimés"/>
+
+    <donnee designation="Fournisseurs directs" commentaire="Informations à compléter après transfert"/>
+    <donnee designation="Répartiteurs" commentaire="Informations à compléter après transfert"/>
+    <donnee designation="Produits" rejets="Produits et stocks supprimés"/>
+    <donnee designation="Historiques de ventes mensuels( rotations )" rejets="Historiques supérieurs à 2 ans"/>
+
+    <donnee designation="Opérateurs"/>
+    <donnee designation="Crédits" commentaire="Laisser le fichier tel qu'il est généré, la date n est pas utile, mais il est necessaire d'avoir une ligne d'entete dans le fichier, de plus il possible que le . ne passe pas donc il faut le remplacer par une , dans la valeur du crédit"/>
+    <donnee designation="Vignettes avancées" rejets="Vignettes avancées supprimés"/>
+    <donnee designation="Commandes en attentes" commentaire="Uniquement si en base de donnée"/>
+
+    <donnee designation="Historiques de délivrances" rejets="Factures de ventes directes (identifiant client inexistant)"/>
+    <donnee designation="Historiques d'achats"/>
+    <donnee designation="Attestations mutuelles scannées"/>
+    <donnee designation="Programmes de fidélité"/>
+  </perimetres>
+  <observations>  
+    <observation texte="La reprise d'une officine en gestion multistock necessite un réassort complet de tous les produits pour être correcte !"/>
+    <observation texte="Génération des crédits clients : Attention sur les dernieres reprises cette methode n'est plus valable, les credits ne font donc plus partie du perimetre">
+      <images>
+        <image nom="periphar_credits_1.png" legende="Aller dans le menu Maintenance (F1)"/>
+        <image nom="periphar_credits_2.png" legende="Aller dans le sous-menu Listes param. (F2)"/>
+        <image nom="periphar_credits_3.png" legende="Sélectionner la liste Encours clients"/>
+        <image nom="periphar_credits_3a.png" legende="Aller dans le menu Parametrages (P)"/>
+        <image nom="periphar_credits_3b.png" legende="Aller dans le sous-menu Exportation (x)"/>
+        <image nom="periphar_credits_3c.png" legende="Renseigner le nom du fichier TXT par credits et la destination par TwinShare MD2 (touche TAB)"/>
+        <image nom="periphar_credits_4.png" legende="Executer l'extraction (E)"/>
+        <image nom="periphar_credits_5.png" legende="Executer l'exportation (x). Le fichier créé se trouve sous /home/appli/php/md2.credits.txt à renommer en credits.txt"/>
+      </images>  
+    </observation>
+  </observations>
+</documentation>

@@ -1,0 +1,74 @@
+CREATE OR REPLACE FUNCTION FCTCREATEafpsdic(CSVFILE text) RETURNS integer
+AS $$
+DECLARE afpsdicexists BOOLEAN;
+BEGIN
+        SELECT EXISTS into afpsdicexists (
+           SELECT FROM information_schema.tables
+           WHERE  table_schema = 'public'
+           AND    table_name   = 'afpsdic'
+        );
+
+        if afpsdicexists then
+           drop table afpsdic;
+        end if;
+
+        IF EXISTS (SELECT FROM information_schema.tables WHERE table_name = 'temp_afpsdic') THEN
+        DROP TABLE temp_afpsdic;
+        END IF;
+        
+    CREATE TABLE public.afpsdic (
+        psdic_numdoc integer,
+        psdic_mrq integer,
+        psdic_nomdoc text,
+        psdic_chemin text,
+        psdic_typdoc text,
+        psdic_iddoc text,
+        psdic_typent text,
+        psdic_ident text,
+        psdic_datcre date,
+        psdic_heucre text,
+        psdic_opeven text,
+        psdic_etat text,
+        psdic_datsup text,
+        psdic_heusup text,
+        psdic_opesup text,
+        psdic_ctrl text,
+        psdic_ctrlnumven text,
+        psdic_ctrliniven text,
+        psdic_ctrldate text,
+        psdic_ctrhh text,
+        psdic_ctrmn text,
+        psdic_ctrss text,
+        psdic_datefinval text,
+        psdic_archive text,
+        psdic_scor_cpt text,
+        psdic_nature_pj text,
+        psdic_datnum text,
+        psdic_heunum text,
+        psdic_libdoc text,
+        updated_at timestamp,
+        psdic_has_original_name text,
+        CONSTRAINT afpsdic_pkey PRIMARY KEY (psdic_numdoc)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+
+    TABLESPACE pg_default;
+
+
+    ##TEMP_TABLE_CREATION##
+
+    ##TEMP_COPY##
+
+    INSERT INTO public.afpsdic (
+    ##INSERT_COLUMNS##
+    )
+    SELECT
+        ##SELECT_COLUMNS##
+    FROM ##TEMP_TABLENAME## temp;
+
+    RETURN 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

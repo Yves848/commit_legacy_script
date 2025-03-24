@@ -1,0 +1,49 @@
+CREATE OR REPLACE FUNCTION FCTCREATEafnotap(CSVFILE text) RETURNS integer
+AS $$
+DECLARE afnotapexists BOOLEAN;
+BEGIN
+        SELECT EXISTS into afnotapexists (
+           SELECT FROM information_schema.tables
+           WHERE  table_schema = 'public'
+           AND    table_name   = 'afnotap'
+        );
+
+        if afnotapexists then
+           drop table afnotap;
+        end if;
+        
+        CREATE TABLE public.afnotap
+            (
+    notpcip double precision NOT NULL,
+    notptype text NOT NULL,
+    notpnoligne integer NOT NULL,
+    notpindex smallint,
+    notpduplicle text,
+    notptexte text,
+    updated_at timestamp without time zone DEFAULT now(),
+    remark_gravity text,
+                CONSTRAINT afnotap_pkey PRIMARY KEY (notpcip, notptype, notpnoligne)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+            TABLESPACE pg_default;
+
+        execute 'COPY afnotap(
+            notpcip,
+notptype,
+notpnoligne,
+notpindex,
+notpduplicle,
+notptexte,
+updated_at,
+remark_gravity
+        )
+            from ''' || $1 || '''
+            DELIMITER '';''
+            CSV HEADER';
+
+            return 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

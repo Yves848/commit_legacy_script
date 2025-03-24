@@ -1,0 +1,1 @@
+select   prm.prom_num_produit_pk,   prm.prom_num_client_pk,  prm.prom_num_quantite,  prm.prom_dti_datefrom   tbl_promis prm  inner join tbl_produit p on (p.pro_num_id = prom_num_produit_pk)where   p.pro_bol_deleted = 0

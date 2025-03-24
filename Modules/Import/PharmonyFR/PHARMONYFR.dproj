@@ -1,0 +1,140 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{659D9C8F-C2FF-4014-B7E9-6CFAF4F086EA}</ProjectGuid>
+			<MainSource>PHARMONYFR.dpk</MainSource>
+			<Config Condition="'$(Config)'==''">Débogage</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+			<ProjectVersion>12.0</ProjectVersion>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Débogage' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<BRCC_IncludePath>$(SVN)\COMPOSANTS\Lib;$(SVN)\COMMIT\trunk\Lib;$(BRCC_IncludePath)</BRCC_IncludePath>
+			<DCC_DebugDCUs>true</DCC_DebugDCUs>
+			<DCC_IMPLICIT_STRING_CAST>false</DCC_IMPLICIT_STRING_CAST>
+			<RuntimeOnlyPackage>true</RuntimeOnlyPackage>
+			<DCC_DependencyCheckOutputName>..\..\..\Bin\Modules\Import\PHARMONYFR.bpl</DCC_DependencyCheckOutputName>
+			<DCC_BplOutput>..\..\..\Bin\Modules\Import</DCC_BplOutput>
+			<DCC_RangeChecking>true</DCC_RangeChecking>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_Description>PHARMONYFR</DCC_Description>
+			<DCC_IntegerOverflowCheck>true</DCC_IntegerOverflowCheck>
+			<DCC_DcpOutput>..\..\..\Lib</DCC_DcpOutput>
+			<GenDll>true</GenDll>
+			<DesignOnlyPackage>false</DesignOnlyPackage>
+			<GenPackage>true</GenPackage>
+			<DCC_DcuOutput>..\..\..\Lib</DCC_DcuOutput>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_Platform>x86</DCC_Platform>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="PHARMONYFR.dpk">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="PIClasses.dcp"/>
+			<DCCReference Include="Jcl.dcp"/>
+			<DCCReference Include="JvCore.dcp"/>
+			<DCCReference Include="Projet.dcp"/>
+			<DCCReference Include="ModuleImport.dcp"/>
+			<DCCReference Include="VclSmp.dcp"/>
+			<DCCReference Include="MSQL.dcp"/>
+			<DCCReference Include="mdlPHARMONYFRPHA.pas">
+				<Form>dmPHARMONYFRPHA</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlPHARMONYFR.pas">
+				<Form>frPHARMONYFR</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlPHARMONYFRConfiguration.pas">
+				<Form>frPHARMONYFRConfiguration</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="uImportCSV.pas">
+				<Form>tfImportCSV</Form>
+			</DCCReference>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Débogage">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<PropertyGroup>
+			<PostBuildEvent><![CDATA[powershell -noprofile -command $(SVN)\post-build.ps1 -target cp_rss_modules -rep_dest $(OUTPUTDIR) -type_mod Import -module $(OUTPUTNAME)]]></PostBuildEvent>
+		</PropertyGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType>Package</Borland.ProjectType>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">PHARMONYFR.dpk</Source>
+					</Source>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+						<Parameters Name="HostApplication">..\..\..\Bin\COMMIT.exe</Parameters>
+						<Parameters Name="DebugSourceDirs">D:\SVN\COMPOSANTS\AccesBD\uib25\source\;D:\SVN\COMMIT\trunk\Modules\Outils\OutilsPHA_fr\;D:\SVN\COMPOSANTS\PI\PIClasses\;D:\SVN\COMPOSANTS\PI\PIExtended\;D:\svn\composants\pi\PIDataSet\</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">True</VersionInfo>
+						<VersionInfo Name="MajorVer">4</VersionInfo>
+						<VersionInfo Name="MinorVer">8</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">2</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">True</VersionInfo>
+						<VersionInfo Name="Locale">1036</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName">Pharmagest Inter@ctive</VersionInfoKeys>
+						<VersionInfoKeys Name="FileDescription">PHARMONYFR</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">4.8.0.2</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName">PHARMONYFR.PBL</VersionInfoKeys>
+						<VersionInfoKeys Name="LegalCopyright">Copyright 2024 Equasens</VersionInfoKeys>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename">Commit</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductName">Commit 4.8</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductVersion">4.8.0.12</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+						<VersionInfoKeys Name="Pays">FR</VersionInfoKeys>
+					</VersionInfoKeys>
+					<Excluded_Packages/>
+				</Delphi.Personality>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>

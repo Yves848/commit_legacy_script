@@ -1,0 +1,173 @@
+CREATE OR REPLACE FUNCTION FCTCREATEafb1(CSVFILE text) RETURNS integer
+AS $$
+BEGIN
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_schema = 'public'
+               AND table_name = 'afb1') THEN
+        DROP TABLE public.afb1;
+    END IF;
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_name = 'temp_afb1') THEN
+        DROP TABLE temp_afb1;
+    END IF;
+       
+        CREATE TABLE public.afb1
+            (
+    pnocip double precision NOT NULL,
+    pindex smallint,
+    pcip text,
+    pclefcip text,
+    plibelle text,
+    pean13 text,
+    pfamille text,
+    plabo smallint,
+    pordlab smallint,
+    pdistri smallint,
+    porddist smallint,
+    preserve text,
+    pnoanterieur double precision,
+    pdateanterieur date,
+    pnoposterieur double precision,
+    pdateposterieur date,
+    pforme smallint,
+    prubrique text,
+    pfrigo text,
+    ppvo text,
+    pqpv double precision,
+    ptableau text,
+    pnbmoiperemption smallint,
+    ptm double precision,
+    pcoderembt smallint,
+    ppxbaserembt double precision,
+    ppxpublic double precision,
+    pcodetva smallint,
+    ptarif text,
+    ppromo smallint,
+    pnature text,
+    pcoefficient smallint,
+    peuro text,
+    ppxachat double precision,
+    ppxach2 double precision,
+    pcode text,
+    prepart smallint,
+    pclasse text,
+    pclasseforcee text,
+    pdateforcee date,
+    pcodegeo text,
+    pgeoreserve text,
+    petiquette smallint,
+    pperime date,
+    plineaire smallint,
+    pautomate text,
+    punite smallint,
+    pstoprot smallint,
+    pstoprotforce smallint,
+    putiprotforce text,
+    pstomax smallint,
+    pstomirayon smallint,
+    pstomarayon smallint,
+    pstockrayon smallint,
+    pstockres smallint,
+    palerte smallint,
+    pprevision double precision,
+    puniteprev text,
+    pcouvwilson smallint,
+    pminco smallint,
+    pmuco smallint,
+    pdecondit text,
+    ptypecond smallint,
+    ppasavant date,
+    pcreation date,
+    pdernmaj date,
+    pderncommande date,
+    pdernreception smallint,
+    pdernfour smallint,
+    pdernpxremise double precision,
+    pqteven smallint[],
+    pdatven date[],
+    pmoiqte smallint[],
+    pmoinbvte smallint[],
+    pmoivvht double precision[],
+    pmoiqteach smallint[],
+    pmoivaht double precision[],
+    pmoinbach smallint[],
+    pmoinbrupt smallint[],
+    pmoistoini smallint[],
+    pmoinbmois smallint,
+    psemqte smallint[],
+    psemnbvte smallint[],
+    psemnbsem smallint,
+    pjouqte smallint[],
+    pjounbvte smallint[],
+    pjounbjou smallint,
+    pdercadrage date,
+    pavdcadrage date,
+    pstinv smallint,
+    pstinvres smallint,
+    pdinvrayon date,
+    pdinvres text,
+    ploctarif text,
+    plocloue text,
+    plocdotype text,
+    plocdocode integer,
+    plocdopiece text,
+    pvetobase text,
+    pvetoremise double precision,
+    pvetoremgr double precision,
+    pvetosscateg text,
+    pvetolait smallint,
+    pvetoviande smallint,
+    plotpromo text,
+    ppierrefabre text,
+    pallopathie text,
+    psurstock smallint,
+    pstosurst smallint,
+    pfidelite text,
+    pfiddebut date,
+    pfidfin date,
+    pgenerique text,
+    premiseligne text,
+    pmtremiseligne double precision,
+    pfaminterne text,
+    ppxvtebloque text,
+    ptxlabo text,
+    pnomen text,
+    ptfr text,
+    putimaxforce text,
+    pcoefremplac double precision,
+    pversion smallint,
+    preffou text,
+    pdernpxfacture double precision,
+    pcodacl text,
+    pcip13muco text,
+    pclebcb text,
+    pqterestunite smallint,
+    pfourmanq smallint,
+    psupprime text,
+    pprinceps text,
+    updated_at timestamp without time zone DEFAULT now(),
+                CONSTRAINT afb1_pkey PRIMARY KEY (pnocip)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+    TABLESPACE pg_default;
+
+
+    ##TEMP_TABLE_CREATION##
+
+    ##TEMP_COPY##
+
+    INSERT INTO public.afb1 (
+    ##INSERT_COLUMNS##
+    )
+    SELECT
+        ##SELECT_COLUMNS##
+    FROM ##TEMP_TABLENAME## temp;
+
+    RETURN 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

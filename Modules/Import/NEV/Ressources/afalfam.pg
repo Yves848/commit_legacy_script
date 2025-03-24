@@ -1,0 +1,44 @@
+CREATE OR REPLACE FUNCTION FCTCREATEafalfam(CSVFILE text) RETURNS integer
+AS $$
+DECLARE afalfamexists BOOLEAN;
+BEGIN
+        SELECT EXISTS into afalfamexists (
+           SELECT FROM information_schema.tables
+           WHERE  table_schema = 'public'
+           AND    table_name   = 'afalfam'
+        );
+
+        if afalfamexists then
+           drop table afalfam;
+        end if;
+        
+        CREATE TABLE public.afalfam
+            (
+            alfam_cle integer,
+            alfam_mrq text,
+            alfam_zoncle text,
+            alfam_libelle text,
+            updated_at text,
+
+                CONSTRAINT afalfam_pkey PRIMARY KEY (alfam_cle)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+            TABLESPACE pg_default;
+
+        execute 'COPY afalfam(
+            alfam_cle,
+alfam_mrq,
+alfam_zoncle,
+alfam_libelle,
+updated_at
+)
+            from ''' || $1 || '''
+            DELIMITER '';''
+            CSV HEADER';
+
+            return 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

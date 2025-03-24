@@ -1,0 +1,99 @@
+CREATE OR REPLACE FUNCTION FCTCREATEaff5(CSVFILE text) RETURNS integer
+AS $$
+DECLARE aff5exists BOOLEAN;
+BEGIN
+        SELECT EXISTS into aff5exists (
+           SELECT FROM information_schema.tables
+           WHERE  table_schema = 'public'
+           AND    table_name   = 'aff5'
+        );
+
+        if aff5exists then
+           drop table aff5;
+        end if;
+        
+        CREATE TABLE public.aff5
+            (
+ gamnolabo text,
+gamnogamme text,
+gamindex text,
+gamnumlabo text,
+gamnumgamme text,
+gamsupprimee text,
+gamident_niveau1 text,
+gamident_niveau2 text,
+gamident_niveau3 text,
+gamnogammesup text,
+gamlibelle text,
+gamdescriptif text,
+gamremlig text,
+gamqteseuil text,
+gamvalseuil text,
+gampouseuil text,
+gamremglb text,
+gamglqteseuil text,
+gamglvalseuil text,
+gamglpouseuil text,
+gamtypefranco text,
+gamfranco text,
+gamfrancoblocage text,
+gammethodecalc text,
+gamselectcdeauto text,
+gamversion text,
+gampromotion text,
+gamdateintegration text,
+gamheure text,
+gamminute text,
+gamdatevalidite text,
+updated_at text,
+gamajoutautopdt text,
+            CONSTRAINT aff5_pkey PRIMARY KEY (gamnolabo, gamnogamme, gamindex)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+            TABLESPACE pg_default;
+
+        execute 'COPY aff5(
+            gamnolabo,
+gamnogamme,
+gamindex,
+gamnumlabo,
+gamnumgamme,
+gamsupprimee,
+gamident_niveau1,
+gamident_niveau2,
+gamident_niveau3,
+gamnogammesup,
+gamlibelle,
+gamdescriptif,
+gamremlig,
+gamqteseuil,
+gamvalseuil,
+gampouseuil,
+gamremglb,
+gamglqteseuil,
+gamglvalseuil,
+gamglpouseuil,
+gamtypefranco,
+gamfranco,
+gamfrancoblocage,
+gammethodecalc,
+gamselectcdeauto,
+gamversion,
+gampromotion,
+gamdateintegration,
+gamheure,
+gamminute,
+gamdatevalidite,
+updated_at,
+gamajoutautopdt
+        )
+            from ''' || $1 || '''
+            DELIMITER '';''
+            CSV HEADER';
+
+            return 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

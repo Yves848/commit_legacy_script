@@ -1,0 +1,45 @@
+CREATE OR REPLACE FUNCTION FCTCREATEaf09(CSVFILE text) RETURNS integer
+AS $$
+BEGIN
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_schema = 'public'
+               AND table_name = 'af09') THEN
+        DROP TABLE public.af09;
+    END IF;
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_name = 'temp_af09') THEN
+        DROP TABLE temp_af09;
+    END IF;
+
+        CREATE TABLE public.af09
+            (
+                catype integer,
+                cacode integer,
+                caindex integer,
+                cacomplement text[],
+                updated_at text,
+                CONSTRAINT af09_pkey PRIMARY KEY (catype, cacode, caindex)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+    TABLESPACE pg_default;
+
+
+    ##TEMP_TABLE_CREATION##
+
+    ##TEMP_COPY##
+
+    INSERT INTO public.af09 (
+    ##INSERT_COLUMNS##
+    )
+    SELECT
+        ##SELECT_COLUMNS##
+    FROM ##TEMP_TABLENAME## temp;
+
+    RETURN 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

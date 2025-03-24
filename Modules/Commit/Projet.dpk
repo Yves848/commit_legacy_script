@@ -1,0 +1,74 @@
+package Projet;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Algorithme de gestion des fichiers projets'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  SynEdit_R2009,
+  PIClasses,
+  PIDB,
+  JvCore,
+  JvXPCtrls,
+  vclactnband,
+  JvDB,
+  JvWizards,
+  PowerPDFDR,
+  PIStandard,
+  PIExtended,
+  xmlrtl,
+  vcl,
+  rtl,
+  dbrtl,
+  vcldb,
+  vclimg,
+  vclx,
+  dsnap,
+  Jcl,
+  JclVcl,
+  JvStdCtrls,
+  JvSystem,
+  UIBD14Win32R,
+  FB_IB_DataSets,
+  VirtualTreesD13,
+  inet;
+
+contains
+  mdlPHA in 'mdlPHA.pas' {dmPHA: TDataModule},
+  mdlProjet in 'mdlProjet.pas',
+  mdlDialogue in 'mdlDialogue.pas' {frmDialogue},
+  mdlLectureFichierBinaire in 'mdlLectureFichierBinaire.pas',
+  mdlModuleOutils in 'mdlModuleOutils.pas' {mdlModuleOutils: TDataModule},
+  mdlConsole in 'mdlConsole.pas' {frmConsole},
+  mdlBase in 'mdlBase.pas' {frmBase},
+  mdlVisualisationScriptSQL in 'mdlVisualisationScriptSQL.pas' {frmVisualisationScriptSQL},
+  mdlConfiguration in 'mdlConfiguration.pas' {frConfiguration: TFrame},
+  mdlActionTransaction in 'mdlActionTransaction.pas' {frmActTrans},
+  mdlGenerationSQL in 'mdlGenerationSQL.pas' {frmGenerationSQL},
+  mdlErreurs in 'mdlErreurs.pas' {frmErreurs},
+  mdlModule in 'mdlModule.pas' {frModule: TFrame},
+  mdlConnexionServeur in 'mdlConnexionServeur.pas' {frmConnexionServeur};
+
+end.

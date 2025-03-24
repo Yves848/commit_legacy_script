@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="documentation.xsl" type="text/xsl"?>
+<documentation>
+  <description nom="Nextpharm" os="Windows" type="sql"/>
+  <systemes>
+    <systeme>
+      <designation>Serveur HyperFile</designation>     
+			<recuperations>
+				<recuperation description="Copie physique des fichiers de base de données">
+					<etape value="Depuis Commit 4.3, il est obligatoire d'utiliser les drivers OLEDB Hyperfile (lien en bas) "/>
+					<etape value ="Ils serviront pour les tests en agence et aussi le jour de l'installation"/>
+					<etape value ="Il suffit de télécharger et d'installer l'executable"/>
+				</recuperation>
+			</recuperations>
+        <fichiers>
+          <fichier nom="*.*" repertoire="D:\Serveur HyperFileSQL\BDD\Next\" description="Repertoire BDD Nextpharm sur le serveur hyperfile, prendre les tous les fichiers .NDX, .MMO et .FIC (si possible), pas besoin de prendre les répertoires"/>
+        </fichiers>
+    </systeme>
+  </systemes>
+  <perimetres>
+    <donnee designation="Profils de remises"/>    
+    <donnee designation="Praticiens"/>
+    <donnee designation="Patients"/>
+    <donnee designation="Clients"/>
+    <donnee designation="Comptes ristournes"/>
+    <donnee designation="Cartes ristournes"/>
+    <donnee designation="Transactions ristournes"/>
+    <donnee designation="Attestations produits"/>
+    <donnee designation="Zones geographiques"/>
+    <donnee designation="Produits"/>
+    <donnee designation="Stocks"/>
+    <donnee designation="Dates de péremption produits"/>
+    <donnee designation="Tarifs"/>
+    <donnee designation="Fournisseurs directs"/>
+    <donnee designation="Repartiteurs"/>		
+    <donnee designation="Codes barres"/>
+    <donnee designation="Avances produits"/>
+    <donnee designation="Delivrances differees"/>
+    <donnee designation="Credits"/>
+	<donnee designation="Attestations manquantes"/>
+	<donnee designation="Historiques de delivrances"/>
+    <donnee designation="Historiques de delivrances Magistrale"/>
+    <donnee designation="Historiques ventes"/>
+  </perimetres>
+  <liens>
+    <lien titre="Drivers OLEDB Hyperfile sur le site PC Soft ( OLEDB25PACK064f.exe aussi sur le ftp de commit dans outils ) ">
+      <url> https://package.windev.com/pack/wx25/wx25_64f/fr/commun/OLEDB25PACK064f.exe</url>
+    </lien>
+  </liens>
+</documentation>

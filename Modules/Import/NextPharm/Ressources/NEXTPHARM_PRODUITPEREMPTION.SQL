@@ -1,0 +1,1 @@
+﻿select cnk, max(trim(cast(datedepéremption as varchar(10)))) from DatePeremptionSpe where datedepéremption <>'' group by cnk

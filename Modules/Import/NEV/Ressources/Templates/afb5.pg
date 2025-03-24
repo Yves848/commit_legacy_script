@@ -1,0 +1,129 @@
+CREATE OR REPLACE FUNCTION FCTCREATEafb5(CSVFILE text) RETURNS integer
+AS $$
+DECLARE afb5exists BOOLEAN;
+BEGIN
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_schema = 'public'
+               AND table_name = 'afb5') THEN
+        DROP TABLE public.afb5;
+    END IF;
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_name = 'temp_afb5') THEN
+        DROP TABLE temp_afb5;
+    END IF;
+        
+        CREATE TABLE public.afb5
+            (
+            labnolabo integer,
+            labindex integer,
+            labduplicle integer,
+            labtype text,
+            labnom text,
+            labrestrict text,
+            labtrans text,
+            labpourcent text,
+            labarrondi text,
+            labvalminimum text,
+            labvalmaximum text,
+            labqteminimum text,
+            labqtemaximum text,
+            labjjarrete text,
+            labrto text,
+            lablivraison text,
+            labpaiement text,
+            labccomrep text,
+            labcomment text,
+            labrepresentant text,
+            labtelrepres text,
+            labdercde text,
+            labremlig text,
+            labremglb text,
+            labqteseuil text,
+            labvalseuil text,
+            labpouseuil text,
+            labglqteseuil text,
+            labglvalseuil text,
+            labglpouseuil text,
+            labcatalogue text,
+            labeuro text,
+            labdathis text,
+            labca text,
+            labnbcomm text,
+            labboites text,
+            labremise text,
+            labdebaa text,
+            labdebmm text,
+            labfinaa text,
+            labfinmm text,
+            labcamarche text,
+            labboitesmarche text,
+            labminicafranco text,
+            labminicabloc text,
+            labdelaiminicde text,
+            labdelaicdebloc text,
+            labcdegroupe text,
+            labnumgroupe text,
+            labnummembre text,
+            labmajcatalogue text,
+            labvalidgrp text,
+            labcreersipasfb1 text,
+            labcreersipasref text,
+            labcreer_gamcat text,
+            labcreer_gamdef text,
+            labsuppdansgamme text,
+            labsuppgammevide text,
+            labmajfb1prixcat text,
+            labmajprix_gamme text,
+            labmaj_minco text,
+            labmaj_gabarit text,
+            labarrondigabari text,
+            labmaj_code_ean text,
+            labmaj_nom_prod text,
+            labmaj_pqpv text,
+            labmaj_qtecarton text,
+            labmaj_pdernmaj text,
+            labmaj_taux_tva text,
+            labmaj_remisecde text,
+            labmaj_remisegam text,
+            labmaj_remiseprod text,
+            labmaj_ugprod text,
+            labcodetvadefaut text,
+            labtype_reappro text,
+            labtri_cde text,
+            labversion text,
+            labalertepdtcde text,
+            labappliremise text,
+            labblvparrepcde text,
+            lablieu_privi text,
+            lab_fourn_manq text,
+            lab_fourn_robot text,
+            lab_fourn_promis text,
+            lab_circuitreap text,
+            lab_type_franco text,
+            labcross_docking text,
+            updated_at text,
+            CONSTRAINT afb5_pkey PRIMARY KEY (labnolabo, labindex)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+    TABLESPACE pg_default;
+
+
+    ##TEMP_TABLE_CREATION##
+
+    ##TEMP_COPY##
+
+    INSERT INTO public.afb5 (
+    ##INSERT_COLUMNS##
+    )
+    SELECT
+        ##SELECT_COLUMNS##
+    FROM ##TEMP_TABLENAME## temp;
+
+    RETURN 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

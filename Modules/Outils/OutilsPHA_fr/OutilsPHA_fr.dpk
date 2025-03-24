@@ -1,0 +1,62 @@
+package OutilsPHA_fr;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Outils de vérification et de statistiques de la base locale'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  PIStandard,
+  PIClasses,
+  PIDB,
+  PIExtended,
+  Jcl,
+  JclVcl,
+  JvCore,
+  JvXPCtrls,
+  vclactnband,
+  JvDB,
+  JvWizards,
+  UIBD14Win32R,
+  PowerPDFDR,
+  FB_IB_DataSets,
+  Projet,
+  xmlrtl,
+  JvGlobus;
+
+contains
+  mdlPurges in 'mdlPurges.pas' {frmPurges},
+  mdlRepartiteurDefaut in 'mdlRepartiteurDefaut.pas',
+  mdlOutilsPHA_fr in 'mdlOutilsPHA_fr.pas' {dmOutilsPHA_fr: TFrame},
+  mdlChoixDate in 'mdlChoixDate.pas' {frmChoixDate},
+  mdlIncoherence in 'mdlIncoherence.pas' {frmIncoherence},
+  mdlAuditHomeo in 'mdlAuditHomeo.pas' {frmAuditHomeo},
+  mdlTeletransmission in 'mdlTeletransmission.pas',
+  mdlSantePHARMA in 'mdlSantePHARMA.pas' {frmSantePHARMA},
+  mdlChoixID in 'mdlChoixID.pas' {frChoixID: TFrame},
+  mdlForcageDestinataire in 'mdlForcageDestinataire.pas' {frmForcageDestinataire},
+  mdlInventaire in 'mdlInventaire.pas' {frmInventaire},
+  mdlOutilsPHAPHA_fr in 'mdlOutilsPHAPHA_fr.pas' {dmOutilsPHAPHA_fr: TDataModule};
+
+end.

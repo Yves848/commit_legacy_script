@@ -1,0 +1,115 @@
+CREATE OR REPLACE FUNCTION FCTCREATEaf50(CSVFILE text) RETURNS integer
+AS $$
+BEGIN
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_schema = 'public'
+               AND table_name = 'af50') THEN
+        DROP TABLE public.af50;
+    END IF;
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_name = 'temp_af50') THEN
+        DROP TABLE temp_af50;
+    END IF;
+       
+        CREATE TABLE public.af50
+            (
+                otype text,
+                ocode text,
+                oindex text,
+                osavtype text,
+                osavcode text,
+                otypeorg text,
+                oregime text,
+                onational text,
+                osuporg text,
+                omutzone1 text,
+                omutzone2 text,
+                omutzone3 text,
+                otrans text,
+                otypetrans text,
+                onom text,
+                odatecreation text,
+                oservice text,
+                odatefacture text,
+                ochronofact text,
+                odatereglement text,
+                ochronoreglement text,
+                ocompte text,
+                oreleve text,
+                odatereleve text,
+                onoreleve text,
+                onbexemplaires text,
+                operiode text,
+                omois text,
+                oseuil text,
+                onofacture text,
+                ochronobordereau text,
+                oinsertfrontale text,
+                onumligne text,
+                osstotpage text,
+                ocodemtremise text,
+                omtremise text,
+                ocodemttva text,
+                omttva text,
+                oflgedtips text,
+                ocodemtips text,
+                omttips text,
+                oedition text,
+                ocodemaj text,
+                otelordre text,
+                ocontrat text,
+                otypemutuelle text,
+                ocattrans text,
+                ocatreleve text,
+                onumlot text,
+                odepartement text,
+                ooriginetele text,
+                ocpforce text,
+                oflgctrcp text,
+                octrladh text,
+                oedittrans text,
+                octrtstddef text,
+                ocmu text,
+                ofraisdossier text,
+                omtalpfrdoss text,
+                oreclamationro text,
+                oacs text,
+                otopr text,
+                ocirconscription text,
+                oeuro text,
+                orcseul text,
+                odeginterdit text,
+                ocodeaiguill text,
+                oroutage text,
+                ohote text,
+                odomaine text,
+                oame text,
+                onoamc text,
+                ogravure text,
+                odatereference text,
+                updated_at text,
+                CONSTRAINT af50_pkey PRIMARY KEY (otype, ocode, oindex)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+    TABLESPACE pg_default;
+
+
+    ##TEMP_TABLE_CREATION##
+
+    ##TEMP_COPY##
+
+    INSERT INTO public.af50 (
+    ##INSERT_COLUMNS##
+    )
+    SELECT
+        ##SELECT_COLUMNS##
+    FROM ##TEMP_TABLENAME## temp;
+
+    RETURN 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

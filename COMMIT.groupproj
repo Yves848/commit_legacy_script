@@ -1,0 +1,516 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{84304CFA-7986-4971-B807-6330DE13CC41}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="Modules\Commit\Projet.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Commit\rdm_commit.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Commit\ModuleImport.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Commit\MSQL\MSQL.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Commit\ModuleTransfert\ModuleTransfert.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Import\Actipharm\actipharm.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Import\caducielv6\CaducielV6.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Import\FarmadTWin\FarmadTWin.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Import\Greenock\Greenock.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Import\importlgpi\importlgpi.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Import\ImportUltimate\ImportUltimate.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Import\Infosoft\Infosoft.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Import\Ipharma\IPharma.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Import\NextPharm\NextPharm.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Import\Officinall\officinall.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Import\Opus\Opus.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Import\pharmalandv7\pharmalandv7.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Import\PharmaVitale\PharmaVitale.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Import\Pharmony\Pharmony.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Import\SmartRX\SmartRX.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Import\Vindilis\Vindilis.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Import\visiopharm\VisioPharm.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Import\Winpharma\Winpharma.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Transfert\transfertlgpi\transfertlgpi.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Transfert\transfertultimate\transfertUltimate.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Outils\Requeteur\Requeteur.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Outils\OutilsERP_be\OutilsERP_be.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Outils\OutilsERP_fr\OutilsERP_fr.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Outils\OutilsPHA_fr\OutilsPHA_fr.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Outils\Visualisation_be\Visualisation_be.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Outils\Visualisation_fr\Visualisation_fr.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="UDFs\ibstr\ibstr.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="UDFs\ibfichier\ibfichier.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="UDFs\ibpha\ibpha.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="UDFs\ibxml\ibxml.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Outils\sauver_bd_sqls\sauver_bd_sqls.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Outils\install_odbc\install_odbc.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Commit\COMMIT.dproj">
+				<Dependencies>Modules\Commit\rdm_commit.dproj</Dependencies>
+			</Projects>
+			<Projects Include="Modules\Import\NEV\NEV.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Commit\ModuleTransfertYzy\ModuleTransfertyzy.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Modules\Transfert\transfertyzy\transfertyzy.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="Projet">
+			<MSBuild Projects="Modules\Commit\Projet.dproj"/>
+		</Target>
+		<Target Name="Projet:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Commit\Projet.dproj"/>
+		</Target>
+		<Target Name="Projet:Make">
+			<MSBuild Targets="Make" Projects="Modules\Commit\Projet.dproj"/>
+		</Target>
+		<Target Name="rdm_commit">
+			<MSBuild Projects="Modules\Commit\rdm_commit.dproj"/>
+		</Target>
+		<Target Name="rdm_commit:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Commit\rdm_commit.dproj"/>
+		</Target>
+		<Target Name="rdm_commit:Make">
+			<MSBuild Targets="Make" Projects="Modules\Commit\rdm_commit.dproj"/>
+		</Target>
+		<Target Name="ModuleImport">
+			<MSBuild Projects="Modules\Commit\ModuleImport.dproj"/>
+		</Target>
+		<Target Name="ModuleImport:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Commit\ModuleImport.dproj"/>
+		</Target>
+		<Target Name="ModuleImport:Make">
+			<MSBuild Targets="Make" Projects="Modules\Commit\ModuleImport.dproj"/>
+		</Target>
+		<Target Name="MSQL">
+			<MSBuild Projects="Modules\Commit\MSQL\MSQL.dproj"/>
+		</Target>
+		<Target Name="MSQL:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Commit\MSQL\MSQL.dproj"/>
+		</Target>
+		<Target Name="MSQL:Make">
+			<MSBuild Targets="Make" Projects="Modules\Commit\MSQL\MSQL.dproj"/>
+		</Target>
+		<Target Name="ModuleTransfert">
+			<MSBuild Projects="Modules\Commit\ModuleTransfert\ModuleTransfert.dproj"/>
+		</Target>
+		<Target Name="ModuleTransfert:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Commit\ModuleTransfert\ModuleTransfert.dproj"/>
+		</Target>
+		<Target Name="ModuleTransfert:Make">
+			<MSBuild Targets="Make" Projects="Modules\Commit\ModuleTransfert\ModuleTransfert.dproj"/>
+		</Target>
+		<Target Name="actipharm">
+			<MSBuild Projects="Modules\Import\Actipharm\actipharm.dproj"/>
+		</Target>
+		<Target Name="actipharm:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Import\Actipharm\actipharm.dproj"/>
+		</Target>
+		<Target Name="actipharm:Make">
+			<MSBuild Targets="Make" Projects="Modules\Import\Actipharm\actipharm.dproj"/>
+		</Target>
+		<Target Name="CaducielV6">
+			<MSBuild Projects="Modules\Import\caducielv6\CaducielV6.dproj"/>
+		</Target>
+		<Target Name="CaducielV6:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Import\caducielv6\CaducielV6.dproj"/>
+		</Target>
+		<Target Name="CaducielV6:Make">
+			<MSBuild Targets="Make" Projects="Modules\Import\caducielv6\CaducielV6.dproj"/>
+		</Target>
+		<Target Name="FarmadTWin">
+			<MSBuild Projects="Modules\Import\FarmadTWin\FarmadTWin.dproj"/>
+		</Target>
+		<Target Name="FarmadTWin:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Import\FarmadTWin\FarmadTWin.dproj"/>
+		</Target>
+		<Target Name="FarmadTWin:Make">
+			<MSBuild Targets="Make" Projects="Modules\Import\FarmadTWin\FarmadTWin.dproj"/>
+		</Target>
+		<Target Name="Greenock">
+			<MSBuild Projects="Modules\Import\Greenock\Greenock.dproj"/>
+		</Target>
+		<Target Name="Greenock:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Import\Greenock\Greenock.dproj"/>
+		</Target>
+		<Target Name="Greenock:Make">
+			<MSBuild Targets="Make" Projects="Modules\Import\Greenock\Greenock.dproj"/>
+		</Target>
+		<Target Name="importlgpi">
+			<MSBuild Projects="Modules\Import\importlgpi\importlgpi.dproj"/>
+		</Target>
+		<Target Name="importlgpi:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Import\importlgpi\importlgpi.dproj"/>
+		</Target>
+		<Target Name="importlgpi:Make">
+			<MSBuild Targets="Make" Projects="Modules\Import\importlgpi\importlgpi.dproj"/>
+		</Target>
+		<Target Name="ImportUltimate">
+			<MSBuild Projects="Modules\Import\ImportUltimate\ImportUltimate.dproj"/>
+		</Target>
+		<Target Name="ImportUltimate:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Import\ImportUltimate\ImportUltimate.dproj"/>
+		</Target>
+		<Target Name="ImportUltimate:Make">
+			<MSBuild Targets="Make" Projects="Modules\Import\ImportUltimate\ImportUltimate.dproj"/>
+		</Target>
+		<Target Name="Infosoft">
+			<MSBuild Projects="Modules\Import\Infosoft\Infosoft.dproj"/>
+		</Target>
+		<Target Name="Infosoft:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Import\Infosoft\Infosoft.dproj"/>
+		</Target>
+		<Target Name="Infosoft:Make">
+			<MSBuild Targets="Make" Projects="Modules\Import\Infosoft\Infosoft.dproj"/>
+		</Target>
+		<Target Name="IPharma">
+			<MSBuild Projects="Modules\Import\Ipharma\IPharma.dproj"/>
+		</Target>
+		<Target Name="IPharma:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Import\Ipharma\IPharma.dproj"/>
+		</Target>
+		<Target Name="IPharma:Make">
+			<MSBuild Targets="Make" Projects="Modules\Import\Ipharma\IPharma.dproj"/>
+		</Target>
+		<Target Name="NextPharm">
+			<MSBuild Projects="Modules\Import\NextPharm\NextPharm.dproj"/>
+		</Target>
+		<Target Name="NextPharm:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Import\NextPharm\NextPharm.dproj"/>
+		</Target>
+		<Target Name="NextPharm:Make">
+			<MSBuild Targets="Make" Projects="Modules\Import\NextPharm\NextPharm.dproj"/>
+		</Target>
+		<Target Name="officinall">
+			<MSBuild Projects="Modules\Import\Officinall\officinall.dproj"/>
+		</Target>
+		<Target Name="officinall:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Import\Officinall\officinall.dproj"/>
+		</Target>
+		<Target Name="officinall:Make">
+			<MSBuild Targets="Make" Projects="Modules\Import\Officinall\officinall.dproj"/>
+		</Target>
+		<Target Name="Opus">
+			<MSBuild Projects="Modules\Import\Opus\Opus.dproj"/>
+		</Target>
+		<Target Name="Opus:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Import\Opus\Opus.dproj"/>
+		</Target>
+		<Target Name="Opus:Make">
+			<MSBuild Targets="Make" Projects="Modules\Import\Opus\Opus.dproj"/>
+		</Target>
+		<Target Name="pharmalandv7">
+			<MSBuild Projects="Modules\Import\pharmalandv7\pharmalandv7.dproj"/>
+		</Target>
+		<Target Name="pharmalandv7:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Import\pharmalandv7\pharmalandv7.dproj"/>
+		</Target>
+		<Target Name="pharmalandv7:Make">
+			<MSBuild Targets="Make" Projects="Modules\Import\pharmalandv7\pharmalandv7.dproj"/>
+		</Target>
+		<Target Name="PharmaVitale">
+			<MSBuild Projects="Modules\Import\PharmaVitale\PharmaVitale.dproj"/>
+		</Target>
+		<Target Name="PharmaVitale:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Import\PharmaVitale\PharmaVitale.dproj"/>
+		</Target>
+		<Target Name="PharmaVitale:Make">
+			<MSBuild Targets="Make" Projects="Modules\Import\PharmaVitale\PharmaVitale.dproj"/>
+		</Target>
+		<Target Name="Pharmony">
+			<MSBuild Projects="Modules\Import\Pharmony\Pharmony.dproj"/>
+		</Target>
+		<Target Name="Pharmony:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Import\Pharmony\Pharmony.dproj"/>
+		</Target>
+		<Target Name="Pharmony:Make">
+			<MSBuild Targets="Make" Projects="Modules\Import\Pharmony\Pharmony.dproj"/>
+		</Target>
+		<Target Name="SmartRX">
+			<MSBuild Projects="Modules\Import\SmartRX\SmartRX.dproj"/>
+		</Target>
+		<Target Name="SmartRX:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Import\SmartRX\SmartRX.dproj"/>
+		</Target>
+		<Target Name="SmartRX:Make">
+			<MSBuild Targets="Make" Projects="Modules\Import\SmartRX\SmartRX.dproj"/>
+		</Target>
+		<Target Name="Vindilis">
+			<MSBuild Projects="Modules\Import\Vindilis\Vindilis.dproj"/>
+		</Target>
+		<Target Name="Vindilis:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Import\Vindilis\Vindilis.dproj"/>
+		</Target>
+		<Target Name="Vindilis:Make">
+			<MSBuild Targets="Make" Projects="Modules\Import\Vindilis\Vindilis.dproj"/>
+		</Target>
+		<Target Name="VisioPharm">
+			<MSBuild Projects="Modules\Import\visiopharm\VisioPharm.dproj"/>
+		</Target>
+		<Target Name="VisioPharm:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Import\visiopharm\VisioPharm.dproj"/>
+		</Target>
+		<Target Name="VisioPharm:Make">
+			<MSBuild Targets="Make" Projects="Modules\Import\visiopharm\VisioPharm.dproj"/>
+		</Target>
+		<Target Name="Winpharma">
+			<MSBuild Projects="Modules\Import\Winpharma\Winpharma.dproj"/>
+		</Target>
+		<Target Name="Winpharma:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Import\Winpharma\Winpharma.dproj"/>
+		</Target>
+		<Target Name="Winpharma:Make">
+			<MSBuild Targets="Make" Projects="Modules\Import\Winpharma\Winpharma.dproj"/>
+		</Target>
+		<Target Name="transfertlgpi">
+			<MSBuild Projects="Modules\Transfert\transfertlgpi\transfertlgpi.dproj"/>
+		</Target>
+		<Target Name="transfertlgpi:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Transfert\transfertlgpi\transfertlgpi.dproj"/>
+		</Target>
+		<Target Name="transfertlgpi:Make">
+			<MSBuild Targets="Make" Projects="Modules\Transfert\transfertlgpi\transfertlgpi.dproj"/>
+		</Target>
+		<Target Name="transfertUltimate">
+			<MSBuild Projects="Modules\Transfert\transfertultimate\transfertUltimate.dproj"/>
+		</Target>
+		<Target Name="transfertUltimate:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Transfert\transfertultimate\transfertUltimate.dproj"/>
+		</Target>
+		<Target Name="transfertUltimate:Make">
+			<MSBuild Targets="Make" Projects="Modules\Transfert\transfertultimate\transfertUltimate.dproj"/>
+		</Target>
+		<Target Name="Requeteur">
+			<MSBuild Projects="Modules\Outils\Requeteur\Requeteur.dproj"/>
+		</Target>
+		<Target Name="Requeteur:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Outils\Requeteur\Requeteur.dproj"/>
+		</Target>
+		<Target Name="Requeteur:Make">
+			<MSBuild Targets="Make" Projects="Modules\Outils\Requeteur\Requeteur.dproj"/>
+		</Target>
+		<Target Name="OutilsERP_be">
+			<MSBuild Projects="Modules\Outils\OutilsERP_be\OutilsERP_be.dproj"/>
+		</Target>
+		<Target Name="OutilsERP_be:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Outils\OutilsERP_be\OutilsERP_be.dproj"/>
+		</Target>
+		<Target Name="OutilsERP_be:Make">
+			<MSBuild Targets="Make" Projects="Modules\Outils\OutilsERP_be\OutilsERP_be.dproj"/>
+		</Target>
+		<Target Name="OutilsERP_fr">
+			<MSBuild Projects="Modules\Outils\OutilsERP_fr\OutilsERP_fr.dproj"/>
+		</Target>
+		<Target Name="OutilsERP_fr:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Outils\OutilsERP_fr\OutilsERP_fr.dproj"/>
+		</Target>
+		<Target Name="OutilsERP_fr:Make">
+			<MSBuild Targets="Make" Projects="Modules\Outils\OutilsERP_fr\OutilsERP_fr.dproj"/>
+		</Target>
+		<Target Name="OutilsPHA_fr">
+			<MSBuild Projects="Modules\Outils\OutilsPHA_fr\OutilsPHA_fr.dproj"/>
+		</Target>
+		<Target Name="OutilsPHA_fr:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Outils\OutilsPHA_fr\OutilsPHA_fr.dproj"/>
+		</Target>
+		<Target Name="OutilsPHA_fr:Make">
+			<MSBuild Targets="Make" Projects="Modules\Outils\OutilsPHA_fr\OutilsPHA_fr.dproj"/>
+		</Target>
+		<Target Name="Visualisation_be">
+			<MSBuild Projects="Modules\Outils\Visualisation_be\Visualisation_be.dproj"/>
+		</Target>
+		<Target Name="Visualisation_be:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Outils\Visualisation_be\Visualisation_be.dproj"/>
+		</Target>
+		<Target Name="Visualisation_be:Make">
+			<MSBuild Targets="Make" Projects="Modules\Outils\Visualisation_be\Visualisation_be.dproj"/>
+		</Target>
+		<Target Name="Visualisation_fr">
+			<MSBuild Projects="Modules\Outils\Visualisation_fr\Visualisation_fr.dproj"/>
+		</Target>
+		<Target Name="Visualisation_fr:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Outils\Visualisation_fr\Visualisation_fr.dproj"/>
+		</Target>
+		<Target Name="Visualisation_fr:Make">
+			<MSBuild Targets="Make" Projects="Modules\Outils\Visualisation_fr\Visualisation_fr.dproj"/>
+		</Target>
+		<Target Name="ibstr">
+			<MSBuild Projects="UDFs\ibstr\ibstr.dproj"/>
+		</Target>
+		<Target Name="ibstr:Clean">
+			<MSBuild Targets="Clean" Projects="UDFs\ibstr\ibstr.dproj"/>
+		</Target>
+		<Target Name="ibstr:Make">
+			<MSBuild Targets="Make" Projects="UDFs\ibstr\ibstr.dproj"/>
+		</Target>
+		<Target Name="ibfichier">
+			<MSBuild Projects="UDFs\ibfichier\ibfichier.dproj"/>
+		</Target>
+		<Target Name="ibfichier:Clean">
+			<MSBuild Targets="Clean" Projects="UDFs\ibfichier\ibfichier.dproj"/>
+		</Target>
+		<Target Name="ibfichier:Make">
+			<MSBuild Targets="Make" Projects="UDFs\ibfichier\ibfichier.dproj"/>
+		</Target>
+		<Target Name="ibpha">
+			<MSBuild Projects="UDFs\ibpha\ibpha.dproj"/>
+		</Target>
+		<Target Name="ibpha:Clean">
+			<MSBuild Targets="Clean" Projects="UDFs\ibpha\ibpha.dproj"/>
+		</Target>
+		<Target Name="ibpha:Make">
+			<MSBuild Targets="Make" Projects="UDFs\ibpha\ibpha.dproj"/>
+		</Target>
+		<Target Name="ibxml">
+			<MSBuild Projects="UDFs\ibxml\ibxml.dproj"/>
+		</Target>
+		<Target Name="ibxml:Clean">
+			<MSBuild Targets="Clean" Projects="UDFs\ibxml\ibxml.dproj"/>
+		</Target>
+		<Target Name="ibxml:Make">
+			<MSBuild Targets="Make" Projects="UDFs\ibxml\ibxml.dproj"/>
+		</Target>
+		<Target Name="sauver_bd_sqls">
+			<MSBuild Projects="Outils\sauver_bd_sqls\sauver_bd_sqls.dproj"/>
+		</Target>
+		<Target Name="sauver_bd_sqls:Clean">
+			<MSBuild Targets="Clean" Projects="Outils\sauver_bd_sqls\sauver_bd_sqls.dproj"/>
+		</Target>
+		<Target Name="sauver_bd_sqls:Make">
+			<MSBuild Targets="Make" Projects="Outils\sauver_bd_sqls\sauver_bd_sqls.dproj"/>
+		</Target>
+		<Target Name="install_odbc">
+			<MSBuild Projects="Outils\install_odbc\install_odbc.dproj"/>
+		</Target>
+		<Target Name="install_odbc:Clean">
+			<MSBuild Targets="Clean" Projects="Outils\install_odbc\install_odbc.dproj"/>
+		</Target>
+		<Target Name="install_odbc:Make">
+			<MSBuild Targets="Make" Projects="Outils\install_odbc\install_odbc.dproj"/>
+		</Target>
+		<Target DependsOnTargets="rdm_commit" Name="COMMIT">
+			<MSBuild Projects="Modules\Commit\COMMIT.dproj"/>
+		</Target>
+		<Target DependsOnTargets="rdm_commit:Clean" Name="COMMIT:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Commit\COMMIT.dproj"/>
+		</Target>
+		<Target DependsOnTargets="rdm_commit:Make" Name="COMMIT:Make">
+			<MSBuild Targets="Make" Projects="Modules\Commit\COMMIT.dproj"/>
+		</Target>
+		<Target Name="NEV">
+			<MSBuild Projects="Modules\Import\NEV\NEV.dproj"/>
+		</Target>
+		<Target Name="NEV:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Import\NEV\NEV.dproj"/>
+		</Target>
+		<Target Name="NEV:Make">
+			<MSBuild Targets="Make" Projects="Modules\Import\NEV\NEV.dproj"/>
+		</Target>
+		<Target Name="ModuleTransfertyzy">
+			<MSBuild Projects="Modules\Commit\ModuleTransfertYzy\ModuleTransfertyzy.dproj"/>
+		</Target>
+		<Target Name="ModuleTransfertyzy:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Commit\ModuleTransfertYzy\ModuleTransfertyzy.dproj"/>
+		</Target>
+		<Target Name="ModuleTransfertyzy:Make">
+			<MSBuild Targets="Make" Projects="Modules\Commit\ModuleTransfertYzy\ModuleTransfertyzy.dproj"/>
+		</Target>
+		<Target Name="transfertyzy">
+			<MSBuild Projects="Modules\Transfert\transfertyzy\transfertyzy.dproj"/>
+		</Target>
+		<Target Name="transfertyzy:Clean">
+			<MSBuild Targets="Clean" Projects="Modules\Transfert\transfertyzy\transfertyzy.dproj"/>
+		</Target>
+		<Target Name="transfertyzy:Make">
+			<MSBuild Targets="Make" Projects="Modules\Transfert\transfertyzy\transfertyzy.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="Projet;rdm_commit;ModuleImport;MSQL;ModuleTransfert;actipharm;CaducielV6;FarmadTWin;Greenock;importlgpi;ImportUltimate;Infosoft;IPharma;NextPharm;officinall;Opus;pharmalandv7;PharmaVitale;Pharmony;SmartRX;Vindilis;VisioPharm;Winpharma;transfertlgpi;transfertUltimate;Requeteur;OutilsERP_be;OutilsERP_fr;OutilsPHA_fr;Visualisation_be;Visualisation_fr;ibstr;ibfichier;ibpha;ibxml;sauver_bd_sqls;install_odbc;COMMIT;NEV;ModuleTransfertyzy;transfertyzy"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="Projet:Clean;rdm_commit:Clean;ModuleImport:Clean;MSQL:Clean;ModuleTransfert:Clean;actipharm:Clean;CaducielV6:Clean;FarmadTWin:Clean;Greenock:Clean;importlgpi:Clean;ImportUltimate:Clean;Infosoft:Clean;IPharma:Clean;NextPharm:Clean;officinall:Clean;Opus:Clean;pharmalandv7:Clean;PharmaVitale:Clean;Pharmony:Clean;SmartRX:Clean;Vindilis:Clean;VisioPharm:Clean;Winpharma:Clean;transfertlgpi:Clean;transfertUltimate:Clean;Requeteur:Clean;OutilsERP_be:Clean;OutilsERP_fr:Clean;OutilsPHA_fr:Clean;Visualisation_be:Clean;Visualisation_fr:Clean;ibstr:Clean;ibfichier:Clean;ibpha:Clean;ibxml:Clean;sauver_bd_sqls:Clean;install_odbc:Clean;COMMIT:Clean;NEV:Clean;ModuleTransfertyzy:Clean;transfertyzy:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="Projet:Make;rdm_commit:Make;ModuleImport:Make;MSQL:Make;ModuleTransfert:Make;actipharm:Make;CaducielV6:Make;FarmadTWin:Make;Greenock:Make;importlgpi:Make;ImportUltimate:Make;Infosoft:Make;IPharma:Make;NextPharm:Make;officinall:Make;Opus:Make;pharmalandv7:Make;PharmaVitale:Make;Pharmony:Make;SmartRX:Make;Vindilis:Make;VisioPharm:Make;Winpharma:Make;transfertlgpi:Make;transfertUltimate:Make;Requeteur:Make;OutilsERP_be:Make;OutilsERP_fr:Make;OutilsPHA_fr:Make;Visualisation_be:Make;Visualisation_fr:Make;ibstr:Make;ibfichier:Make;ibpha:Make;ibxml:Make;sauver_bd_sqls:Make;install_odbc:Make;COMMIT:Make;NEV:Make;ModuleTransfertyzy:Make;transfertyzy:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>

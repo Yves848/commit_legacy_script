@@ -1,0 +1,16 @@
+select 
+  index_medecin,
+  nom,
+  prenom,
+  identifiant+cleid,
+  rpps+clef_rpps,
+  index_specialite,
+  adresse,
+  adresse2,
+  codepostal,
+  ville,
+  telephone,
+  fax,
+  commentaire  
+from 
+  dbo.medecins

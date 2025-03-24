@@ -1,0 +1,43 @@
+CREATE OR REPLACE FUNCTION FCTCREATEaf09(CSVFILE text) RETURNS integer
+AS $$
+DECLARE af09exists BOOLEAN;
+BEGIN
+        SELECT EXISTS into af09exists (
+           SELECT FROM information_schema.tables
+           WHERE  table_schema = 'public'
+           AND    table_name   = 'af09'
+        );
+
+        if af09exists then
+           drop table af09;
+        end if;
+        
+        CREATE TABLE public.af09
+            (
+                catype integer,
+                cacode integer,
+                caindex integer,
+                cacomplement text[],
+                updated_at text,
+                CONSTRAINT af09_pkey PRIMARY KEY (catype, cacode, caindex)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+            TABLESPACE pg_default;
+
+        execute 'COPY af09(
+            catype,
+cacode,
+caindex,
+cacomplement,
+updated_at
+        )
+            from ''' || $1 || '''
+            DELIMITER '';''
+            CSV HEADER';
+
+            return 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

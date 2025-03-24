@@ -1,0 +1,72 @@
+CREATE OR REPLACE FUNCTION FCTCREATEaf23(CSVFILE text) RETURNS integer
+AS $$
+BEGIN
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_schema = 'public'
+               AND table_name = 'af23') THEN
+        DROP TABLE public.af23;
+    END IF;
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_name = 'temp_af23') THEN
+        DROP TABLE temp_af23;
+    END IF;
+
+        CREATE TABLE public.af23
+            (
+       vnovendeur integer NOT NULL,
+    vindex smallint,
+    vnom text,
+    vinitiale text,
+    vcaisse_pharma smallint,
+    vcaisse_loc smallint,
+    vcumuls double precision[],
+    vnbfactures smallint,
+    vnbmois smallint,
+    veuro text,
+    vmotpasse text,
+    vaccesms text,
+    vprocessus text,
+    vsupprime text,
+    vlad_uid text,
+    vlad_token text,
+    vlad_password text,
+    vlad_salt text,
+    vlad_ident_date text,
+    vlad_ident_heure text,
+    updated_at timestamp without time zone DEFAULT now(),
+    vrpps_nom text,
+    vrpps_prenom text,
+    vrpps_rpps text,
+    vrpps_finess text,
+    vrpps_codespecialite smallint,
+    vrpps_raison_sociale text,
+    vrpps_secteur_activite text,
+    vrpps_savoirfaire text,
+    vins_consultation text DEFAULT 'O'::character varying,
+    vins_teleservices text DEFAULT 'O'::character varying,
+    vins_superutilisateur text DEFAULT 'N'::character varying,
+                CONSTRAINT af23_pkey PRIMARY KEY (vnovendeur)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+    TABLESPACE pg_default;
+
+
+    ##TEMP_TABLE_CREATION##
+
+    ##TEMP_COPY##
+
+    INSERT INTO public.af23 (
+    ##INSERT_COLUMNS##
+    )
+    SELECT
+        ##SELECT_COLUMNS##
+    FROM ##TEMP_TABLENAME## temp;
+
+    RETURN 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

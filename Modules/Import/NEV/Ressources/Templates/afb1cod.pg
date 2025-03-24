@@ -1,0 +1,46 @@
+CREATE OR REPLACE FUNCTION FCTCREATEafb1cod(CSVFILE text) RETURNS integer
+AS $$
+BEGIN
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_schema = 'public'
+               AND table_name = 'afb1cod') THEN
+        DROP TABLE public.afb1cod;
+    END IF;
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_name = 'temp_afb1cod') THEN
+        DROP TABLE temp_afb1cod;
+    END IF;
+
+        CREATE TABLE public.afb1cod
+            (
+            b1cod_eancle text,
+            b1cod_mrq text,
+            b1cod_ean text,
+            b1cod_numint text,
+            b1cod_type integer,
+            updated_at text,
+            CONSTRAINT afb1cod_pkey PRIMARY KEY (b1cod_eancle)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+    TABLESPACE pg_default;
+
+
+    ##TEMP_TABLE_CREATION##
+
+    ##TEMP_COPY##
+
+    INSERT INTO public.afb1cod (
+    ##INSERT_COLUMNS##
+    )
+    SELECT
+        ##SELECT_COLUMNS##
+    FROM ##TEMP_TABLENAME## temp;
+
+    RETURN 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{A0AAAFD8-E1F2-4DA1-AD00-EC827F790D12}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="pDurnalImport.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="pYzyRest.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="pDurnalImport">
+        <MSBuild Projects="pDurnalImport.dproj"/>
+    </Target>
+    <Target Name="pDurnalImport:Clean">
+        <MSBuild Projects="pDurnalImport.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="pDurnalImport:Make">
+        <MSBuild Projects="pDurnalImport.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="pYzyRest">
+        <MSBuild Projects="pYzyRest.dproj"/>
+    </Target>
+    <Target Name="pYzyRest:Clean">
+        <MSBuild Projects="pYzyRest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="pYzyRest:Make">
+        <MSBuild Projects="pYzyRest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="pDurnalImport;pYzyRest"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="pDurnalImport:Clean;pYzyRest:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="pDurnalImport:Make;pYzyRest:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

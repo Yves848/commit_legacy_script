@@ -1,0 +1,2 @@
+inherited dmTransfertUltimatePHA: TdmTransfertUltimatePHA
+end

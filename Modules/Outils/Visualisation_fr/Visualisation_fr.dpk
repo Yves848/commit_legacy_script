@@ -1,0 +1,89 @@
+package Visualisation_fr;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Visualisation des données de la base locale'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  JvPageComps,
+  vcl,
+  rtl,
+  xmlrtl,
+  PIExtended,
+  vcldb,
+  vclimg,
+  tee,
+  teedb,
+  PIClasses,
+  vclx,
+  PIStandard,
+  JvWizards,
+  Jcl,
+  JvCore,
+  JclVcl,
+  JvDB,
+  JvControls,
+  JvSystem,
+  JvStdCtrls,
+  JvDlgs,
+  JvCustom,
+  FB_IB_DataSets,
+  vclactnband,
+  SynEdit_R2009,
+  UIBD14Win32R,
+  JvXPCtrls,
+  PIDB,
+  Projet,
+  ModuleImport,
+  dbrtl,
+  dsnap;
+
+contains
+  mdlAdresse_fr in 'mdlAdresse_fr.pas' {frAdresse: TFrame},
+  mdlFenetreVisualisation_fr in 'mdlFenetreVisualisation_fr.pas' {frmFenetreVisualisation},
+  mdlFrameVisualisation_fr in 'mdlFrameVisualisation_fr.pas' {frFrameVisualisation: TFrame},
+  mdlOrganismes_fr in 'mdlOrganismes_fr.pas' {frOrganismes: TFrame},
+  mdlPraticiens_fr in 'mdlPraticiens_fr.pas' {frPraticiens},
+  mdlFichiersOrig_fr in 'mdlFichiersOrig_fr.pas' {frmFichiersOrig},
+  mdlProduits_fr in 'mdlProduits_fr.pas' {frProduits: TFrame},
+  mdlFournisseurs_fr in 'mdlFournisseurs_fr.pas' {frFournisseurs: TFrame},
+  mdlStock_fr in 'mdlStock_fr.pas' {frStock: TFrame},
+  mdlCodifications_fr in 'mdlCodifications_fr.pas' {frCodifications: TFrame},
+  mdlHistoDelivrances_fr in 'mdlHistoDelivrances_fr.pas' {frHistoDelivrances: TFrame},
+  mdlCredits_fr in 'mdlCredits_fr.pas' {frCredit: TFrame},
+  mdlVignettesAvancees_fr in 'mdlVignettesAvancees_fr.pas' {frVignettesAvancees: TFrame},
+  mdlDetails_fr in 'mdlDetails_fr.pas' {frmDetails},
+  mdlProfilProduit_fr in 'mdlProfilProduit_fr.pas' {frProfilProduit: TFrame},
+  mdlHistoAchats_fr in 'mdlHistoAchats_fr.pas' {frHistoAchat: TFrame},
+  mdlProduitsDus_fr in 'mdlProduitsDus_fr.pas',
+  mdlFacturesAttentes_fr in 'mdlFacturesAttentes_fr.pas' {frFacturesAttentes: TFrame},
+  mdlCommandesEnCours_fr in 'mdlCommandesEnCours_fr.pas' {frCommandesEnCours: TFrame},
+  mdlVisualisation_fr in 'mdlVisualisation_fr.pas' {dmVisualisation_fr: TDataModule},
+  mdlVisualisationPHA_fr in 'mdlVisualisationPHA_fr.pas',
+  mdlPromotions_fr in 'mdlPromotions_fr.pas' {frPromotions: TFrame},
+  mdlClients_fr in 'mdlClients_fr.pas' {frClients: TFrame};
+
+end.
+

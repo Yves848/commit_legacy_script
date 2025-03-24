@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="documentation.xsl" type="text/xsl"?>
+<documentation>
+  <description nom="PharmaVitale" os="MS Windows XP/2000 Server/2003 Server" type="sql"/>
+  <systemes>
+    <systeme>
+<designation>MS SQL Server 2005/2008/2012/2014</designation>     
+      <recuperations>
+        <recuperation description="Récupération puis restauration d'un Backup IDEM methode LEO 2 cf liens confluence">
+		  <etape value="ATTENTION : SQL Express ne permet pas de joindre des bases de plus de 10Go, dans ce cas, il faudra une image du serveur SQL du client ou utiliser la version d'essai de SQL Server qui dure 180 jours)"/>
+		</recuperation>
+      </recuperations>
+      <fichiers>
+        <fichier nom="backup.bak" repertoire="" description="voir liens confluence en bas de page"/>
+        <fichier nom="*.jpg" repertoire="C:\PHARMAVITALE\SCANS" description="Attestations mutuelles"/>
+      </fichiers>
+    </systeme>
+  </systemes>
+  <perimetres>
+    <donnee designation="Praticiens"/>
+    <donnee designation="Destinataires"/>
+    <donnee designation="Organismes"/>
+    <donnee designation="Clients"/>
+    <donnee designation="Fournisseurs directs"/>
+    <donnee designation="Répartiteurs"/>		
+    <donnee designation="Produits"/>
+    <donnee designation="Historiques de ventes mensuels ( rotations )"/>
+
+    <donnee designation="Opérateurs"/>
+    <donnee designation="Crédits"/>
+    <donnee designation="Vignettes avancées"/>
+
+    <donnee designation="Historiques de délivrances " commentaire="limitée à 4 ans"/>  
+    <donnee designation="Historiques d'achats ( commandes archivées ) " commentaire="limitée à 3 ans"/>    
+    <donnee designation="Attestations mutuelles"/>
+  </perimetres>
+    <liens>
+     <lien titre="Création d'un BACKUP Avec SQL Server Management Studio ">
+      <url> https://agora.groupe.pharmagest.com/confluence/display/RDPE/Reprise+de+backup+Leo2</url>
+    </lien>
+        <lien titre="Restauration d'un BACKUP Avec SQL Server Management Studio ">
+      <url> https://agora.groupe.pharmagest.com/confluence/display/RDPE/Restauration+Backup+Leo2</url>
+    </lien>       
+		<lien titre="SQL Express 2014 EXPRESS WITH TOOLS : SQLEXPRWT_x64_FRA.exe ou SQLEXPRWT_x86_FRA.exe (Avec Management studio WT, x86=32bit , x64=64bits) ">
+		  <url> https://www.microsoft.com/fr-fr/download/details.aspx?id=53167</url>
+		</lien>
+	</liens> 
+	<observations>
+    		<observation texte="* Trouver le nom de serveur">
+		  <images>
+			<image nom="pharmavitale_param1.png" legende="bouton parametres avec un logo tournevis"/>
+      <image nom="pharmavitale_param2.png" legende="rubrique Système / Base de données"/>
+		  </images>
+		</observation>
+	</observations>
+</documentation>

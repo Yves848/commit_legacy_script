@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="documentation.xsl" type="text/xsl"?><documentation>
+  <description nom="Sabco Ultimate" os="Linux CentOS" type="sql"/>
+  <perimetres>
+    <donnee designation="Praticiens"/>
+    <donnee designation="Profils de remises"/>
+    <donnee designation="Clients"/>
+    <donnee designation="Dépôts"/>
+    <donnee designation="Fournisseurs directs et répartiteurs"/>    
+    <donnee designation="Codifications"/>
+    <donnee designation="Zones géographiques"/>
+    <donnee designation="Produits"/>
+    <donnee designation="Stocks"/>
+    <donnee designation="Historiques ventes"/>
+	<donnee designation="Tarifs"/>
+    <donnee designation="Fiches d'analyse"/>
+    <donnee designation="Formulaires"/>
+    <donnee designation="Formules"/>
+    <donnee designation="Avancées vignettes"/>
+    <donnee designation="Crédits"/>
+    <donnee designation="Délivrances délivrées"/>
+    <donnee designation="Attestions produits"/>
+	<donnee designation="Historiques de délivrances"/>
+    <donnee designation="Historiques de magistrales"/>
+    <donnee designation="Commandes"/>
+    <donnee designation="Cartes ristournes"/>
+	<donnee designation="Transactions ristournes"/>
+  </perimetres>
+</documentation>

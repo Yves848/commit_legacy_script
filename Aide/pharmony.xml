@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="documentation.xsl" type="text/xsl"?>
+<documentation>
+  <description nom="Pharmony" os="Windows" type="CSV"/>
+  <systemes>
+    <systeme>
+      <designation>Fichiers</designation>     
+			<recuperations>
+				<recuperation description="Copie des fichiers d'export et les mettre dans le repertoire du projet">
+				</recuperation>
+			</recuperations>
+        <fichiers>
+          <fichier nom="prescribers.csv" description="Praticiens"/>
+          <fichier nom="collectivities.csv" description="Collectivités"/>
+          <fichier nom="patients.csv" description="Patients"/>
+          <fichier nom="invoice_relationships.csv" description="Liens patiens collectivités"/>
+          <fichier nom="fidelity_profiles.csv" description="Profils de remise"/>
+          <fichier nom="fidelity_accounts.csv" description="Comptes fidélités"/>
+          <fichier nom="fidelity_cards.csv" description="Cartes fidélités"/>
+          <fichier nom="storage_spaces.csv" description="Dépots"/>
+          <fichier nom="storage_locations.csv" description="Zone géographiques"/>
+          <fichier nom="products.csv" description="Produits"/>
+          <fichier nom="product_stocks.csv" description="Stocks Produits"/>
+          <fichier nom="suppliers.csv" description="Fournisseurs"/>
+          <fichier nom="product_codes.csv" description="Codes-Barres"/>
+          <fichier nom="history_products.csv" description="Historiques de vente produits"/>
+          <fichier nom="pending_documents.csv" description="Litiges"/>
+          <fichier nom="history_patients.csv" description="Historiques patients"/>
+          <fichier nom="preparations.csv" description="Préparations magistrales"/>          
+        </fichiers>
+    </systeme>
+  </systemes>
+  <perimetres>
+    <donnee designation="Praticiens"/>
+    <donnee designation="Patients" commentaire="Les patients avec un commentaire contenant un saut de ligne ne peuvent pas être repris"/>
+    <donnee designation="Collectivités"/>
+    <donnee designation="Profils de remise"/>
+    <donnee designation="Comptes ristournes"/>
+    <donnee designation="Cartes ristournes"/>
+    <donnee designation="Transactions ristournes"/>
+    <donnee designation="Dépôts"/>
+    <donnee designation="Zones geographiques"/>
+    <donnee designation="Produits"/>
+    <donnee designation="Stocks"/>
+    <donnee designation="Fournisseurs directs"/>
+    <donnee designation="Repartiteurs"/>		
+    <donnee designation="Codes barres"/>
+    <donnee designation="Avances produits"/>
+    <donnee designation="Delivrances differees"/>
+    <donnee designation="Renouvellements"/>
+	  <donnee designation="Historiques de delivrances"/>
+    <donnee designation="Historiques de ventes"/>
+  </perimetres>
+</documentation>

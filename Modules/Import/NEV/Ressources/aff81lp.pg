@@ -1,0 +1,71 @@
+CREATE OR REPLACE FUNCTION FCTCREATEaff81lp(CSVFILE text) RETURNS integer
+AS $$
+DECLARE aff81lpexists BOOLEAN;
+BEGIN
+        SELECT EXISTS into aff81lpexists (
+           SELECT FROM information_schema.tables
+           WHERE  table_schema = 'public'
+           AND    table_name   = 'aff81lp'
+        );
+
+        if aff81lpexists then
+           drop table aff81lp;
+        end if;
+        
+        CREATE TABLE public.aff81lp
+            (
+ctanolabo text,
+ctanogamme integer,
+ctanocip text,
+ctatypedatas text,
+ctachronotype text,
+ctaindex text,
+ctaduplicle text,
+ctasupprime text,
+updated_at text,
+cta_lp_libelle text,
+cta_lp_pxachat float,
+cta_lp_codetva text,
+cta_lp_qteminicde text,
+cta_lp_qtesupcarton text,
+cta_lp_qtemincarton text,
+cta_lp_poidsvol text,
+cta_lp_valpoidsvol text,
+cta_lp_version text,
+cta_lp_typeact text,
+            CONSTRAINT aff81lp_pkey PRIMARY KEY (ctanolabo, ctanogamme, ctanocip)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+            TABLESPACE pg_default;
+
+        execute 'COPY aff81lp(
+            ctanolabo,
+ctanogamme,
+ctanocip,
+ctatypedatas,
+ctachronotype,
+ctaindex,
+ctaduplicle,
+ctasupprime,
+updated_at,
+cta_lp_libelle,
+cta_lp_pxachat,
+cta_lp_codetva,
+cta_lp_qteminicde,
+cta_lp_qtesupcarton,
+cta_lp_qtemincarton,
+cta_lp_poidsvol,
+cta_lp_valpoidsvol,
+cta_lp_version,
+cta_lp_typeact
+        )
+            from ''' || $1 || '''
+            DELIMITER '';''
+            CSV HEADER';
+
+            return 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

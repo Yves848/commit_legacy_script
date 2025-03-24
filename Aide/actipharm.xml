@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="documentation.xsl" type="text/xsl"?>
+<documentation>
+  <description nom="Actipharm" os="MS Windows XP" type="fichiers"/>
+  <systemes>
+    <systeme>
+      <designation>MS Windows XP</designation>
+      <recuperations>
+        <recuperation description="Copie des fichiers de base de données" remarque="L'application doit impérativement être arrêté avant la copie"/>
+      </recuperations>
+      <fichiers>
+        <fichier nom="P01CONT.D" repertoire="D:\ACTIPHARM\fichiers" description="Contacts"/>
+        <fichier nom="P01MEDE.D" repertoire="D:\ACTIPHARM\fichiers" description="Médecins"/> 
+        <fichier nom="P00SOC.D'" repertoire="D:\ACTIPHARM\fichiers" description="Paramètres applicatifs"/>
+        <fichier nom="P01FORM.D" repertoire="D:\ACTIPHARM\fichiers" description="Formules de calculs des remboursements de couvertures mutuelles"/>
+        <fichier nom="P01OAMO.D" repertoire="D:\ACTIPHARM\fichiers" description="Organismes AMO"/>
+        <fichier nom="P01OAMC.D" repertoire="D:\ACTIPHARM\fichiers" description="Organismes AMC"/>
+        <fichier nom="P01CNTR.D" repertoire="D:\ACTIPHARM\fichiers" description="Contrats mutuelles"/>
+        <fichier nom="P01TIER.D" repertoire="D:\ACTIPHARM\fichiers" description="Informations tiers"/>
+        <fichier nom="P01ASSU.D" repertoire="D:\ACTIPHARM\fichiers" description="Assurés"/>
+        <fichier nom="P01AYDR.D" repertoire="D:\ACTIPHARM\fichiers" description="Ayants droits"/>
+		<fichier nom="P01AYMU.D" repertoire="D:\ACTIPHARM\fichiers" description="données AMC"/>
+        <fichier nom="P01FOUR.D" repertoire="D:\ACTIPHARM\fichiers" description="Fournisseurs"/>
+        <fichier nom="P01LPAR.D" repertoire="D:\ACTIPHARM\fichiers" description="Fabricants"/>
+        <fichier nom="P01EMPL.D" repertoire="D:\ACTIPHARM\fichiers" description="Emplacements"/>
+        <fichier nom="P01FAM.D'" repertoire="D:\ACTIPHARM\fichiers" description="Familles"/>
+        <fichier nom="P01ARTI.D" repertoire="D:\ACTIPHARM\fichiers" description="Articles"/>
+        <fichier nom="P01TARI.D" repertoire="D:\ACTIPHARM\fichiers" description="Tarifs achats et ventes"/>
+        <fichier nom="M01DLOT.D" repertoire="D:\ACTIPHARM\fichiers" description="Informations de mouvements de stocks"/>
+        <fichier nom="P01CUM.D'" repertoire="D:\ACTIPHARM\fichiers" description="Hstoriques cumulés"/>
+        <fichier nom="M01ENTE.D" repertoire="D:\ACTIPHARM\fichiers" description="Historiques de délivrances entêtes"/>
+        <fichier nom="M01LIGN.D" repertoire="D:\ACTIPHARM\fichiers" description="Historiques de délivrances lignes"/>
+      </fichiers>
+    </systeme>
+ 	</systemes>
+  <perimetres>
+    <donnee designation="Praticiens"/>
+    <donnee designation="Organismes"/>
+    <donnee designation="Clients"/>
+    <donnee designation="Fabricants"/>
+    <donnee designation="Fournisseurs" commentaire="Informations à compléter après transfert"/>
+    <donnee designation="Répartiteurs" commentaire="Informations à compléter après transfert"/>
+    <donnee designation="Produits"/>
+    <donnee designation="Historiques de ventes"/>
+    <donnee designation="Catalogues"/>
+    <donnee designation="Historiques de délivrances"/>
+  </perimetres>
+</documentation>

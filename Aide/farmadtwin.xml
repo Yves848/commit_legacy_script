@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="documentation.xsl" type="text/xsl"?>
+<documentation>
+  <description nom="Farmadtwin" os="Windows" type="sql"/>
+  <systemes>
+    <systeme>
+      <designation>Interbase</designation>     
+      <recuperations>
+  	    <recuperation description="Copie physique des fichiers de base de données, attention a bien vérifier la date de dernière modification  et de ne pas travailler en direct sur la base originale !!!"/>
+      </recuperations>
+        <fichiers>
+          <fichier nom="FARMADWIN2.GDB" repertoire="C:\FARMADWIN\DATABASE ???" description="Fichier de base données Interbase"/>
+        </fichiers>
+    </systeme>
+  </systemes>
+  <perimetres>
+    <donnee designation="Praticiens"/>
+    <donnee designation="Patients"/>
+    <donnee designation="Clients"/>
+    <donnee designation="Profils de remises"/>    
+    <donnee designation="Comptes ristournes"/>
+    <donnee designation="Cartes ristournes"/>
+    <donnee designation="Transactions ristournes"/>
+    <donnee designation="Attestations produits"/>
+    <donnee designation="Zones géographiques"/>
+    <donnee designation="Fournisseurs directs"/>
+    <donnee designation="Répartiteurs"/>		
+    <donnee designation="Produits"/>
+	<donnee designation="Stocks" commentaire="La gestion du stock robot est temporairement supprimé en attendant des exemples, impossible de savoir si le stock robot est inclu ou pas dans le stock pharmacie et si le triple stock est possible ou pas"/>
+	<donnee designation="Tarifs"/>
+    <donnee designation="Codes barres"/>
+    <donnee designation="Fiche d analyse"/>
+    <donnee designation="Historiques ventes"/>
+    <donnee designation="Historiques de délivrances"/>
+    <donnee designation="Avances produits"/>
+    <donnee designation="Délivrances différées"/>
+    <donnee designation="Crédits"/>
+    <donnee designation="Autres litiges"/>
+  </perimetres>
+</documentation>

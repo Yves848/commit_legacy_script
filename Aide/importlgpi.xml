@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="documentation.xsl" type="text/xsl"?>
+<documentation>
+  <description nom="LGPI" os="Linux CentOS" type="sql"/>
+  <systemes>
+    <systeme>
+      <recuperations>
+        <recuperation description="Dump Oracle puis restauration sur un serveur en agence"/>
+        <recuperation description="Import direct via télémaintenance serveur, cela peux être long à cause de la connexion"/>
+	  </recuperations>
+    </systeme>
+  </systemes>
+  <perimetres>
+    <donnee designation="Praticiens, Hopitaux"/>
+    <donnee designation="Destinataires"/>
+    <donnee designation="Organismes"/>	
+    <donnee designation="Clients"/>
+    <donnee designation="Compte clients"/>
+    <donnee designation="Mandataires (Tuteurs)"/>
+    <donnee designation="Fournisseurs directs"/>
+    <donnee designation="Répartiteurs"/>
+    <donnee designation="Zones géographiques"/>
+    <donnee designation="Codifications"/>
+    <donnee designation="Produits"/>
+    <donnee designation="Catalogues"/>
+    <donnee designation="Opérateurs"/>
+    <donnee designation="Crédits"/>
+    <donnee designation="Vignettes Avancées"/>
+    <donnee designation="Historiques de vente mensuels (rotation)"/>
+    <donnee designation="Historiques de délivrances"/>
+    <donnee designation="Historique d'achats ( commandes )"/>    
+    <donnee designation="Scans Mutuelles et Ordonnances" commentaire="Année précédente et année en cours" /> 
+  </perimetres>
+</documentation>

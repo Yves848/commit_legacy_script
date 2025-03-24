@@ -1,0 +1,178 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{6A289F78-6FFB-4E02-990C-22A0B747882B}</ProjectGuid>
+			<MainSource>ModuleImport.dpk</MainSource>
+			<ProjectVersion>12.0</ProjectVersion>
+			<Config Condition="'$(Config)'==''">Débogage</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Débogage' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<GenPackage>true</GenPackage>
+			<DesignOnlyPackage>false</DesignOnlyPackage>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_DcpOutput>..\..\Lib</DCC_DcpOutput>
+			<DCC_BplOutput>..\..\Bin</DCC_BplOutput>
+			<DCC_DcuOutput>..\..\Lib</DCC_DcuOutput>
+			<GenDll>true</GenDll>
+			<RuntimeOnlyPackage>true</RuntimeOnlyPackage>
+			<DCC_DependencyCheckOutputName>..\..\Bin\ModuleImport.bpl</DCC_DependencyCheckOutputName>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_Platform>x86</DCC_Platform>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="ModuleImport.dpk">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="rtl.dcp"/>
+			<DCCReference Include="projet.dcp"/>
+			<DCCReference Include="gfl.dcp"/>
+			<DCCReference Include="mdlConversions.pas">
+				<Form>frConversions</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlConversionsComptes.pas">
+				<Form>frConversionsComptes</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlConversionsCouverturesAMO.pas">
+				<Form>frConversionsCouverturesAMO</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlConversionsFournisseurs.pas">
+				<Form>frConversionsFournisseurs</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlConversionsOrganismesAMO.pas">
+				<Form>frConversionsOrganismesAMO</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlConversionsReferenceAnalytiques.pas">
+				<Form>frConversionsReferenceAnalytiques</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlConversionsRepartiteurs.pas">
+				<Form>frConversionsRepartiteurs</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlConversionsTIFF.pas">
+				<Form>frmConversionTIFF</Form>
+			</DCCReference>
+			<DCCReference Include="mdlLIsteClients.pas">
+				<Form>frmListeClients</Form>
+			</DCCReference>
+			<DCCReference Include="mdlModuleImport.pas">
+				<Form>frModuleImport</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlModuleImportPHA.pas">
+				<Form>dmModuleImportPHA</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlOptionsSCANS.pas">
+				<Form>frmOptionsSCANS</Form>
+			</DCCReference>
+			<DCCReference Include="mdlRechercheCouverturesAMORef.pas">
+				<Form>frmRechercheCouverturesAMORef</Form>
+			</DCCReference>
+			<DCCReference Include="mdlRechercheFournisseurRef.pas">
+				<Form>frmRechercheFournisseurRef</Form>
+			</DCCReference>
+			<DCCReference Include="mdlRechercheOrganismesAMORef.pas">
+				<Form>frmRechercheOrganismesAMORef</Form>
+			</DCCReference>
+			<DCCReference Include="mdlRechercheReferenceAnalytiqueRef.pas">
+				<Form>frmRechercheReferenceAnalytiqueRef</Form>
+			</DCCReference>
+			<DCCReference Include="mdlRechercheRepartiteurRef.pas">
+				<Form>frmRechercheRepartiteurRef</Form>
+			</DCCReference>
+			<RcCompile Include="etat_grille.rc">
+				<Form>etat_grille.res</Form>
+			</RcCompile>
+			<RcCompile Include="xml_rejets.rc">
+				<Form>xml_rejets.res</Form>
+			</RcCompile>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Débogage">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<PropertyGroup>
+			<PostBuildEvent><![CDATA[copy scan_pdf.bat ..\..\Bin]]></PostBuildEvent>
+		</PropertyGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType>Package</Borland.ProjectType>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+						<Parameters Name="HostApplication">$(SVN)\Bin\COMMIT.exe</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">True</VersionInfo>
+						<VersionInfo Name="MajorVer">4</VersionInfo>
+						<VersionInfo Name="MinorVer">8</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">23</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1036</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName">PHARMAGEST INTERACTIVE</VersionInfoKeys>
+						<VersionInfoKeys Name="FileDescription">Gestion des modules d&apos;import</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">4.8.0.23</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName">MODULEIMPORT.BPL</VersionInfoKeys>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName">COMMIT</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductVersion">4.7</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Source>
+						<Source Name="MainSource">ModuleImport.dpk</Source>
+					</Source>
+				</Delphi.Personality>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>

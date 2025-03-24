@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="documentation.xsl" type="text/xsl"?>
+<documentation>
+  <description nom="Caduciel V6" os="MS Windows " type="sql"/>
+  <systemes>
+    <systeme>
+      <designation>MS Windows</designation>
+      <recuperations>
+		<recuperation description="Copie physique des fichiers de base de données">
+          <etape value="Arrêter le service SQL Firebird ou fermer l'application"/>
+          <etape value ="Compresser puis copier le fichier *.fdb"/>
+          <etape value="Redémarrer le service SQL ou relancer l'application"/>
+		</recuperation>  
+      </recuperations>
+      <fichiers>
+        <fichier nom="BDCADV6.FDB" repertoire="C:\Program Files\Caduciel\Caduciel V6\db" description="Base de données Firebird"/>
+		<fichier nom="Repertoire Scans" repertoire="C:\Program Files\Caduciel\Caduciel V6\Scan" description="Documents scannés"/>
+      </fichiers>
+    </systeme>
+  </systemes>
+  <perimetres>
+    <donnee designation="Praticiens" commentaire="Gestion des praticiens hospitaliers"/>
+    <donnee designation="Destinataires" commentaire="Informations à complèter après transfert"/>
+    <donnee designation="Organismes"/>
+    <donnee designation="Clients"/>
+    <donnee designation="Comptes"/>
+    <donnee designation="Catégories" commentaire="Transfèrer en codification 1"/>
+    <donnee designation="Familles" commentaire="Transfèrer en codification 2"/>
+    <donnee designation="Zones géographiques"/>
+    <donnee designation="Fournisseurs directs" commentaire="Informations à complèter après transfert"/>
+    <donnee designation="Répartiteurs" commentaire="Informations à complèter après transfert"/>
+    <donnee designation="Fabricant" commentaire="Transfèrer en tant que marque"/>
+    <donnee designation="Produits"/>
+    <donnee designation="Historiques de ventes mensuel ( rotations )" commentaire="4 dernières années "/>
+    <donnee designation="Historiques de délivrances + ventes directes" commentaire="4 dernières années "/>
+    <donnee designation="Historiques d'achats ( commandes archivées)" commentaire="2 dernières années " />
+    <donnee designation="Crédits" commentaire="assurés et comptes " />
+    <donnee designation="Avances Vignettes"  />
+    <donnee designation="Produits dus ( Promis )"  />
+    <donnee designation="Attestations mutuelle" commentaire="les scans doivent etre copiés dans un repertoire Scan "/>	
+  </perimetres>
+</documentation>

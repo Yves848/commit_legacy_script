@@ -1,0 +1,1 @@
+select SY_VK_TAAL from FTBSYSTEEM

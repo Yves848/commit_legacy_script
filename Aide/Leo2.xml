@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="documentation.xsl" type="text/xsl"?>
+<documentation>
+  <description nom="Leo 2" os="MS Windows XP/2000 Server/2003 Server" type="sql"/>
+  <systemes>
+    <systeme>
+      <designation>MS SQL Server 2012/2014</designation>     
+      <recuperations>
+        <recuperation description="Méthode préconisée. Récupération / Restauration d'un BACKUP : cf liens confluence en bas de page ">     
+
+			  <etape value="ATTENTION : SQL Express ne permet pas de joindre des bases de plus de 10Go, dans ce cas, il faudra une image complete ( ACRONIS ) du serveur SQL du client ou utiliser la version d'essai de SQL Server qui dure 180 jours)"/>
+		</recuperation>
+      </recuperations>
+      <fichiers>
+        <fichier nom="backup.bak" description="Cf documentation confluence, liens en bas de page"/>
+      </fichiers>
+    </systeme>
+  </systemes>
+  <perimetres>
+    <donnee designation="Hopitaux" rejets="Cabinets privés non repris -> erreur" />
+    <donnee designation="Praticiens"/>
+
+    <donnee designation="Destinataires" commentaire="A completer" />    
+    <donnee designation="Organismes AMO et AMC"/>
+
+    <donnee designation="Clients"/>
+    <donnee designation="Comptes"/>
+    <donnee designation="Couvertures AMO et AMC"/> 
+
+    <donnee designation="Zones géographiques" commentaire="Pas encore repris"/>
+    <donnee designation="Dépôts" commentaire="A paramétrer"/>
+    <donnee designation="Fournisseurs directs"/>
+    <donnee designation="Répartiteurs"/>		
+    <donnee designation="Produits" commentaire="Gestion du multi-stock pas encore validée"/>
+	  <donnee designation="Codes LPP"/>
+    <donnee designation="Historique de vente mensuels ( rotations )"/>
+    <donnee designation="Opérateurs"/>
+    <donnee designation="Avances vignettes"/>
+    <donnee designation="Crédits"/>
+    <donnee designation="Produits dus"/>
+
+    <donnee designation="Historiques de délivrance" commentaire="Année en cours + 2 ans" />
+    <donnee designation="Historiques d'achats ( commandes archivées )"/>
+    <donnee designation="Commandes à receptionner"/>
+
+  </perimetres>
+    <liens>
+    <lien titre="Création d'un BACKUP Avec SQL Server Management Studio ">
+      <url> https://agora.groupe.pharmagest.com/confluence/display/RDPE/Reprise+de+backup+Leo2</url>
+    </lien>
+        <lien titre="Restauration d'un BACKUP Avec SQL Server Management Studio ">
+      <url> https://agora.groupe.pharmagest.com/confluence/display/RDPE/Restauration+Backup+Leo2</url>
+    </lien>     
+		<lien titre="SQL Express 2014 EXPRESS WITH TOOLS : SQLEXPRWT_x64_FRA.exe ou SQLEXPRWT_x86_FRA.exe (Avec Management studio WT, x86=32bit , x64=64bits) ">
+		  <url> https://www.microsoft.com/fr-fr/download/details.aspx?id=53167</url>
+		</lien>
+	</liens>
+	<observations>
+		<observation texte="Différence LEO 1 et LEO 2.0">
+		  <images>
+			<image nom="Leo1 Leo2.png" legende="Attention si les fichiers du LEO2.0 sont présent dans le serveur SQL il y'a des chances que ce soit bien un LEO2.0"/>
+		  </images>
+		</observation>
+		<observation texte="Joindre une base SQL Serveur">
+		  <images>
+			<image nom="SQL_Joindre_base.png" legende=""/>
+		  </images>
+		</observation>
+	</observations>
+</documentation>

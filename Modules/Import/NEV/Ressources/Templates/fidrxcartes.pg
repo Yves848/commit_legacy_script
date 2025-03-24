@@ -1,0 +1,50 @@
+CREATE OR REPLACE FUNCTION FCTCREATEfidrxcartes(CSVFILE text) RETURNS integer
+AS $$
+BEGIN
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_schema = 'public'
+               AND table_name = 'fidrxcartes') THEN
+        DROP TABLE public.fidrxcartes;
+    END IF;
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_name = 'temp_fidrxcartes') THEN
+        DROP TABLE temp_fidrxcartes;
+    END IF;
+    
+        CREATE TABLE public.fidrxcartes
+            (
+fidrx_card_carte text,
+fidrx_card_mrq text,
+fidrx_card_savcle text,
+fidrx_card_nocli text,
+fidrx_card_oract text,
+fidrx_card_dtact text,
+fidrx_card_etat text,
+fidrx_card_nom text,
+fidrx_card_pre text,
+fidrx_card_code_pays text,
+updated_at text
+            )
+            WITH (
+                OIDS = FALSE
+            )
+    TABLESPACE pg_default;
+
+
+    ##TEMP_TABLE_CREATION##
+
+    ##TEMP_COPY##
+
+    INSERT INTO public.fidrxcartes (
+    ##INSERT_COLUMNS##
+    )
+    SELECT
+        ##SELECT_COLUMNS##
+    FROM ##TEMP_TABLENAME## temp;
+
+    RETURN 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

@@ -1,0 +1,73 @@
+package Visualisation_be;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Visualisation des données de la base locale Belge'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  JvPageComps,
+  vcl,
+  rtl,
+  xmlrtl,
+  PIExtended,
+  vcldb,
+  vclimg,
+  tee,
+  teedb,
+  PIClasses,
+  vclx,
+  PIStandard,
+  JvWizards,
+  Jcl,
+  JvCore,
+  JclVcl,
+  JvDB,
+  JvControls,
+  JvSystem,
+  JvStdCtrls,
+  JvDlgs,
+  JvCustom,
+  FB_IB_DataSets,
+  vclactnband,
+  SynEdit_R2009,
+  UIBD14Win32R,
+  JvXPCtrls,
+  PIDB,
+  Projet,
+  ModuleImport,
+  dbrtl,
+  dsnap;
+
+contains
+  mdlVisualisationPHA_be in 'mdlVisualisationPHA_be.pas' {dmVisualisationPHA_be: TDataModule},
+  mdlFenetreVisualisation_be in 'mdlFenetreVisualisation_be.pas' {frmFenetreVisualisation},
+  mdlFrameVisualisation_be in 'mdlFrameVisualisation_be.pas' {frFrameVisualisation_be: TFrame},
+  mdlVisualisation_be in 'mdlVisualisation_be.pas' {dmVisualisation: TDataModule},
+  mdlRistournes_be in 'mdlRistournes_be.pas' {frRistournes: TFrame},
+  mdlClients_be in 'mdlClients_be.pas' {frClients: TFrame};
+
+end.
+
+

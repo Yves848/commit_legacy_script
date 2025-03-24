@@ -1,0 +1,162 @@
+CREATE OR REPLACE FUNCTION FCTCREATEafpsdic(CSVFILE text) RETURNS integer
+AS $$
+BEGIN
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_schema = 'public'
+               AND table_name = 'afpsdic') THEN
+        DROP TABLE public.afpsdic;
+    END IF;
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_name = 'temp_afpsdic') THEN
+        DROP TABLE temp_afpsdic;
+    END IF;
+        
+    CREATE TABLE public.afpsdic (
+        psdic_numdoc integer,
+        psdic_mrq integer,
+        psdic_nomdoc text,
+        psdic_chemin text,
+        psdic_typdoc text,
+        psdic_iddoc text,
+        psdic_typent text,
+        psdic_ident integer,
+        psdic_datcre date,
+        psdic_heucre integer,
+        psdic_opeven integer,
+        psdic_etat integer,
+        psdic_datsup text,
+        psdic_heusup text,
+        psdic_opesup integer,
+        psdic_ctrl text,
+        psdic_ctrlnumven integer,
+        psdic_ctrliniven text,
+        psdic_ctrldate text,
+        psdic_ctrhh integer,
+        psdic_ctrmn integer,
+        psdic_ctrss integer,
+        psdic_datefinval text,
+        psdic_archive text,
+        psdic_scor_cpt text,
+        psdic_nature_pj text,
+        psdic_datnum text,
+        psdic_heunum text,
+        psdic_libdoc text,
+        updated_at timestamp,
+        psdic_has_original_name text,
+        CONSTRAINT afpsdic_pkey PRIMARY KEY (psdic_numdoc)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+            TABLESPACE pg_default;
+
+    CREATE TEMP TABLE temp_afpsdic (
+	psdic_numdoc TEXT,
+	psdic_mrq TEXT,
+	psdic_nomdoc TEXT,
+	psdic_chemin TEXT,
+	psdic_typdoc TEXT,
+	psdic_iddoc TEXT,
+	psdic_typent TEXT,
+	psdic_ident TEXT,
+	psdic_datcre TEXT,
+	psdic_heucre TEXT,
+	psdic_opeven TEXT,
+	psdic_etat TEXT,
+	psdic_datsup TEXT,
+	psdic_heusup TEXT,
+	psdic_opesup TEXT,
+	psdic_ctrl TEXT,
+	psdic_ctrlnumven TEXT,
+	psdic_ctrliniven TEXT,
+	psdic_ctrldate TEXT,
+	psdic_ctrhh TEXT,
+	psdic_ctrmn TEXT,
+	psdic_ctrss TEXT,
+	psdic_datefinval TEXT,
+	psdic_archive TEXT,
+	psdic_scor_cpt TEXT,
+	psdic_nature_pj TEXT,
+	psdic_datnum TEXT,
+	psdic_heunum TEXT,
+	psdic_libdoc TEXT,
+	updated_at TEXT,
+	psdic_has_original_name TEXT
+);
+
+
+    COPY temp_afpsdic FROM 'E:\projets\2024_11_22_cholet_scan_nev\afpsdic.csv' DELIMITER ';' CSV HEADER;
+
+    INSERT INTO public.afpsdic (
+    psdic_numdoc,
+    psdic_mrq,
+    psdic_nomdoc,
+    psdic_chemin,
+    psdic_typdoc,
+    psdic_iddoc,
+    psdic_typent,
+    psdic_ident,
+    psdic_datcre,
+    psdic_heucre,
+    psdic_opeven,
+    psdic_etat,
+    psdic_datsup,
+    psdic_heusup,
+    psdic_opesup,
+    psdic_ctrl,
+    psdic_ctrlnumven,
+    psdic_ctrliniven,
+    psdic_ctrldate,
+    psdic_ctrhh,
+    psdic_ctrmn,
+    psdic_ctrss,
+    psdic_datefinval,
+    psdic_archive,
+    psdic_scor_cpt,
+    psdic_nature_pj,
+    psdic_datnum,
+    psdic_heunum,
+    psdic_libdoc,
+    updated_at,
+    psdic_has_original_name
+    )
+    SELECT
+        CAST(temp.psdic_numdoc AS integer) AS psdic_numdoc,
+    CAST(temp.psdic_mrq AS integer) AS psdic_mrq,
+    temp.psdic_nomdoc AS psdic_nomdoc,
+    temp.psdic_chemin AS psdic_chemin,
+    temp.psdic_typdoc AS psdic_typdoc,
+    temp.psdic_iddoc AS psdic_iddoc,
+    temp.psdic_typent AS psdic_typent,
+    CAST(temp.psdic_ident AS integer) AS psdic_ident,
+    CAST(temp.psdic_datcre AS date) AS psdic_datcre,
+    CAST(temp.psdic_heucre AS integer) AS psdic_heucre,
+    CAST(temp.psdic_opeven AS integer) AS psdic_opeven,
+    CAST(temp.psdic_etat AS integer) AS psdic_etat,
+    temp.psdic_datsup AS psdic_datsup,
+    temp.psdic_heusup AS psdic_heusup,
+    CAST(temp.psdic_opesup AS integer) AS psdic_opesup,
+    temp.psdic_ctrl AS psdic_ctrl,
+    CAST(temp.psdic_ctrlnumven AS integer) AS psdic_ctrlnumven,
+    temp.psdic_ctrliniven AS psdic_ctrliniven,
+    temp.psdic_ctrldate AS psdic_ctrldate,
+    CAST(temp.psdic_ctrhh AS integer) AS psdic_ctrhh,
+    CAST(temp.psdic_ctrmn AS integer) AS psdic_ctrmn,
+    CAST(temp.psdic_ctrss AS integer) AS psdic_ctrss,
+    temp.psdic_datefinval AS psdic_datefinval,
+    temp.psdic_archive AS psdic_archive,
+    temp.psdic_scor_cpt AS psdic_scor_cpt,
+    temp.psdic_nature_pj AS psdic_nature_pj,
+    temp.psdic_datnum AS psdic_datnum,
+    temp.psdic_heunum AS psdic_heunum,
+    temp.psdic_libdoc AS psdic_libdoc,
+    CAST(temp.updated_at AS timestamp) AS updated_at,
+    temp.psdic_has_original_name AS psdic_has_original_name
+    FROM temp_afpsdic temp;
+
+    RETURN 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

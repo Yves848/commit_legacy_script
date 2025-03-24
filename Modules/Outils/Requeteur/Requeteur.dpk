@@ -1,0 +1,38 @@
+package Requeteur;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Requeteur SQL muti-base'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  ModuleImport,
+  Projet;
+
+contains
+  mdlRequeteur in 'mdlRequeteur.pas' {dmRequeteur: TDataModule},
+  mdlRequeteurBaseLocale in 'mdlRequeteurBaseLocale.pas' {dmRequeteurBaseLocale: TDataModule},
+  mdlRequeteurSQL in 'mdlRequeteurSQL.pas' {frmRequeteurSQL};
+
+end.

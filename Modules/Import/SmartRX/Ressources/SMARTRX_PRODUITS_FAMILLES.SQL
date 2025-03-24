@@ -1,0 +1,1 @@
+select alfam_mrq, alfam_zoncle, alfam_libelle from afalfam

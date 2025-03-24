@@ -1,0 +1,91 @@
+CREATE OR REPLACE FUNCTION FCTCREATEafsben(CSVFILE text) RETURNS integer
+AS $$
+BEGIN
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_schema = 'public'
+               AND table_name = 'afsben') THEN
+        DROP TABLE public.afsben;
+    END IF;
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_name = 'temp_afsben') THEN
+        DROP TABLE temp_afsben;
+    END IF;
+
+        CREATE TABLE public.afsben
+            (
+ben_asn text,
+ben_asc text,
+ben_dts_nais text,
+ben_rge text,
+ben_qua text,
+ben_mrq text,
+ben_savcle text,
+ben_ast text,
+ben_npat text,
+ben_nusu text,
+ben_pre text,
+ben_adr text,
+ben_nbperiodcouv text,
+ben_dts_debcouv text[],
+ben_dts_fincouv text[],
+ben_couv text[],
+ben_identmut text,
+ben_garanteffec text,
+ben_nbperiodmut text,
+ben_dts_debmut text,
+ben_dts_finmut text,
+ben_numserie text,
+ben_oldidentmut text,
+ben_origineinfo text,
+ben_nircertifie text,
+ben_nircle text,
+ben_datenir text,
+ben_cserviceamo text,
+ben_debserviamo text,
+ben_finserviamo text,
+ben_rufamo text,
+ben_nbperamo text,
+ben_debamo text,
+ben_finamo text,
+ben_indtrtmut text,
+ben_typeservimut text,
+ben_servimut text,
+ben_aigstsmut text,
+ben_amcb2 text,
+ben_amcedi text,
+ben_amcadherent text,
+ben_indtrtamc text,
+ben_debutamc text,
+ben_finamc text,
+ben_routage text,
+ben_hote text,
+ben_domaine text,
+ben_aigstsamc text,
+ben_typeserviamc text,
+ben_serviamc text,
+ben_rufcomplement text,
+updated_at text
+            )
+            WITH (
+                OIDS = FALSE
+            )
+    TABLESPACE pg_default;
+
+
+    ##TEMP_TABLE_CREATION##
+
+    ##TEMP_COPY##
+
+    INSERT INTO public.afsben (
+    ##INSERT_COLUMNS##
+    )
+    SELECT
+        ##SELECT_COLUMNS##
+    FROM ##TEMP_TABLENAME## temp;
+
+    RETURN 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

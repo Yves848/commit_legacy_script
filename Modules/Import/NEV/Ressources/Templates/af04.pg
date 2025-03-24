@@ -1,0 +1,123 @@
+CREATE OR REPLACE FUNCTION FCTCREATEaf04(CSVFILE text) RETURNS integer
+AS $$
+DECLARE af04exists BOOLEAN;
+BEGIN
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_schema = 'public'
+               AND table_name = 'af04') THEN
+        DROP TABLE public.af04;
+    END IF;
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_name = 'temp_af04') THEN
+        DROP TABLE temp_af04;
+    END IF;
+        
+        CREATE TABLE public.af04
+            (
+        ccode oid NOT NULL,
+        cindex smallint,
+        csavcode integer,
+        ctypeclie text COLLATE pg_catalog."default",
+        caanaissance smallint,
+        cmmnaissance smallint,
+        cjjnaissance smallint,
+        cdatecreation date,
+        cdatefacture date,
+        cchronofact smallint,
+        cdatereglement date,
+        cchronoreglement smallint,
+        ccompte double precision,
+        cattente smallint,
+        cayantdroit smallint,
+        cvar smallint,
+        ccategorie text COLLATE pg_catalog."default",
+        cnoobs smallint[],
+        cobs text COLLATE pg_catalog."default",
+        ctiers text COLLATE pg_catalog."default",
+        cmedecin integer,
+        cattcomret smallint,
+        cbl text COLLATE pg_catalog."default",
+        cnum_barcommercial smallint,
+        creserve text COLLATE pg_catalog."default",
+        cnum_barcomptoir smallint,
+        cnum_barreleve smallint,
+        cdecimales smallint,
+        ccol_relv text COLLATE pg_catalog."default",
+        ccol_ratt integer,
+        ccol_extrelv text COLLATE pg_catalog."default",
+        ccol_detrelv text COLLATE pg_catalog."default",
+        ccol_norelv double precision,
+        ccol_datrelv date,
+        cob2 text COLLATE pg_catalog."default",
+        ccumulavance double precision,
+        ccol_detprod text COLLATE pg_catalog."default",
+        cnaturepxachat text COLLATE pg_catalog."default",
+        carrondireleve text COLLATE pg_catalog."default",
+        cdatereleve date,
+        cmtreleve double precision,
+        cnbreedit text COLLATE pg_catalog."default",
+        cdetailrlbl text COLLATE pg_catalog."default",
+        cexotva text COLLATE pg_catalog."default",
+        ceuro text COLLATE pg_catalog."default",
+        ccodfinalfranc text COLLATE pg_catalog."default",
+        cmtfinalfranc double precision,
+        cavancefranc double precision,
+        cremiseligne text COLLATE pg_catalog."default",
+        cmtremiseligne double precision,
+        ctypecoef text COLLATE pg_catalog."default",
+        cdernmed integer[],
+        cctxbase text COLLATE pg_catalog."default",
+        capplic_barreleve text COLLATE pg_catalog."default",
+        cpil_gestion text COLLATE pg_catalog."default",
+        cpil_frequence text COLLATE pg_catalog."default",
+        cpil_etiq text COLLATE pg_catalog."default",
+        cpil_chambre text COLLATE pg_catalog."default",
+        crlocal text COLLATE pg_catalog."default",
+        caccesms text COLLATE pg_catalog."default",
+        cusageprof text COLLATE pg_catalog."default",
+        cfactu_forfait text COLLATE pg_catalog."default",
+        cforfjourmedremb double precision,
+        cforfjourdispomedic double precision,
+        cnumsinistre text COLLATE pg_catalog."default",
+        cdateaccident date,
+        cregimeat text COLLATE pg_catalog."default",
+        ccaissegat text COLLATE pg_catalog."default",
+        ccentregat text COLLATE pg_catalog."default",
+        cinscalcule text COLLATE pg_catalog."default",
+        ctvaintracomm text COLLATE pg_catalog."default",
+        cstatusinsc text COLLATE pg_catalog."default",
+        cetatdmp text COLLATE pg_catalog."default",
+        updated_at timestamp without time zone DEFAULT now(),
+        cdatedmp date,
+        cacceptemail text COLLATE pg_catalog."default",
+        ccompte_debite integer,
+        cnom text COLLATE pg_catalog."default",
+        cnomjf text COLLATE pg_catalog."default",
+        cprenom text COLLATE pg_catalog."default",
+        cnoss text COLLATE pg_catalog."default",
+        csexe text COLLATE pg_catalog."default",
+        CONSTRAINT af04_pkey PRIMARY KEY (ccode)
+    )
+            WITH (
+                OIDS = FALSE
+            )
+    TABLESPACE pg_default;
+
+
+    ##TEMP_TABLE_CREATION##
+
+    ##TEMP_COPY##
+
+    INSERT INTO public.af04 (
+    ##INSERT_COLUMNS##
+    )
+    SELECT
+        ##SELECT_COLUMNS##
+    FROM ##TEMP_TABLENAME## temp;
+
+    RETURN 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

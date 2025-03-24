@@ -1,0 +1,120 @@
+CREATE OR REPLACE FUNCTION FCTCREATEaf32(CSVFILE text) RETURNS integer
+AS $$
+BEGIN
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_schema = 'public'
+               AND table_name = 'af32') THEN
+        DROP TABLE public.af32;
+    END IF;
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_name = 'temp_af32') THEN
+        DROP TABLE temp_af32;
+    END IF;
+
+        CREATE TABLE public.af32
+            (
+lcddate date,
+lcdchrono text,
+lcdnocip text,
+lcdindex text,
+lcdduplidate text,
+lcdduplichrono text,
+lcdduplinocip text,
+lcdcip text,
+lcdean13 text,
+lcdnumligne text,
+lcdlibelle text,
+lcdactivite text,
+lcdlabo text,
+lcddatelivr text,
+lcdtyplabo text,
+lcdcolisage text,
+lcdmention text,
+lcdtransmis text,
+lcdqteinitiale text,
+lcdqtecomm integer,
+lcdqtemanquante text,
+lcdqterecue text,
+lcdqterecept text,
+lcdretour text,
+lcdpxachcat float,
+lcdpxachrem float,
+lcdpxpublic float,
+lcdeuro text,
+lcdperemption text,
+lcddaterec date,
+lcdnumcoef text,
+lcdvendeur text,
+lcdrelance text,
+lcddiffere text,
+lcdlaborelance text,
+lcdpxbaserembt text,
+lcdqterayon text,
+lcdqtereserve text,
+lcdssc text,
+lcdqtehisto text,
+lcdnogamme text,
+lcdfamille text,
+lcdrelmanq text,
+lcddifmanq text,
+lcdlaborelmanq text,
+lcdprevision text,
+lcdbesoinstock text,
+lcdqtestock text,
+lcdcdecours text,
+lcdcodetva text,
+lcdnbug text,
+lcdtypremspe text,
+lcdremspe text,
+lcdpxpubfixe text,
+lcdtxremlg text,
+lcdtxremgb text,
+lcdnaturerem text,
+lcdpxremlg text,
+lcdpxrevient text,
+lcdtxremspe2 text,
+lcdcoeftm text,
+lcdbasecoef text,
+lcdpxfact text,
+lcdqtecomfam text,
+lcdstockfam text,
+lcdnbugg text,
+lcdlivpart text,
+lcdlivreliq text,
+lcdlivequiv text,
+lcdversion text,
+lcdqtecomgenerique text,
+lcdstockgenerique text,
+lcdligneauto text,
+lcdcde_lieu text,
+lcdqteapriori text,
+lcdctrlbl text,
+lcdctrlprix text,
+lcdprodrelmanq text,
+lcddatevalorisation text,
+updated_at text,
+                CONSTRAINT af32_pkey PRIMARY KEY (lcddate, lcdchrono,lcdindex, lcdnocip, lcdnumligne)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+    TABLESPACE pg_default;
+
+
+    ##TEMP_TABLE_CREATION##
+
+    ##TEMP_COPY##
+
+    INSERT INTO public.af32 (
+    ##INSERT_COLUMNS##
+    )
+    SELECT
+        ##SELECT_COLUMNS##
+    FROM ##TEMP_TABLENAME## temp;
+
+    RETURN 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

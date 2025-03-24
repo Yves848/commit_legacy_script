@@ -1,0 +1,51 @@
+package OutilsERP_be;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Outils de vérification et de statistiques de la base LGPI'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  vcl,
+  rtl,
+  dbrtl,
+  vcldb,
+  dac140,
+  odac140,
+  Projet,
+  PIDB,
+  PIExtended,
+  vclimg,
+  PIClasses,
+  vclx,
+  VclSmp;
+
+contains
+  mdlOutilsERP_be in 'mdlOutilsERP_be.pas' {dmOutilsERP_be: TDataModule},
+  mdlGestionCarteRistourne in 'mdlGestionCarteRistourne.pas' {frmGestionCarteRistourne},
+  mdlOutilsERPERP_be in 'mdlOutilsERPERP_be.pas' {dmOutilsERPERP_be: TDataModule},
+  mdlSequenceTUH_be in 'mdlSequenceTUH_be.pas' {frmSequenceOrdonnancier},
+  mdlSequenceOrdonnancier_be in 'mdlSequenceOrdonnancier_be.pas';
+
+end.

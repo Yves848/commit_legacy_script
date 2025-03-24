@@ -1,0 +1,58 @@
+﻿# répertoire où sont générés des fichiers (rpm, etc...)
+**/bin
+**/dist
+/release
+**/*.dcu
+
+# repertoires interdits par convention
+#/conf
+#/lib
+
+# répertoire de log
+/log
+
+# répertoires générés pendant l'analyse sonar
+/.sonar
+/.sonar-input
+/sonar-project.properties
+/target
+
+# fichiers generes par checkstyle et pmd
+*.pmd
+*.checkstyle
+/bin
+/release
+/dist
+
+# repertoires interdits par convention
+#/conf
+#/lib
+
+# répertoire de log
+/log
+
+# répertoires génrérés pendant l'analyse sonar
+/.sonar
+/.sonar-input
+/sonar-project.properties
+/target
+
+# fichiers generes par checkstyle et pmd
+*.pmd
+*.checkstyle
+
+*.exe
+*~
+*.local
+*.identcache
+*.dcp
+!gum.exe
+
+**/*.res
+**/*.rc
+*.drc
+
+# Gradle 
+.gradle
+build/
+.idea/

@@ -1,0 +1,42 @@
+package ImportUltimate;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Import Ultimate'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  vcl,
+  Projet,
+  ModuleImport,
+  dac140,
+  odac140,
+  MSQL;
+
+contains
+  mdlImportUltimate in 'mdlImportUltimate.pas' {frImportUltimate: TFrame},
+  mdlImportUltimatePHA in 'mdlImportUltimatePHA.pas' {dmImportUltimatePHA: TDataModule};
+
+end.

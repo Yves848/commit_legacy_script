@@ -1,0 +1,48 @@
+CREATE OR REPLACE FUNCTION FCTCREATEafnotap(CSVFILE text) RETURNS integer
+AS $$
+BEGIN
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_schema = 'public'
+               AND table_name = 'afnotap') THEN
+        DROP TABLE public.afnotap;
+    END IF;
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_name = 'temp_afnotap') THEN
+        DROP TABLE temp_afnotap;
+    END IF;
+  
+        CREATE TABLE public.afnotap
+            (
+    notpcip double precision NOT NULL,
+    notptype text NOT NULL,
+    notpnoligne integer NOT NULL,
+    notpindex smallint,
+    notpduplicle text,
+    notptexte text,
+    updated_at timestamp without time zone DEFAULT now(),
+    remark_gravity text,
+                CONSTRAINT afnotap_pkey PRIMARY KEY (notpcip, notptype, notpnoligne)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+    TABLESPACE pg_default;
+
+
+    ##TEMP_TABLE_CREATION##
+
+    ##TEMP_COPY##
+
+    INSERT INTO public.afnotap (
+    ##INSERT_COLUMNS##
+    )
+    SELECT
+        ##SELECT_COLUMNS##
+    FROM ##TEMP_TABLENAME## temp;
+
+    RETURN 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="documentation.xsl" type="text/xsl"?>
+<documentation>
+	<description nom="Infosoft" os="MS Windows" type="fichiers"/>
+	<systemes>
+   <systeme>
+     <designation>MS Windows</designation>     
+     <recuperations>
+        <recuperation description="Copie de fichiers"/>
+     </recuperations>
+     <fichiers>
+       <fichier nom="MEDECINS.DBI" repertoire="D:\INFOSOFT\DATA" description="Médecins"/>
+       <fichier nom="ORGANISM.DBI" repertoire="D:\INFOSOFT\DATA" description="Organismes"/>
+       <fichier nom="LIBCREMB.AMO" repertoire="D:\INFOSOFT\DATA" description="Libellés des couvertures AMO"/>
+       <fichier nom="CODEREMB.AMO" repertoire="D:\INFOSOFT\DATA" description="Identifiants des couvertures AMO"/>
+       <fichier nom="LIBCREMB.AMC" repertoire="D:\INFOSOFT\DATA" description="Libellés des couvertures AMC"/>
+       <fichier nom="CODEREMB.AMC" repertoire="D:\INFOSOFT\DATA" description="Identifiants des couvertures AMO"/>
+       <fichier nom="CODESITU.AMC" repertoire="D:\INFOSOFT\DATA" description="Codes situation AMC"/>
+       <fichier nom="ASSURES.DBI" repertoire="D:\INFOSOFT\DATA" description="Assurés et bénéficiaires"/>
+       <fichier nom="LABFOUR.DBI" repertoire="D:\INFOSOFT\DATA" description="Fournisseurs direct et répartiteurs"/>
+       <fichier nom="PRODUITS.DBI" repertoire="D:\INFOSOFT\DATA" description="Produits, stock et historiques de d'achats et ventes"/>
+       <fichier nom="ARCH*.DBI" repertoire="D:\INFOSOFT\DATA\SCANS" description="Documents scannés"/>
+        <fichier nom="HISTO.DBI" repertoire="D:\INFOSOFT\DATA\" description="Historiques délivrances"/> 
+       <fichier nom="SCANCLT.IDX" repertoire="D:\INFOSOFT\DATA" description="Associations documents scannés-clients"/>
+       <fichier nom="PERSONEL.IDX" repertoire="D:\INFOSOFT\DATA" description="Opérateurs"/>
+       <fichier nom="CREDITS.DBI" repertoire="D:\INFOSOFT\DATA" description="Crédits"/>
+       <fichier nom="AVANCESV.DBI" repertoire="D:\INFOSOFT\DATA" description="Vignettes avancées"/>
+       <fichier nom="COMMANDE.LST" repertoire="D:\INFOSOFT\DATA\COMMANDE" description="Entêtes des commandes en cours"/>
+       <fichier nom="COMMANDE.*" repertoire="D:\INFOSOFT\DATA\COMMANDE" description="Détails des commandes en cours"/>
+     </fichiers>
+   </systeme>
+	</systemes>
+	<perimetres>
+		<donnee designation="Praticiens" commentaire="Pas de gestion des hôpitaux"/>
+		<donnee designation="Organismes"/>
+		<donnee designation="Clients" rejets="Clients supprimés logiquement"/>
+		<donnee designation="Fournisseurs directs" commentaire="Informations à complèter" rejets="Fournisseurs supprimés logiquement"/>
+		<donnee designation="Répartiteurs" commentaire="Informations à complèter" rejets="Fournisseurs supprimés logiquement"/>		
+		<donnee designation="Produits" rejets="Produits supprimés logiquement"/>
+    <donnee designation="Historiques de ventes mensuels ( rotation )"/>    
+		<donnee designation="Opérateurs"/>
+    <donnee designation="Commandes en cours"/>
+    <donnee designation="Crédits"/>
+    <donnee designation="Vignettes avancées" rejets="Quantités avancées inférieur ou égal à 0"/>    
+		<donnee designation="Historiques d'achats ( commandes )"/>
+		<donnee designation="Historiques de délivrances" rejets="Ventes directes"/>
+
+		
+    <donnee designation="Attestations mutuelles"/>
+	</perimetres>
+</documentation>

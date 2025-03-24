@@ -1,0 +1,134 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{76A94240-A31A-4A22-8424-9EC2696A06A7}</ProjectGuid>
+			<MainSource>IPharma.dpk</MainSource>
+			<Config Condition="'$(Config)'==''">Débogage</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+			<ProjectVersion>12.0</ProjectVersion>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Débogage' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<RuntimeOnlyPackage>true</RuntimeOnlyPackage>
+			<DCC_DependencyCheckOutputName>..\..\..\Bin\Modules\Import\IPharma.bpl</DCC_DependencyCheckOutputName>
+			<DCC_BplOutput>..\..\..\Bin\Modules\Import</DCC_BplOutput>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_Description>IPharma</DCC_Description>
+			<DesignOnlyPackage>false</DesignOnlyPackage>
+			<DCC_DcpOutput>..\..\..\Lib</DCC_DcpOutput>
+			<GenDll>true</GenDll>
+			<GenPackage>true</GenPackage>
+			<DCC_DcuOutput>..\..\..\Lib</DCC_DcuOutput>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_Platform>x86</DCC_Platform>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="IPharma.dpk">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="projet.dcp"/>
+			<DCCReference Include="PIStandard.dcp"/>
+			<DCCReference Include="PIClasses.dcp"/>
+			<DCCReference Include="ModuleImport.dcp"/>
+			<DCCReference Include="MSQL.dcp"/>
+			<DCCReference Include="mdlIPharma.pas">
+				<Form>frIPharma</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlIIPharmaConnexionServeur.pas">
+				<Form>frmIIPharmaConnexionServeur</Form>
+			</DCCReference>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Débogage">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<PropertyGroup>
+			<PostBuildEvent><![CDATA[powershell -noprofile -command $(SVN)\post-build.ps1 -target cp_rss_modules -rep_dest $(OUTPUTDIR) -type_mod Import -module $(OUTPUTNAME)]]></PostBuildEvent>
+		</PropertyGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType>Package</Borland.ProjectType>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">IPharma.dpk</Source>
+					</Source>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+						<Parameters Name="HostApplication">..\..\..\Bin\COMMIT.exe</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">True</VersionInfo>
+						<VersionInfo Name="MajorVer">4</VersionInfo>
+						<VersionInfo Name="MinorVer">8</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">9</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1036</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName">Pharmagest Inter@ctive</VersionInfoKeys>
+						<VersionInfoKeys Name="FileDescription">IPharma</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">4.8.0.9</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName">IPHARMA.BPL</VersionInfoKeys>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName">COMMIT</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductVersion">4.7</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+						<VersionInfoKeys Name="Pays">BE</VersionInfoKeys>
+					</VersionInfoKeys>
+					<Excluded_Packages>
+						<Excluded_Packages Name="D:\svn\composants\JclBaseExpert140.bpl">JCL Package containing common units for JCL Experts</Excluded_Packages>
+						<Excluded_Packages Name="D:\svn\composants\JclDebugExpert140.bpl">JCL Debug IDE extension</Excluded_Packages>
+						<Excluded_Packages Name="D:\svn\composants\JclFavoriteFoldersExpert140.bpl">JCL Open and Save IDE dialogs with favorite folders</Excluded_Packages>
+						<Excluded_Packages Name="D:\svn\composants\JclProjectAnalysisExpert140.bpl">JCL Project Analyzer</Excluded_Packages>
+						<Excluded_Packages Name="D:\svn\composants\JclSIMDViewExpert140.bpl">JCL Debug Window of XMM registers</Excluded_Packages>
+						<Excluded_Packages Name="D:\svn\composants\JclStackTraceViewerExpert140.bpl">JCL Stack Trace Viewer</Excluded_Packages>
+						<Excluded_Packages Name="D:\svn\composants\JclVersionControlExpert140.bpl">JCL Integration of version control systems in the IDE</Excluded_Packages>
+						<Excluded_Packages Name="D:\svn\composants\JclRepositoryExpert140.bpl">JCL Package containing repository wizards</Excluded_Packages>
+					</Excluded_Packages>
+				</Delphi.Personality>
+				<ModelSupport>False</ModelSupport>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>

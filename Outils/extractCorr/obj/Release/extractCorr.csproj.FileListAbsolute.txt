@@ -1,0 +1,16 @@
+C:\Users\kdalleau\source\repos\extractCorr\extractCorr\obj\Release\extractCorr.csproj.AssemblyReference.cache
+C:\Users\kdalleau\source\repos\extractCorr\extractCorr\obj\Release\extractCorr.csproj.SuggestedBindingRedirects.cache
+C:\Users\kdalleau\source\repos\extractCorr\extractCorr\obj\Release\extractCorr.csproj.CoreCompileInputs.cache
+C:\Users\kdalleau\source\repos\extractCorr\extractCorr\bin\Release\WinSCP.exe
+C:\Users\kdalleau\source\repos\extractCorr\extractCorr\bin\Release\extractCorr.exe.config
+C:\Users\kdalleau\source\repos\extractCorr\extractCorr\bin\Release\extractCorr.exe
+C:\Users\kdalleau\source\repos\extractCorr\extractCorr\bin\Release\extractCorr.pdb
+C:\Users\kdalleau\source\repos\extractCorr\extractCorr\bin\Release\FirebirdSql.Data.FirebirdClient.dll
+C:\Users\kdalleau\source\repos\extractCorr\extractCorr\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\kdalleau\source\repos\extractCorr\extractCorr\bin\Release\System.Threading.Tasks.Extensions.dll
+C:\Users\kdalleau\source\repos\extractCorr\extractCorr\bin\Release\WinSCPnet.dll
+C:\Users\kdalleau\source\repos\extractCorr\extractCorr\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\kdalleau\source\repos\extractCorr\extractCorr\bin\Release\System.Threading.Tasks.Extensions.xml
+C:\Users\kdalleau\source\repos\extractCorr\extractCorr\obj\Release\extractCorr.csproj.CopyComplete
+C:\Users\kdalleau\source\repos\extractCorr\extractCorr\obj\Release\extractCorr.exe
+C:\Users\kdalleau\source\repos\extractCorr\extractCorr\obj\Release\extractCorr.pdb

@@ -1,0 +1,136 @@
+CREATE OR REPLACE FUNCTION fctCreateAf25(csvfile text) RETURNS integer
+AS $$
+DECLARE af25exists BOOLEAN;
+BEGIN
+		SELECT EXISTS into af25exists (
+		   SELECT FROM information_schema.tables 
+		   WHERE  table_schema = 'public'
+		   AND    table_name   = 'af25_crypt'
+		);
+		
+		if af25exists then
+		   drop table af25;
+		   
+		else
+			alter table af25 rename constraint af25_pkey to af25_crypt_pkey;
+
+			alter index if exists af25_lfacte_idx rename to af25_crypt_lfacte_crypt_idx;
+			alter index if exists af25_lfcdlabo_idx rename to af25_crypt_lfcdlabo_crypt_idx;
+			alter index if exists af25_lfcodefrais_idx rename to af25_crypt_lfcodefrais_crypt_idx;
+			alter index if exists af25_lfdestockage_idx rename to af25_crypt_lfdestockage_crypt_idx;
+			alter index if exists af25_lffamille_idx rename to af25_crypt_lffamille_crypt_idx;
+			alter index if exists af25_lffrais_idx rename to af25_crypt_lffrais_crypt_idx;
+			alter index if exists af25_lflpp_idx rename to af25_crypt_lflpp_crypt_idx;
+			alter index if exists af25_lfmaladie_idx rename to af25_crypt_lfmaladie_crypt_idx;
+			alter index if exists af25_lfnorembt_idx rename to af25_crypt_lfnorembt_crypt_idx;
+			alter index if exists af25_lfpromotion_idx rename to af25_crypt_lfpromotion_crypt_idx;
+			alter index if exists af25_lfpuvente_idx rename to af25_crypt_lfpuvente_crypt_idx;
+			alter index if exists af25_lfpxbaserembt_idx rename to af25_crypt_lfpxbaserembt_crypt_idx;
+			alter index if exists af25_lfqte_idx rename to af25_crypt_lfqte_crypt_idx;
+			alter index if exists af25_lfsav_chrono_idx rename to af25_crypt_lfsav_chrono_crypt_idx;
+			alter index if exists af25_lfsav_noligne_idx rename to af25_crypt_lfsav_noligne_crypt_idx;
+			alter index if exists af25_lftableau_idx rename to af25_crypt_lftableau_crypt_idx;
+			alter index if exists af25_lftva_idx rename to af25_crypt_lftva_crypt_idx;
+			alter index if exists af25_lftypeligne_idx rename to af25_crypt_lftypeligne_crypt_idx;
+			alter index if exists af25_lftypepu_idx rename to af25_crypt_lftypepu_crypt_idx;
+
+			alter table af25 rename to af25_crypt;
+		end if;
+		
+		CREATE TABLE public.af25
+			(
+				lfdate date NOT NULL,
+				lfnochrono integer NOT NULL,
+				lfnoligne smallint NOT NULL,
+				lfindex smallint,
+				lfsav_date date,
+				lfsav_chrono smallint,
+				lfsav_noligne smallint,
+				lftypeligne character varying(1) COLLATE pg_catalog."default",
+				lfnom_sav character varying(22) COLLATE pg_catalog."default",
+				lfcip_sav character varying(6) COLLATE pg_catalog."default",
+				lflpp character varying(1) COLLATE pg_catalog."default",
+				lftableau character varying(1) COLLATE pg_catalog."default",
+				lfpxbaserembt double precision,
+				lftva double precision,
+				lfnorembt smallint,
+				lfacte smallint,
+				lfqte double precision,
+				lfpuvente double precision,
+				lftypepu smallint,
+				lfcodefrais smallint,
+				lffrais double precision,
+				lfmaladie smallint,
+				lfdestockage smallint,
+				lfpromotion smallint,
+				lfdci character varying(1) COLLATE pg_catalog."default",
+				lfdatordo date,
+				lffamille character varying(5) COLLATE pg_catalog."default",
+				lfcdlabo smallint,
+				lfprmp double precision,
+				lffaminterne character varying(5) COLLATE pg_catalog."default",
+				lfmarge double precision,
+				lfremise double precision,
+				lfcippres_sav character varying(7) COLLATE pg_catalog."default",
+				lfqtepres double precision,
+				lftypeservice character varying(1) COLLATE pg_catalog."default",
+				lfcodeent character varying(1) COLLATE pg_catalog."default",
+				lfdtenvent date,
+				lfqualifdep character varying(1) COLLATE pg_catalog."default",
+				lfvetolait smallint,
+				lfvetoviande smallint,
+				lfexoneration character varying(1) COLLATE pg_catalog."default",
+				lfeuro character varying(1) COLLATE pg_catalog."default",
+				lfnumcondition smallint,
+				lfnoprescinit integer,
+				lfunite smallint,
+				lfordonnancier bigint,
+				lfnumlot character varying(20) COLLATE pg_catalog."default",
+				lfdateperemption date,
+				lfcodlieu_destock character varying(2) COLLATE pg_catalog."default",
+				lfpxachat double precision,
+				lfpxremise double precision,
+				lfpxfacture double precision,
+				lfpartenariat character varying(1) COLLATE pg_catalog."default",
+				lfnointorga smallint,
+				lfsubstitution character varying(1) COLLATE pg_catalog."default",
+				lfdecondit character varying(1) COLLATE pg_catalog."default",
+				lfvigavance smallint,
+				lfdatvigavance date,
+				lfnoserie character varying(20) COLLATE pg_catalog."default",
+				lfacte_honodisp smallint,
+				lfhonodisp_init double precision,
+				lfpu_honodisp double precision,
+				lfqte_honodisp double precision,
+				lftva_honodisp double precision,
+				lfrembt_honodisp smallint,
+				lfpu_produit double precision,
+				lfprescription character varying(13) COLLATE pg_catalog."default",
+				lfpartorg_honodisp double precision[],
+				lfbox_noligne smallint,
+				lfbox_noligne_honodisp smallint,
+				lfbox_puttc double precision,
+				updated_at timestamp without time zone DEFAULT now(),
+				lfpartorg_produit numeric(24,12)[] DEFAULT '{0,0,0}'::numeric[],
+				lftauxamo_prod numeric(16,8) DEFAULT 0,
+				lftauxamo_honodisp numeric(16,8) DEFAULT 0,
+				lfcleoreg bytea,
+				lfnom character varying(60) COLLATE pg_catalog."default",
+				lfcip character varying(20) COLLATE pg_catalog."default",
+				lfcippres character varying(20) COLLATE pg_catalog."default",
+				CONSTRAINT af25_pkey PRIMARY KEY (lfdate, lfnochrono, lfnoligne)
+			)
+			WITH (
+				OIDS = FALSE
+			)
+			TABLESPACE pg_default;
+		
+		execute 'COPY af25(##FIELDS##)
+			from ''' || $1 || '''
+			DELIMITER '',''
+			CSV HEADER';
+		
+			return 0;
+END;
+$$ 
+LANGUAGE plpgsql;

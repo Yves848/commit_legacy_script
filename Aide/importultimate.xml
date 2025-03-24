@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="documentation.xsl" type="text/xsl"?>
+<documentation>
+  <description nom="LGPI" os="Linux CentOS" type="sql"/>
+  <systemes>
+    <systeme>
+      <recuperations>
+        <recuperation description="Dump Oracle puis restauration sur un serveur en agence"/>
+        <recuperation description="Import direct via télémaintenance serveur, cela peux être long à cause de la connexion"/>
+	  </recuperations>
+    </systeme>
+  </systemes>
+  <perimetres>
+    <donnee designation="Praticiens"/>
+    <donnee designation="Patients"/>
+    <donnee designation="Clients"/>
+    <donnee designation="Pathologies Patients"/>
+    <donnee designation="Allergies Patients"/>
+    <donnee designation="Attestations produits"/>
+    <donnee designation="Comptes ristournes"/>
+    <donnee designation="Cartes ristournes"/>
+    <donnee designation="Transactions ristournes"/>
+    <donnee designation="Produits"/>
+    <donnee designation="Stocks"/>
+    <donnee designation="Historiques de delivrances"/>
+    <donnee designation="Avances produits"/>
+    <donnee designation="Delivrances differees"/>
+    <donnee designation="Credits"/>
+  </perimetres>
+</documentation>

@@ -1,0 +1,45 @@
+package transfertyzy;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Transfert YZY'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  dac140,
+  odac140,
+  ModuleImport,
+  ModuleTransfertyzy,
+  MSQL,
+  IndyCore,
+  IndySystem,
+  IndyProtocols,
+  vcldbx;
+
+contains
+  mdlTransfertyzy in 'mdlTransfertyzy.pas' {frTransfertYZY: TFrame},
+  mdlTransfertYZYConfiguration in 'mdlTransfertYZYConfiguration.pas' {frTransfertYZYConfiguration: TFrame},
+  mdlEtatFusion in 'mdlEtatFusion.pas' {frmEtatFusion};
+
+end.

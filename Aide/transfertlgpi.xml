@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="documentation.xsl" type="text/xsl"?><documentation>
+  <description nom="LGPI" os="Linux CentOS" type="sql"/>
+  <perimetres>
+    <donnee designation="Hôpitaux"/>
+    <donnee designation="Praticiens"/>
+    <donnee designation="Destinataires"/>
+    <donnee designation="Organismes AMO et AMC"/>
+    <donnee designation="Couvertures AMC"/>
+    <donnee designation="Taux de prise en charge AMC"/>
+    <donnee designation="Profils de remises"/>
+    <donnee designation="Comptes"/>
+    <donnee designation="Adhérents collectivité"/>
+    <donnee designation="Clients"/>
+    <donnee designation="Couvertures clients"/>
+    <donnee designation="Dépôts"/>
+    <donnee designation="Fournisseurs directs et répartiteurs"/>    
+    <donnee designation="Codifications"/>
+    <donnee designation="Zones géographiques"/>
+    <donnee designation="Produits"/>
+    <donnee designation="Stocks"/>
+    <donnee designation="Historiques ventes"/>
+	<donnee designation="Catalogues"/>
+    <donnee designation="Opérateurs"/>
+    <donnee designation="Vignettes avancées"/>
+    <donnee designation="Crédits"/>
+    <donnee designation="Factures en attentes"/>
+    <donnee designation="Produits dus"/>
+    <donnee designation="Historiques de délivrances"/>
+    <donnee designation="Commandes"/>
+	<donnee designation="Programmes de fidélité"/>
+  </perimetres>
+</documentation>

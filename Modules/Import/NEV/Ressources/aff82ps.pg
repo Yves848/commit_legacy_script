@@ -1,0 +1,81 @@
+CREATE OR REPLACE FUNCTION FCTCREATEaff82ps(CSVFILE text) RETURNS integer
+AS $$
+DECLARE aff82psexists BOOLEAN;
+BEGIN
+        SELECT EXISTS into aff82psexists (
+           SELECT FROM information_schema.tables
+           WHERE  table_schema = 'public'
+           AND    table_name   = 'aff82ps'
+        );
+
+        if aff82psexists then
+           drop table aff82ps;
+        end if;
+        
+        CREATE TABLE public.aff82ps
+            (
+ctanolabo text,
+ctanogamme integer,
+ctanocip text,
+ctatypedatas text,
+ctachronotype text,
+ctaindex text,
+ctaduplicle text,
+ctasupprime text,
+updated_at date,
+cta_ps_pxremise float,
+cta_ps_cdeaa text,
+cta_ps_cdemm text,
+cta_ps_cdejj text,
+cta_ps_derqte integer,
+cta_ps_ord text,
+cta_ps_pxrevient text,
+cta_ps_arrondi text,
+cta_ps_typcde text,
+cta_ps_txrem1 text,
+cta_ps_txrem2 text,
+cta_ps_nbug text,
+cta_ps_txremgb text,
+cta_ps_txremfact text,
+cta_ps_pxfacture text,
+            CONSTRAINT aff82ps_pkey PRIMARY KEY (ctanolabo, ctanogamme, ctanocip)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+            TABLESPACE pg_default;
+
+        execute 'COPY aff82ps(
+            ctanolabo,
+ctanogamme,
+ctanocip,
+ctatypedatas,
+ctachronotype,
+ctaindex,
+ctaduplicle,
+ctasupprime,
+updated_at,
+cta_ps_pxremise,
+cta_ps_cdeaa,
+cta_ps_cdemm,
+cta_ps_cdejj,
+cta_ps_derqte,
+cta_ps_ord,
+cta_ps_pxrevient,
+cta_ps_arrondi,
+cta_ps_typcde,
+cta_ps_txrem1,
+cta_ps_txrem2,
+cta_ps_nbug,
+cta_ps_txremgb,
+cta_ps_txremfact,
+cta_ps_pxfacture
+        )
+            from ''' || $1 || '''
+            DELIMITER '';''
+            CSV HEADER';
+
+            return 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

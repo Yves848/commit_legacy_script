@@ -1,0 +1,117 @@
+CREATE OR REPLACE FUNCTION FCTCREATEaf30(CSVFILE text) RETURNS integer
+AS $$
+DECLARE af30exists BOOLEAN;
+BEGIN
+        SELECT EXISTS into af30exists (
+           SELECT FROM information_schema.tables
+           WHERE  table_schema = 'public'
+           AND    table_name   = 'af30'
+        );
+
+        if af30exists then
+           drop table af30;
+        end if;
+        
+        CREATE TABLE public.af30
+            (
+            gronofour integer,
+            gronum integer,
+            groindex text,
+            groduplicle text,
+            gronom text,
+            grocomment text,
+            gro_idfclient text,
+            grotel text,
+            groauto text,
+            groutilauto text,
+            gronorme text,
+            groversionprotocole text,
+            groappel text,
+            grolivr text,
+            grotypc text,
+            filler_1 text,
+            grocdtimeout text,
+            groattimeout text,
+            gro_idrepart text,
+            gro_coderepart text,
+            gro_loginhttp text,
+            gro_motpassehttp text,
+            gro_cle_md5 text,
+            gro_url_un text,
+            gro_url_deux text,
+            gro_emet_cata text,
+            gro_id_fournisseur text,
+            gro_freq_declench text,
+            gro_prod_commander text,
+            gro_date_mensuel text,
+            gro_hh_mensuel text,
+            gro_mm_mensuel text,
+            gro_delai_mensuel text,
+            gro_date_annuel text,
+            gro_hh_annuel text,
+            gro_mm_annuel text,
+            gro_delai_annuel text,
+            gro_id_depot_rep text,
+            gro_specifique text,
+            gro_version text,
+            gro_vidage_depot text,
+            updated_at text,
+                CONSTRAINT af30_pkey PRIMARY KEY (gronofour, gronum)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+            TABLESPACE pg_default;
+
+        execute 'COPY af30(
+            gronofour,
+gronum,
+groindex,
+groduplicle,
+gronom,
+grocomment,
+gro_idfclient,
+grotel,
+groauto,
+groutilauto,
+gronorme,
+groversionprotocole,
+groappel,
+grolivr,
+grotypc,
+filler_1,
+grocdtimeout,
+groattimeout,
+gro_idrepart,
+gro_coderepart,
+gro_loginhttp,
+gro_motpassehttp,
+gro_cle_md5,
+gro_url_un,
+gro_url_deux,
+gro_emet_cata,
+gro_id_fournisseur,
+gro_freq_declench,
+gro_prod_commander,
+gro_date_mensuel,
+gro_hh_mensuel,
+gro_mm_mensuel,
+gro_delai_mensuel,
+gro_date_annuel,
+gro_hh_annuel,
+gro_mm_annuel,
+gro_delai_annuel,
+gro_id_depot_rep,
+gro_specifique,
+gro_version,
+gro_vidage_depot,
+updated_at
+        )
+            from ''' || $1 || '''
+            DELIMITER '';''
+            CSV HEADER';
+
+            return 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

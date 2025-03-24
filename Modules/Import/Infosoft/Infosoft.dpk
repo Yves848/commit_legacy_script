@@ -1,0 +1,57 @@
+package Infosoft;
+ 
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Infosoft'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  PIClasses,
+  Jcl,
+  JvCore,
+  Projet,
+  ModuleImport;
+
+contains
+  mdlInfosoft in 'mdlInfosoft.pas' {frInfosoft: TFrame},
+  mdlInfosoftPHA in 'mdlInfosoftPHA.pas' {dmInfosoftPHA: TDataModule},
+  mdlInfosoftLectureFichier in 'mdlInfosoftLectureFichier.pas',
+  mdlInfosoftMEDECINS in 'mdlInfosoftMEDECINS.pas',
+  mdlInfosoftORGANISM in 'mdlInfosoftORGANISM.pas',
+  mdlInfosoftLIBCREMB in 'mdlInfosoftLIBCREMB.pas',
+  mdlInfosoftCODEREMB in 'mdlInfosoftCODEREMB.pas',
+  mdlInfosoftASSURE in 'mdlInfosoftASSURE.pas',
+  mdlInfosoftLABFOUR in 'mdlInfosoftLABFOUR.pas',
+  mdlInfosoftPRODUITS in 'mdlInfosoftPRODUITS.pas',
+  mdlInfosoftHISTO in 'mdlInfosoftHISTO.pas',
+  mdlInfosoftCODESITU in 'mdlInfosoftCODESITU.pas',
+  mdlInfosoftCREDITS in 'mdlInfosoftCREDITS.pas',
+  mdlInfosoftAVANCESV in 'mdlInfosoftAVANCESV.pas',
+  mdlInfosoftSCANCLT in 'mdlInfosoftSCANCLT.pas',
+  mdlInfosoftCOMMANDE in 'mdlInfosoftCOMMANDE.pas',
+  mdlInfosoftPERSONEL in 'mdlInfosoftPERSONEL.pas',
+  mdlInfosoftMESSAGES in 'mdlInfosoftMESSAGES.pas';
+
+end.
+

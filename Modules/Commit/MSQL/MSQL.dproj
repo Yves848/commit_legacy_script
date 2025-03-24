@@ -1,0 +1,216 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{7D801AE7-926F-406D-AF0E-3561CFCD72D1}</ProjectGuid>
+			<MainSource>MSQL.dpk</MainSource>
+			<ProjectVersion>12.0</ProjectVersion>
+			<Config Condition="'$(Config)'==''">Débogage</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Débogage' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<BRCC_IncludePath>C:\Git\composants\Autres\Abbrevia 5.0;$(BRCC_IncludePath)</BRCC_IncludePath>
+			<DCC_MinStackSize>1048576</DCC_MinStackSize>
+			<DCC_DebugDCUs>true</DCC_DebugDCUs>
+			<ImageDebugInfo>true</ImageDebugInfo>
+			<DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+			<DCC_RangeChecking>true</DCC_RangeChecking>
+			<DCC_DependencyCheckOutputName>..\..\..\Bin\MSQL.bpl</DCC_DependencyCheckOutputName>
+			<DCC_BplOutput>..\..\..\Bin</DCC_BplOutput>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<RuntimeOnlyPackage>true</RuntimeOnlyPackage>
+			<DesignOnlyPackage>false</DesignOnlyPackage>
+			<DCC_DcpOutput>..\..\..\Lib</DCC_DcpOutput>
+			<GenDll>true</GenDll>
+			<GenPackage>true</GenPackage>
+			<DCC_DcuOutput>..\..\..\Lib</DCC_DcuOutput>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_Platform>x86</DCC_Platform>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="MSQL.dpk">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="Projet.dcp"/>
+			<DCCReference Include="ModuleImport.dcp"/>
+			<DCCReference Include="ZComponent.dcp"/>
+			<DCCReference Include="ZCore.dcp"/>
+			<DCCReference Include="ZDbc.dcp"/>
+			<DCCReference Include="ZParseSql.dcp"/>
+			<DCCReference Include="ZPlain.dcp"/>
+			<DCCReference Include="bdertl.dcp"/>
+			<DCCReference Include="adortl.dcp"/>
+			<DCCReference Include="PIDataSet.dcp"/>
+			<DCCReference Include="PIClasses.dcp"/>
+			<DCCReference Include="JvHMI.dcp"/>
+			<DCCReference Include="VclSmp.dcp"/>
+			<DCCReference Include="JvMM.dcp"/>
+			<DCCReference Include="IndyCore.dcp"/>
+			<DCCReference Include="IndySystem.dcp"/>
+			<DCCReference Include="IndyProtocols.dcp"/>
+			<DCCReference Include="Abbrevia.dcp"/>
+			<DCCReference Include="AbbreviaVCL.dcp"/>
+			<DCCReference Include="mdlMIFirebird.pas">
+				<Form>frMIFirebird</Form>
+			</DCCReference>
+			<DCCReference Include="mdlFirebirdConnexionServeur.pas">
+				<Form>frmFirebirdConnexionServeur</Form>
+			</DCCReference>
+			<DCCReference Include="mdlMIFirebirdPHA.pas">
+				<Form>dmMIFirebirdPHA</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlMIHyperFile.pas">
+				<Form>frMIHyperFile</Form>
+			</DCCReference>
+			<DCCReference Include="mdlMIHyperFilePHA.pas">
+				<Form>dmMIHyperFilePHA</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlHyperFileConnexionServeur.pas">
+				<Form>frmHyperFileConnexionServeur</Form>
+			</DCCReference>
+			<DCCReference Include="mdlMIOLEDBPHA.pas"/>
+			<DCCReference Include="mdlMIOLEDB.pas"/>
+			<DCCReference Include="mdlMISQLServeur.pas">
+				<Form>frMISQLServeur</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlMISQLServeurPHA.pas">
+				<Form>dmMISQLServeurPHA</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlSQLServeurConnexionServeur.pas">
+				<Form>frmSQLServeurConnexionServeur</Form>
+			</DCCReference>
+			<DCCReference Include="mdlMIMySQLPHA.pas">
+				<Form>dmMIMySQLPHA</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlMIMySQL.pas">
+				<Form>frMIMySQL</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlMIODBCPHA.pas">
+				<Form>dmMIODBCPHA</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlMIASAPHA.pas">
+				<Form>p</Form>
+			</DCCReference>
+			<DCCReference Include="mdlMIBDEPHA.pas"/>
+			<DCCReference Include="mdlMIBDE.pas">
+				<Form>frMIBDE</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlOracleConnexionServeur.pas">
+				<Form>frmOracleConnexionServeur</Form>
+			</DCCReference>
+			<DCCReference Include="mdlMySQLConnexionServeur.pas">
+				<Form>frmMySQLConnexionServeur</Form>
+			</DCCReference>
+			<DCCReference Include="mdlMIPI.pas">
+				<Form>frMIPI</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlMIPIPHA.pas">
+				<Form>dmMIPIPHA</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlMIPostgreSQL.pas"/>
+			<DCCReference Include="mdlMIPostgreSQLPHA.pas"/>
+			<DCCReference Include="mdlPostgreSQLConnexionServeur.pas"/>
+			<DCCReference Include="mdlBDEConnexionServeur.pas">
+				<Form>frmBDEConnexionServeur</Form>
+			</DCCReference>
+			<DCCReference Include="dumpallcut.pas">
+				<Form>fDumpAllCut</Form>
+			</DCCReference>
+			<DCCReference Include="mdlCSV.pas">
+				<Form>Frame1</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="mdlPostgresClean.pas">
+				<Form>frmPostgresClean</Form>
+			</DCCReference>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Débogage">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType>Package</Borland.ProjectType>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">MSQL.dpk</Source>
+					</Source>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+						<Parameters Name="HostApplication">..\..\..\Bin\COMMIT.exe</Parameters>
+						<Parameters Name="DebugSourceDirs">D:\SVN\composants\AccesBD\uib25\source\;D:\SVN\composants\AccesBD\ZEOSDBO\src\component\;D:\SVN\composants\AccesBD\ZEOSDBO\src\plain\;D:\svn\composants\pi\PIDataSet\;D:\svn\composants\AccesBD\zeosdbo72\src\dbc\</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">True</VersionInfo>
+						<VersionInfo Name="MajorVer">4</VersionInfo>
+						<VersionInfo Name="MinorVer">8</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">23</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1036</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">4.8.0.23</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName">COMMIT</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductVersion">4.7</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Excluded_Packages/>
+				</Delphi.Personality>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>

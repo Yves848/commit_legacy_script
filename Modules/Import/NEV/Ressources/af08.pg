@@ -1,0 +1,111 @@
+CREATE OR REPLACE FUNCTION FCTCREATEaf08(CSVFILE text) RETURNS integer
+AS $$
+DECLARE af08exists BOOLEAN;
+BEGIN
+    SELECT EXISTS into af08exists (
+       SELECT FROM information_schema.tables
+       WHERE  table_schema = 'public'
+       AND    table_name   = 'af08'
+    );
+
+    if af08exists then
+       drop table af08;
+    end if;
+        
+    CREATE TABLE public.af08
+    (
+        ccnointerne text,
+        ccnochrono text,
+        ccindex text,
+        ccassure text,
+        ccorganisme text,
+        cccentre text,
+        ccregime text,
+        ccnocontrat text,
+        ccadherent text,
+        ccmutuelle text,
+        ccnoref2 text,
+        ccdatedebut date,
+        ccdatefin date,
+        ccnosinistre text,
+        ccdatesinistre text,
+        ccdatemat text,
+        cccodentrep text,
+        ccimprime text,
+        ccexotm text,
+        ccnatsinistre text,
+        ccvieprivee text,
+        cccaisat text,
+        ccdroittransmis text,
+        ccctxbase text,
+        ccindictrait text,
+        ccattestpresent text,
+        ccdatepresent text,
+        ccsitucmuc text,
+        cccritere text,
+        filler_1 text,
+        cccodeerrsdd text,
+        ccliberrsdd text,
+        ccautorisation text,
+        ccidsts text,
+        ccrefsts text,
+        ccnatpiecjustamc text,
+        ccrefpecamc text,
+        cctypeconv text,
+        updated_at text,
+        CONSTRAINT af08_pkey PRIMARY KEY (ccnointerne, ccnochrono)
+    )
+    WITH (
+        OIDS = FALSE
+    )
+    TABLESPACE pg_default;
+
+    execute 'COPY af08(
+        ccnointerne,
+ccnochrono,
+ccindex,
+ccassure,
+ccorganisme,
+cccentre,
+ccregime,
+ccnocontrat,
+ccadherent,
+ccmutuelle,
+ccnoref2,
+ccdatedebut,
+ccdatefin,
+ccnosinistre,
+ccdatesinistre,
+ccdatemat,
+cccodentrep,
+ccimprime,
+ccexotm,
+ccnatsinistre,
+ccvieprivee,
+cccaisat,
+ccdroittransmis,
+ccctxbase,
+ccindictrait,
+ccattestpresent,
+ccdatepresent,
+ccsitucmuc,
+cccritere,
+filler_1,
+cccodeerrsdd,
+ccliberrsdd,
+ccautorisation,
+ccidsts,
+ccrefsts,
+ccnatpiecjustamc,
+ccrefpecamc,
+cctypeconv,
+updated_at
+    )
+    from ''' || $1 || '''
+    DELIMITER '';''
+    CSV HEADER';
+
+    return 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

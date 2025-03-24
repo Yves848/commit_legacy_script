@@ -1,0 +1,79 @@
+CREATE OR REPLACE FUNCTION FCTCREATEaf08(CSVFILE text) RETURNS integer
+AS $$
+BEGIN
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_schema = 'public'
+               AND table_name = 'af08') THEN
+        DROP TABLE public.af08;
+    END IF;
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_name = 'temp_af08') THEN
+        DROP TABLE temp_af08;
+    END IF;
+        
+    CREATE TABLE public.af08
+    (
+        ccnointerne text,
+        ccnochrono text,
+        ccindex text,
+        ccassure text,
+        ccorganisme text,
+        cccentre text,
+        ccregime text,
+        ccnocontrat text,
+        ccadherent text,
+        ccmutuelle text,
+        ccnoref2 text,
+        ccdatedebut date,
+        ccdatefin date,
+        ccnosinistre text,
+        ccdatesinistre text,
+        ccdatemat text,
+        cccodentrep text,
+        ccimprime text,
+        ccexotm text,
+        ccnatsinistre text,
+        ccvieprivee text,
+        cccaisat text,
+        ccdroittransmis text,
+        ccctxbase text,
+        ccindictrait text,
+        ccattestpresent text,
+        ccdatepresent text,
+        ccsitucmuc text,
+        cccritere text,
+        filler_1 text,
+        cccodeerrsdd text,
+        ccliberrsdd text,
+        ccautorisation text,
+        ccidsts text,
+        ccrefsts text,
+        ccnatpiecjustamc text,
+        ccrefpecamc text,
+        cctypeconv text,
+        updated_at text,
+        CONSTRAINT af08_pkey PRIMARY KEY (ccnointerne, ccnochrono)
+    )
+    WITH (
+        OIDS = FALSE
+    )
+    TABLESPACE pg_default;
+
+
+    ##TEMP_TABLE_CREATION##
+
+    ##TEMP_COPY##
+
+    INSERT INTO public.af08 (
+    ##INSERT_COLUMNS##
+    )
+    SELECT
+        ##SELECT_COLUMNS##
+    FROM ##TEMP_TABLENAME## temp;
+
+    RETURN 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

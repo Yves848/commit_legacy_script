@@ -1,0 +1,54 @@
+CREATE OR REPLACE FUNCTION FCTCREATEaf05(CSVFILE text) RETURNS integer
+AS $$
+BEGIN
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_schema = 'public'
+               AND table_name = 'af05') THEN
+        DROP TABLE public.af05;
+    END IF;
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_name = 'temp_af05') THEN
+        DROP TABLE temp_af05;
+    END IF;
+
+        
+        CREATE TABLE public.af05
+            (
+                mnomedecin integer not null,
+                mindex integer,
+                mnom text,
+                minsee text,
+                mspecialite text,
+                mcodespecialite text,
+                mdatederfacture text,
+                magrementratp text,
+                msalarie text,
+                mrpps text,
+                mstructure text,
+                metablissement text,
+                updated_at text,
+                CONSTRAINT af05_pkey PRIMARY KEY (mnomedecin)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+    TABLESPACE pg_default;
+
+
+    ##TEMP_TABLE_CREATION##
+
+    ##TEMP_COPY##
+
+    INSERT INTO public.af05 (
+    ##INSERT_COLUMNS##
+    )
+    SELECT
+        ##SELECT_COLUMNS##
+    FROM ##TEMP_TABLENAME## temp;
+
+    RETURN 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

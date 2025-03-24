@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="documentation.xsl" type="text/xsl"?>
+<documentation>
+  <description nom="Visiopharm 3.2" os="MS Windows XP (SP2)" type="sql"/>
+  <systemes>
+    <systeme>
+      <designation>MS Windows</designation>
+      <recuperations>
+        <recuperation description="Copie du fichier de base de données"/>
+      </recuperations>
+      <fichiers>
+        <fichier nom="PHARMACIE.FDB" repertoire="C:\VisioPharmCS\DB" description="Base de données Firebird"/>
+      </fichiers>
+    </systeme>
+  </systemes>
+  <perimetres>
+    <donnee designation="Praticiens"/>
+
+    <donnee designation="Organismes"/>
+
+    <donnee designation="Clients"/>
+
+    <donnee designation="Zones géographiques"/>
+    <donnee designation="Fournisseurs directs"/>
+    <donnee designation="Répartiteurs"/>
+    <donnee designation="Produits"/>
+    <donnee designation="Historiques de ventes mensuel ( rotations )"/>
+
+    <donnee designation="Opérateurs"/>
+    <donnee designation="Vignettes avancées"/>
+
+    <donnee designation="Historiques de délivrances"/>
+    <donnee designation="Commandes / Catalogues"/>	
+
+
+	
+  </perimetres>
+</documentation>

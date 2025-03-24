@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="documentation.xsl" type="text/xsl"?>
+<documentation>
+	<description nom="Esculape V6" os="Windows" type="sql/fichiers binaires"/>
+	<systemes>
+   <systeme>
+     <designation>Windows</designation>     
+       <recuperations>
+       		<recuperation description="Copie de fichiers, directement dans le répertoire du projet commit" remarques="Le module nécessite l'installation du borland database engine ftp://repf.groupe.pharmagest.com/outils/setup_bde.exe"   />
+       </recuperations>
+     <fichiers>
+       <fichier nom="EV6.db3" repertoire="\Files\DB" description="Copier le fichier EV6.db3 au même endroit que les endroits, sans répertoire"/>
+       <fichier nom="Database" repertoire="\Files\" description=""/>
+       <fichier nom="FtbCAMC" repertoire="\Files\" description=""/>
+       <fichier nom="FtbTva" repertoire="\Files\" description=""/>
+       <fichier nom="FtbActe" repertoire="\Files\" description=""/>
+       <fichier nom="FtbCSV" repertoire="\Files\" description=""/>
+       <fichier nom="FtbGR" repertoire="\Files\" description=""/>
+       <fichier nom="FtbRisk" repertoire="\Files\" description=""/>
+     </fichiers>
+   </systeme>
+	</systemes>
+	<perimetres>
+		<donnee designation="Praticiens" commentaire="Pas de gestion des hôpitaux"/>
+		<donnee designation="Destinataires" commentaire="Informations à complèter après transfert"/>
+		<donnee designation="Organismes"/>
+		<donnee designation="Clients"/>
+		<donnee designation="Zones géographiques"/>
+		<donnee designation="Fournisseurs directs"/>
+		<donnee designation="Répartiteurs"/>		
+		<donnee designation="Marques"/>
+		<donnee designation="Produits"/>
+		<donnee designation="Opérateurs"/>
+		<donnee designation="Historiques de délivrances"/>
+		<donnee designation="Crédits"/>
+		<donnee designation="Avances produits"/>
+	</perimetres>
+ <observations>
+
+ </observations>
+</documentation>

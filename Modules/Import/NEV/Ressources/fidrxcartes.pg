@@ -1,0 +1,42 @@
+CREATE OR REPLACE FUNCTION FCTCREATEfidrxcartes(CSVFILE text) RETURNS integer
+AS $$
+DECLARE fidrxcartesexists BOOLEAN;
+BEGIN
+        SELECT EXISTS into fidrxcartesexists (
+           SELECT FROM information_schema.tables
+           WHERE  table_schema = 'public'
+           AND    table_name   = 'fidrxcartes'
+        );
+
+        if fidrxcartesexists then
+           drop table fidrxcartes;
+        end if;
+        
+        CREATE TABLE public.fidrxcartes
+            (
+fidrx_card_carte text,
+fidrx_card_mrq text,
+fidrx_card_savcle text,
+fidrx_card_nocli text,
+fidrx_card_oract text,
+fidrx_card_dtact text,
+fidrx_card_etat text,
+fidrx_card_nom text,
+fidrx_card_pre text,
+fidrx_card_code_pays text,
+updated_at text
+            )
+            WITH (
+                OIDS = FALSE
+            )
+            TABLESPACE pg_default;
+
+        execute 'COPY fidrxcartes
+            from ''' || $1 || '''
+            DELIMITER '';''
+            CSV HEADER';
+
+            return 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

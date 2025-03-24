@@ -1,0 +1,130 @@
+CREATE OR REPLACE FUNCTION FCTCREATEaf31(CSVFILE text) RETURNS integer
+AS $$
+BEGIN
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_schema = 'public'
+               AND table_name = 'af31') THEN
+        DROP TABLE public.af31;
+    END IF;
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_name = 'temp_af31') THEN
+        DROP TABLE temp_af31;
+    END IF;
+
+        CREATE TABLE public.af31
+            (
+            cddate date,
+cdchrono text,
+cdindex text,
+cdduplicle text,
+cdactivite text,
+cdlabo text,
+cdtyplabo text,
+cdetat text,
+cdheure text,
+cdminute text,
+cdtypcde text,
+cdctxoctroimer text,
+cdachcat varchar(200),
+cdachrem varchar(200),
+cdnblignes text,
+cdboites text,
+cdspeciale text,
+cdrefcc text,
+cdnetpropose text,
+cdarchive text,
+cdcdecadence text,
+cdtypecadence text,
+cdapriori text,
+cdrecmulticde text,
+cddatetrans text,
+cdheuretrans text,
+cdminutetrans text,
+cddatelivr date,
+cdheurelivr text,
+cdminutelivr text,
+cdvendeur text,
+cdeuro text,
+cdgronum text,
+cddatetltprev text,
+cdheuretltprev text,
+cdminutetltprev text,
+cdtltauto text,
+cdstatustlt text,
+cdsensmvt text,
+cddatedebper date,
+cddatefinper date,
+cdremex text,
+cdtypremex text,
+cdescompte text,
+cdtypescompte text,
+cdfraisport text,
+cdtypfrais text,
+cdmtug text,
+cdnbug text,
+cdtxremfact text,
+cdmtremfact text,
+cdrevient text,
+cdpnttpv text,
+cdtypavoir text,
+cdartetat text,
+cdart text,
+cdartligne text,
+cdpremlivrais text,
+cddernlivrais text,
+cddatcloture text,
+cdnblivrais text,
+cdcdegroupe text,
+cdnumgroupe text,
+cdnummembre text,
+cdreccd text,
+cdpmlstatus text,
+cdplabstatus text,
+cdversion text,
+cdmtoctroimer text,
+cdmapnumcdegen text,
+cdmapnumcdeind text,
+cdcrit_eclat text,
+cdcode_offre text,
+cdbon_liv text,
+cdbon_liv_valorise text,
+cdspecifique text,
+cdmodevalid_nego text,
+cddatevalidation date,
+cddatevalorisation date,
+cdref_fourn text,
+cdgrprecmulticde text,
+cdcomconfrere text,
+cdcrossnocde text,
+cdhistosansmajpx text,
+updated_at text,
+cdmaptypecde text,
+cdmappasmajpx text,
+cdclefcdecadence_date text,
+cdclefcdecadence_chrono text,
+cdnature_prix text,
+                CONSTRAINT af31_pkey PRIMARY KEY (cddate, cdchrono)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+    TABLESPACE pg_default;
+
+
+    ##TEMP_TABLE_CREATION##
+
+    ##TEMP_COPY##
+
+    INSERT INTO public.af31 (
+    ##INSERT_COLUMNS##
+    )
+    SELECT
+        ##SELECT_COLUMNS##
+    FROM ##TEMP_TABLENAME## temp;
+
+    RETURN 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

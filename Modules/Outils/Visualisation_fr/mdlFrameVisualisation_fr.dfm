@@ -1,0 +1,130 @@
+object frFrameVisualisation: TfrFrameVisualisation
+  Left = 0
+  Top = 0
+  Width = 898
+  Height = 304
+  Align = alClient
+  AutoSize = True
+  ParentBackground = False
+  TabOrder = 0
+  ExplicitWidth = 451
+  object Splitter: TSplitter
+    Left = 0
+    Top = 153
+    Width = 898
+    Height = 3
+    Cursor = crVSplit
+    Align = alTop
+    MinSize = 64
+    ExplicitWidth = 443
+  end
+  object pnlCritere: TPanel
+    Left = 0
+    Top = 0
+    Width = 898
+    Height = 33
+    Align = alTop
+    Color = clWhite
+    ParentBackground = False
+    TabOrder = 0
+    ExplicitWidth = 451
+    object lblCritere: TLabel
+      Left = 16
+      Top = 10
+      Width = 33
+      Height = 13
+      Caption = 'Crit'#232're'
+    end
+    object btnChercher: TPISpeedButton
+      Left = 603
+      Top = 6
+      Width = 75
+      Height = 21
+      Caption = 'Chercher'
+      Flat = True
+      Fleche = False
+    end
+    object edtCritere: TEdit
+      Left = 64
+      Top = 6
+      Width = 537
+      Height = 21
+      CharCase = ecUpperCase
+      Color = 14737632
+      TabOrder = 0
+      OnKeyDown = edtCritereKeyDown
+    end
+  end
+  object grdResultat: TPIDBGrid
+    Left = 0
+    Top = 33
+    Width = 898
+    Height = 120
+    Align = alTop
+    BorderStyle = bsNone
+    Constraints.MinHeight = 64
+    DataSource = dsResultat
+    DefaultDrawing = False
+    DrawingStyle = gdsGradient
+    FixedColor = 14922394
+    GradientEndColor = 14790035
+    GradientStartColor = 15584957
+    Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+    PopupMenu = pmnMenuFrame
+    TabOrder = 1
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    MenuColonneActif = False
+    StyleBordure = sbAucune
+    Options2.LargeurIndicateur = 11
+    Options2.LignesParLigneDonnees = 1
+    Options2.LignesParTitre = 1
+    Options2.CouleurSelection = 9434356
+    Options2.PoliceSelection.Charset = DEFAULT_CHARSET
+    Options2.PoliceSelection.Color = clWindowText
+    Options2.PoliceSelection.Height = -11
+    Options2.PoliceSelection.Name = 'MS Sans Serif'
+    Options2.PoliceSelection.Style = []
+    Options2.OptionsImpression.UniqLigneSelectionne = False
+    Options2.OptionsImpression.FondCellule = False
+    Options2.OptionsImpression.FondTitre = False
+    Options2.PointSuspensionDonnees = True
+    Options2.PointSuspensionTitre = False
+    Options2.CoinsRonds = False
+    Details = False
+    HauteurEntetes = 17
+    Entetes = <>
+    MultiSelection.Active = False
+    MultiSelection.Mode = mmsSelection
+  end
+  object ScrollBox: TScrollBox
+    Left = 0
+    Top = 156
+    Width = 898
+    Height = 148
+    Align = alClient
+    BorderStyle = bsNone
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 2
+    ExplicitWidth = 451
+  end
+  object dsResultat: TDataSource
+    AutoEdit = False
+    Left = 456
+    Top = 72
+  end
+  object pmnMenuFrame: TJvPopupMenu
+    ImageMargin.Left = 0
+    ImageMargin.Top = 0
+    ImageMargin.Right = 0
+    ImageMargin.Bottom = 0
+    ImageSize.Height = 0
+    ImageSize.Width = 0
+    Left = 360
+    Top = 72
+  end
+end

@@ -1,0 +1,59 @@
+CREATE OR REPLACE FUNCTION FCTCREATEaff81lp(CSVFILE text) RETURNS integer
+AS $$
+BEGIN
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_schema = 'public'
+               AND table_name = 'aff81lp') THEN
+        DROP TABLE public.aff81lp;
+    END IF;
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_name = 'temp_aff81lp') THEN
+        DROP TABLE temp_aff81lp;
+    END IF;
+
+        CREATE TABLE public.aff81lp
+            (
+ctanolabo text,
+ctanogamme integer,
+ctanocip text,
+ctatypedatas text,
+ctachronotype text,
+ctaindex text,
+ctaduplicle text,
+ctasupprime text,
+updated_at text,
+cta_lp_libelle text,
+cta_lp_pxachat float,
+cta_lp_codetva text,
+cta_lp_qteminicde text,
+cta_lp_qtesupcarton text,
+cta_lp_qtemincarton text,
+cta_lp_poidsvol text,
+cta_lp_valpoidsvol text,
+cta_lp_version text,
+cta_lp_typeact text,
+            CONSTRAINT aff81lp_pkey PRIMARY KEY (ctanolabo, ctanogamme, ctanocip)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+    TABLESPACE pg_default;
+
+
+    ##TEMP_TABLE_CREATION##
+
+    ##TEMP_COPY##
+
+    INSERT INTO public.aff81lp (
+    ##INSERT_COLUMNS##
+    )
+    SELECT
+        ##SELECT_COLUMNS##
+    FROM ##TEMP_TABLENAME## temp;
+
+    RETURN 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

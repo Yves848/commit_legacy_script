@@ -1,0 +1,20 @@
+select
+  index_mutuelle,
+  code_mutuelle,
+  nom,
+  adresse,
+  adresse2,
+  codepostal,
+  ville,
+  telephone,
+  fax,
+  commentaire,
+  codevitale,
+  codeteletrans,
+  index_grillemutuelle,
+  typecontrat,
+  cmu,
+  ame
+from
+  dbo.mutuelles
+  

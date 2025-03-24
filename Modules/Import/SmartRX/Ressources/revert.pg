@@ -1,0 +1,66 @@
+drop table af04;
+
+alter table af04_crypt rename constraint af04_##CRYPT0##_pkey to af04_##CRYPT1##_pkey;           
+
+alter index if exists af04_caanaissance_##CRYPT0##_idx rename to  af04_caanaissance_##CRYPT1##_idx;              
+alter index if exists af04_caccesms_##CRYPT0##_idx rename to af04_caccesms_##CRYPT1##_idx;
+alter index if exists af04_cattente_##CRYPT0##_idx rename to af04_cattente_##CRYPT1##_idx;
+alter index if exists af04_cayantdroit_##CRYPT0##_idx rename to af04_cayantdroit_##CRYPT1##_idx;
+alter index if exists af04_ccategorie_##CRYPT0##_idx rename to af04_ccategorie_##CRYPT1##_idx;
+alter index if exists af04_cchronofact_##CRYPT0##_idx rename to af04_cchronofact_##CRYPT1##_idx;
+alter index if exists af04_cchronoreglement_##CRYPT0##_idx rename to af04_cchronoreglement_##CRYPT1##_idx;
+alter index if exists af04_ccol_ratt_##CRYPT0##_idx rename to af04_ccol_ratt_##CRYPT1##_idx;
+alter index if exists af04_ccol_relv_##CRYPT0##_idx rename to af04_ccol_relv_##CRYPT1##_idx;
+alter index if exists af04_ccompte_##CRYPT0##_idx rename to af04_ccompte_##CRYPT1##_idx;
+alter index if exists af04_cctxbase_##CRYPT0##_idx rename to af04_cctxbase_##CRYPT1##_idx;
+alter index if exists af04_cdatecreation_##CRYPT0##_idx rename to af04_cdatecreation_##CRYPT1##_idx;
+alter index if exists af04_cdatefacture_##CRYPT0##_idx rename to af04_cdatefacture_##CRYPT1##_idx;
+alter index if exists af04_cdatereglement_##CRYPT0##_idx rename to af04_cdatereglement_##CRYPT1##_idx;
+alter index if exists af04_cdecimales_##CRYPT0##_idx rename to af04_cdecimales_##CRYPT1##_idx;
+alter index if exists af04_cfactu_forfait_##CRYPT0##_idx rename to af04_cfactu_forfait_##CRYPT1##_idx;
+alter index if exists af04_cforfjourmedremb_##CRYPT0##_idx rename to af04_cforfjourmedremb_##CRYPT1##_i;
+alter index if exists af04_cinscalcule_##CRYPT0##_idx rename to af04_cinscalcule_##CRYPT1##_idx;
+alter index if exists af04_cjjnaissance_##CRYPT0##_idx rename to af04_cjjnaissance_##CRYPT1##_idx;
+alter index if exists af04_cmedecin_##CRYPT0##_idx rename to af04_cmedecin_##CRYPT1##_idx;
+alter index if exists af04_cmmnaissance_##CRYPT0##_idx rename to af04_cmmnaissance_##CRYPT1##_idx;
+alter index if exists af04_cnum_barcomptoir_##CRYPT0##_idx rename to af04_cnum_barcomptoir_##CRYPT1##_idx;
+alter index if exists af04_cnum_barreleve_##CRYPT0##_idx rename to af04_cnum_barreleve_##CRYPT1##_idx;
+alter index if exists af04_cpil_chambre_##CRYPT0##_idx rename to af04_cpil_chambre_##CRYPT1##_idx;
+alter index if exists af04_cpil_etiq_##CRYPT0##_idx rename to af04_cpil_etiq_##CRYPT1##_idx;
+alter index if exists af04_cpil_frequence_##CRYPT0##_idx rename to af04_cpil_frequence_##CRYPT1##_idx;
+alter index if exists af04_cpil_gestion_##CRYPT0##_idx rename to af04_cpil_gestion_##CRYPT1##_idx;
+alter index if exists af04_creserve_##CRYPT0##_idx rename to af04_creserve_##CRYPT1##_idx;
+alter index if exists af04_crlocal_##CRYPT0##_idx rename to af04_crlocal_##CRYPT1##_idx;
+alter index if exists af04_csavcode_##CRYPT0##_idx rename to af04_csavcode_##CRYPT1##_idx;
+alter index if exists af04_ctypeclie_##CRYPT0##_idx rename to af04_ctypeclie_##CRYPT1##_idx;
+alter index if exists af04_cusageprof_##CRYPT0##_idx rename to af04_cusageprof_##CRYPT1##_idx;
+alter index if exists af04_cvar_##CRYPT0##_idx rename to af04_cvar_##CRYPT1##_idx;
+
+alter table af04_##CRYPT0## rename to af04_##CRYPT1##;
+
+
+drop table af25;
+
+alter table af25_crypt rename constraint af25_##CRYPT0## pkey to af25_##CRYPT1##_pkey;
+
+alter index if exists af25_lfacte_##CRYPT0##_idx rename to af25_crypt_lfacte_##CRYPT1##_idx;
+alter index if exists af25_lfcdlabo_##CRYPT0##_idx rename to af25_crypt_lfcdlabo_##CRYPT1##_idx;
+alter index if exists af25_lfcodefrais_##CRYPT0##_idx rename to af25_crypt_lfcodefrais_##CRYPT1##_idx;
+alter index if exists af25_lfdestockage_##CRYPT0##_idx rename to af25_crypt_lfdestockage_##CRYPT1##_idx;
+alter index if exists af25_lffamille_##CRYPT0##_idx rename to af25_crypt_lffamille_##CRYPT1##_idx;
+alter index if exists af25_lffrais_##CRYPT0##_idx rename to af25_crypt_lffrais_##CRYPT1##_idx;
+alter index if exists af25_lflpp_##CRYPT0##_idx rename to af25_crypt_lflpp_##CRYPT1##_idx;
+alter index if exists af25_lfmaladie_##CRYPT0##_idx rename to af25_crypt_lfmaladie_##CRYPT1##_idx;
+alter index if exists af25_lfnorembt_##CRYPT0##_idx rename to af25_crypt_lfnorembt_##CRYPT1##_idx;
+alter index if exists af25_lfpromotion_##CRYPT0##_idx rename to af25_crypt_lfpromotion_##CRYPT1##_idx;
+alter index if exists af25_lfpuvente_##CRYPT0##_idx rename to af25_crypt_lfpuvente_##CRYPT1##_idx;
+alter index if exists af25_lfpxbaserembt_##CRYPT0##_idx rename to af25_crypt_lfpxbaserembt_##CRYPT1##_idx;
+alter index if exists af25_lfqte_##CRYPT0##_idx rename to af25_crypt_lfqte_##CRYPT1##_idx;
+alter index if exists af25_lfsav_chrono_##CRYPT0##_idx rename to af25_crypt_lfsav_chrono_##CRYPT1##_idx;
+alter index if exists af25_lfsav_noligne_##CRYPT0##_idx rename to af25_crypt_lfsav_noligne_##CRYPT1##_idx;
+alter index if exists af25_lftableau_##CRYPT0##_idx rename to af25_crypt_lftableau_##CRYPT1##_idx;
+alter index if exists af25_lftva_##CRYPT0##_idx rename to af25_crypt_lftva_##CRYPT1##_idx;
+alter index if exists af25_lftypeligne_##CRYPT0##_idx rename to af25_crypt_lftypeligne_##CRYPT1##_idx;
+alter index if exists af25_lftypepu_##CRYPT0##_idx rename to af25_crypt_lftypepu_##CRYPT1##_idx;
+
+alter table af25_##CRYPT0## rename to af25_##CRYPT1##;

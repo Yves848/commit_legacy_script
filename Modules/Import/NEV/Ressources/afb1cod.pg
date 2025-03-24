@@ -1,0 +1,45 @@
+CREATE OR REPLACE FUNCTION FCTCREATEafb1cod(CSVFILE text) RETURNS integer
+AS $$
+DECLARE afb1codexists BOOLEAN;
+BEGIN
+        SELECT EXISTS into afb1codexists (
+           SELECT FROM information_schema.tables
+           WHERE  table_schema = 'public'
+           AND    table_name   = 'afb1cod'
+        );
+
+        if afb1codexists then
+           drop table afb1cod;
+        end if;
+        
+        CREATE TABLE public.afb1cod
+            (
+            b1cod_eancle text,
+            b1cod_mrq text,
+            b1cod_ean text,
+            b1cod_numint text,
+            b1cod_type integer,
+            updated_at text,
+            CONSTRAINT afb1cod_pkey PRIMARY KEY (b1cod_eancle)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+            TABLESPACE pg_default;
+
+        execute 'COPY afb1cod(
+            b1cod_eancle,
+b1cod_mrq,
+b1cod_ean,
+b1cod_numint,
+b1cod_type,
+updated_at
+        )
+            from ''' || $1 || '''
+            DELIMITER '';''
+            CSV HEADER';
+
+            return 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

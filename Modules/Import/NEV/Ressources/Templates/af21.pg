@@ -1,0 +1,136 @@
+CREATE OR REPLACE FUNCTION FCTCREATEaf21(CSVFILE text) RETURNS integer
+AS $$
+BEGIN
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_schema = 'public'
+               AND table_name = 'af21') THEN
+        DROP TABLE public.af21;
+    END IF;
+
+    IF EXISTS (SELECT FROM information_schema.tables
+               WHERE table_name = 'temp_af21') THEN
+        DROP TABLE temp_af21;
+    END IF;
+
+        CREATE TABLE public.af21
+            (
+fdate date not null,
+fchrono integer,
+findex text,
+fetatfacture text,
+ftypefacture text,
+fnovendeur integer,
+fnointerne integer,
+fnoorg text,
+ffactorg text,
+fpiece_date date,
+fpiece_chrono integer,
+fdelivrance date,
+fnomedecin integer,
+fbasetaux text[],
+fpartorg text[],
+fpartclient text,
+ftauxrembt text,
+furgence text,
+fcopie text,
+fforfait text,
+fremise text,
+fdateordonnance date,
+fcodeaccident text,
+fdateaccident date,
+fnataccident text,
+fnosinistre text,
+fnocontrat text,
+fnoselection text,
+fcaracteristique text,
+fdepot text,
+frenouvel text,
+fnolecteur integer,
+fsenscomptable text,
+fsavindex text,
+fcol_num text,
+fcol_norelv integer,
+fcol_datrelv text,
+fvignmt text,
+fnumtransac text,
+fcumulmtpoint text,
+fdernumpoint text,
+fdatedernpoint date,
+fnatecriture text,
+findicpoint text,
+fcodemodule text,
+fnomandataire integer,
+flocation text,
+fexonere text,
+feuro text,
+fheure text,
+fminute text,
+fseconde text,
+ftypebareme text,
+fnumbareme text,
+fattreglement text,
+fcdegroupe text,
+fdateecheance date,
+fremispar text,
+fnointermediaire integer,
+fusage text,
+fdatebl date,
+ftypfacamc text,
+ffactamc text,
+ffactamc2 text,
+fidordo text,
+forigine text,
+freprise text,
+fetatexportauto text,
+fstsamc text,
+fdatamart text,
+forigineremise text,
+fctrtcouvap text,
+fctrtinterc text,
+fbaseht text,
+fpresc_origine text,
+fsbox_invoiceid text,
+fpem_id text,
+fotzii_id text,
+updated_at text,
+fportagedepot_id text,
+fportagebordereau_id text,
+fdetaxerefbordereau text,
+fpresc_cle_date text,
+fpresc_cle_chrono text,
+fcdclef_date text,
+fcdclef_chrono text,
+fnoclef_date text,
+fnoclef_chrono text,
+fserialisation_id text,
+fnum_accreditation text,
+ftype_accreditation text,
+ftype_prescription text,
+fecoffre_etat text,
+fecoffre_dateenvoi text,
+flivraison_type text,
+flivraison_id text,
+                CONSTRAINT af21_pkey PRIMARY KEY (fdate,fchrono)
+            )
+            WITH (
+                OIDS = FALSE
+            )
+    TABLESPACE pg_default;
+
+
+    ##TEMP_TABLE_CREATION##
+
+    ##TEMP_COPY##
+
+    INSERT INTO public.af21 (
+    ##INSERT_COLUMNS##
+    )
+    SELECT
+        ##SELECT_COLUMNS##
+    FROM ##TEMP_TABLENAME## temp;
+
+    RETURN 0;
+END;
+$$ 
+LANGUAGE PLPGSQL;

@@ -1,0 +1,23 @@
+select
+  serial,
+  '1',
+  datecommande,
+  mtcommandeht,
+  commentaire,
+  null serialgrossiste,
+  serialfournisseur,
+  datelivraison  
+from
+  commandefou
+union
+select
+  serial,
+  '2',
+  datecommande,
+  mtcommandeht,
+  null,
+  serialgrossiste,
+  null,
+  datelivraison  
+from
+  commandegro
