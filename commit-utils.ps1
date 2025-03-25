@@ -22,21 +22,42 @@ function get-version {
   return @{"MajorVer" = $MajorVer; "MinorVer" = $MinorVer; "Realease" = $Realease; "Build" = $Build }
 }
 
+function set-version {
+  param (
+    [string]$path,
+    [PSCustomObject]$version
+  )
+
+  if (Test-Path -Path $path) {
+
+  }
+}
+
+function increment-version {
+  param (
+    [string]$path
+  )
+  if (Test-Path -Path $path) {
+    $version = get-version -path $path
+    $version.build = $version.build + 1
+    set-version -path $path -version $version
+  }
+}
+
 
 function Get-Dproj {
   param (
     [string]$loc
   )
   $list = Get-ChildItem -Path . -Recurse -Filter "*.dproj"
-  $result = 
   $list = $list | Where-Object { -not $_.FullName.Contains("Composant") }
   $dproj = [System.Collections.Generic.List[PSCustomObject]]@()
   $list | ForEach-Object {
     $version = get-version -Path $_.FullName
     $v = "$($version.MajorVer).$($version.MinorVer).$($version.Realease).$($version.Build)"
-    $dproj.Add(@{"dproj" = $_.Name; "Version" = $v})
+    $dproj.Add(@{"dproj" = $_.Name; "Version" = $v })
   }
   return $dproj
 }
 
-Get-Dproj | Select-Object | Format-SpectreTable
+get-version -path .\Modules\Commit\COMMIT.dproj
