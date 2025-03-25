@@ -1,19 +1,4 @@
 ﻿param(
-  # [ValidateSet("commit", 
-  #   "groupementmenu", 
-  #   "cession", 
-  #   "moduleimport", 
-  #   "projet", 
-  #   "dist", 
-  #   "lgo2",
-  #   "importlgpi",
-  #   "transfertlgpi",
-  #   "infosoft", 
-  #   "composants", 
-  #   "all", 
-  #   "Dependencies",
-  #   "Expand",
-  #   "check-versions")]
   [string]$Projet,
   [switch]$Verbose,
   [switch]$nozip,
@@ -42,13 +27,7 @@ else {
 Build-Env
 
 switch ($projet) {
-  # 'commit' { Build-Project "$($env:SVN)\commit_legacy\Modules\Commit\commit.dproj" }
-  # 'lgo2' { Build-Project "$($env:SVN)\commit_legacy\Modules\Import\lgo2\lgo2.dproj" }
-  # 'infosoft' { Build-Project "$($env:SVN)\commit_legacy\Modules\Import\infosoft\infosoft.dproj" }
-  # 'groupementmenu' { Build-Project "$($env:SVN)\groupementmenu\groupementmenu.dproj" }
-  # 'cession' { Build-Project "$($env:SVN)\projetcession\projetcession.dproj" }
   'moduletransfert' { Build-Project "$($env:SVN)\Modules\Commit\ModuleTransfert\ModuleTransfert.dproj" }
-  # 'projet' { Build-Project "$($env:SVN)\commit_legacy\Modules\Commit\Projet.dproj" }
   'importlgpi' { Build-Project "$($env:SVN)\Modules\Import\importlgpi\importlgpi.dproj" }
   'transfertlgpi' { Build-Project "$($env:SVN)\Modules\Transfert\transfertlgpi\transfertlgpi.dproj" }
   'transferultimate' { Build-Project "$($env:SVN)\Modules\Transfert\transfertultimate\transfertUltimate.dproj" }
@@ -83,5 +62,5 @@ switch ($projet) {
   'check-versions' {
     Get-DprojVersions
   }
-  Default {}
+  default {}
 }
