@@ -1,6 +1,11 @@
 $path = (Get-Location).Path
 
-
+<#
+  get-version
+  read the 4 values of the dproj version
+  return a PSCustomObject
+    @{"MajorVer" = "x"; "MinorVer" = "x"; "Realease" = "x"; "Build" = "x" }
+#>
 function get-version {
   param(
     [string]$path
@@ -29,7 +34,12 @@ function set-version {
   )
 
   if (Test-Path -Path $path) {
-
+    [xml]$proj = Get-Content -Path $path
+    $proj.Project.ProjectExtensions.BorlandProject.'Delphi.Personality'.VersionInfo.VersionInfo[2]."#text" = $MajorVer
+    $proj.Project.ProjectExtensions.BorlandProject.'Delphi.Personality'.VersionInfo.VersionInfo[3]."#text" = $MinorVer
+    $proj.Project.ProjectExtensions.BorlandProject.'Delphi.Personality'.VersionInfo.VersionInfo[4]."#text" = $Realease
+    $proj.Project.ProjectExtensions.BorlandProject.'Delphi.Personality'.VersionInfo.VersionInfo[5]."#text" = $Build
+    $proj.Save($path)
   }
 }
 
@@ -59,5 +69,3 @@ function Get-Dproj {
   }
   return $dproj
 }
-
-get-version -path .\Modules\Commit\COMMIT.dproj
