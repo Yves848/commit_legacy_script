@@ -79,6 +79,7 @@ function increment-version {
     $version.build = $version.build + 1
     set-version -path $path -version $version
   }
+  set-version -path $path -version $version
 }
 
 
