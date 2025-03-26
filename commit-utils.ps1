@@ -103,7 +103,11 @@ function Get-Dproj {
 function display-dproj {
   maximize
   Clear-Host  
-  Get-Dproj -loc . | Format-SpectreTable
+  if (get-module pwshspectreconsole  -ListAvailable) {
+    Get-Dproj -loc . | Format-SpectreTable
+  } else {
+    Get-Dproj -loc .
+  }
   Read-Host
   restore
 }
